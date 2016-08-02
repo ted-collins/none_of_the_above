@@ -72,8 +72,8 @@ namespace :deploy do
   desc "Migrate, Bundle, Assets"
   task :compile_assets do
     on roles(:app), in: :sequence, wait: 5 do
-      execute "echo \"cd '#{release_path}'; RAILS_ENV=production rake db:migrate\" | sudo su - www-data"
       execute "echo \"cd '#{release_path}'; RAILS_ENV=production bundle install\" | sudo su - www-data"
+      execute "echo \"cd '#{release_path}'; RAILS_ENV=production rake db:migrate\" | sudo su - www-data"
       execute "echo \"cd '#{release_path}'; RAILS_ENV=production rake assets:precompile\" | sudo su - www-data"
 	end
   end
