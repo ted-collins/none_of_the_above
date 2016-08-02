@@ -20,4 +20,12 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  AppTitle: "None Of The Above"
+
+  login: "Login"
+  register: "Register"
+  sign_me_up: "Sign Me Up!"
+
+  password: "Password"
+  password_confirm: "Confirm Password"
+  username: "Username or Email"

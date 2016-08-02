@@ -6,16 +6,16 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = 'a6dde5dedd6a19a689828dd5131033d2bcff1d616a5480e5a92a1c3e97a59c8df96bf72a890002a7ed6c973a7347952447d5f61bd1a077cc7a7decd26a5d155b'
+  config.secret_key = 'a6dde5dedd6a19a689828dd5131033d2bcff1d616a5480e5a92a1c3e97a59c8df96bf72a890002a7ed6c973a7347952447d5f61bd1a077cc7a7decd26a5d155b'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
+  config.mailer_sender = 'noreply-none@oftheabove.com'
 
   # Configure the class responsible to send e-mails.
-  # config.mailer = 'Devise::Mailer'
+  config.mailer = 'Devise::Mailer'
 
   # Configure the parent class responsible to send e-mails.
   # config.parent_mailer = 'ActionMailer::Base'
@@ -102,10 +102,10 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 11
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '9c3769af85c8a0ab89b8af68a1ab9ac4156e475262ef92d12606fa52de04116a6712fb51a47d1bf148fe5ba5d1a93f76c98ecbe554bf478da94d9c29cdb0390f'
+  config.pepper = '9c3769af85c8a0ab89b8af68a1ab9ac4156e475262ef92d12606fa52de04116a6712fb51a47d1bf148fe5ba5d1a93f76c98ecbe554bf478da94d9c29cdb0390f'
 
   # Send a notification email when the user's password is changed
-  # config.send_password_change_notification = false
+  config.send_password_change_notification = false
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -121,7 +121,7 @@ Devise.setup do |config|
   # their account can't be confirmed with the token any more.
   # Default is nil, meaning there is no restriction on how long a user can take
   # before confirming their account.
-  # config.confirm_within = 3.days
+  config.confirm_within = 3.days
 
   # If true, requires any email changes to be confirmed (exactly the same way as
   # initial account confirmation) to be applied. Requires additional unconfirmed_email
@@ -178,10 +178,10 @@ Devise.setup do |config|
 
   # Number of authentication tries before locking an account if lock_strategy
   # is failed attempts.
-  # config.maximum_attempts = 20
+  config.maximum_attempts = 20
 
   # Time interval to unlock the account if :time is enabled as unlock_strategy.
-  # config.unlock_in = 1.hour
+  config.unlock_in = 1.hour
 
   # Warn on the last attempt before the account is locked.
   # config.last_attempt_warning = true
