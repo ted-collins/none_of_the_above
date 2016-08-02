@@ -1,0 +1,47 @@
+<nav id="lg_top_nav" class="top-bar show-for-medium-up" data-topbar>
+
+	<ul class="title-area">
+		<li class="name">
+			<h1><a href="#"><%= t(:AppTitle) %></a></h1>
+    	</li>
+	</ul>
+
+	<section class="top-bar-section">
+		<ul class="left">
+			<li class="parishLabel">
+				<%= render :partial => 'layouts/parish_panel' %>
+			</li>
+		</ul>
+	</section>
+
+	<section class="top-bar-section">
+	<ul class="right">
+		<% if user_signed_in? %>
+			<li class="userLabel">
+				User:
+			</li>
+			<li>
+			  <%= link_to edit_user_registration_path do %>
+				<%= current_user.email %>
+			  <% end %>
+			</li>
+			<li class="navBarBetween">
+			|
+			</li>
+			<li>
+			  <%= link_to "Log Out", destroy_user_session_path, :method => :delete %>
+    		</li>
+		<% else %>
+      		<li class="has-dropdown">
+				<a href="#" data-reveal-id="loginModal"><%= t(:login) %></a>
+    		</li>
+      		<li class="has-dropdown">
+				<a href="#" data-reveal-id="registerModal"><%= t(:register) %></a>
+			</li>
+   			<%= render partial: 'layouts/register_panel', :locals => { :resource => User.new , :resource_name => :user, :devise_mapping => Devise.mappings[:user]} %>
+   			<%= render partial: 'layouts/login_panel', :locals => { :resource => User.new , :resource_name => :user, :devise_mapping => Devise.mappings[:user]} %>
+		<% end %>
+	</ul>
+	</section>
+
+</nav>

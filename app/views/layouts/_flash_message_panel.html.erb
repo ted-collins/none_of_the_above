@@ -1,0 +1,14 @@
+  <% flash.each do |key, message| %>
+    <% next unless [:notice, :error, :alert, "alert", "notice", "error"].include?(key) %>
+	<% if(key.eql? "alert") %>
+		<div data-alert class="alert-box warning round">
+	<% elsif(key.eql? "error") %>
+		<div data-alert class="alert-box alert round">
+	<% elsif(key.eql? "notice") %>
+		<div data-alert class="alert-box info round">
+	<% end %>
+	
+    	<%= content_tag :div, message, id: "flash_#{key}"  %>
+  		<a href="#" class="close">&times;</a>
+	</div>
+  <% end %>

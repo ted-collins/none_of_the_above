@@ -1,0 +1,18 @@
+<div>
+<% if user_signed_in? %>
+	<% if(current_user.parishes.count > 1) %>
+		<a data-dropdown="parish_drop" aria-controls="parish_drop" aria-expanded="false"><%= current_user.parishes.first.name %></a>
+		<ul id="parish_drop" class="f-dropdown" data-dropdown-content aria-hidden="true" tabindex="-1">
+		<% current_user.parishes.each do |x| %>
+  			<li><a href="#"><%= x.name %></a></li>
+		<% end %>
+		</ul>
+	<% elsif(current_user.parishes.count == 0) %>
+		<%= current_user.parishes.count %>
+	<% else %>
+		<%= current_user.parishes.count %>
+	<% end %>
+<% else %>
+	NOT SIGNED IN
+<% end %>
+</div>

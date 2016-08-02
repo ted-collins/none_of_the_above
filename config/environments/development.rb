@@ -16,6 +16,19 @@ Rails.application.configure do
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 
+	config.action_mailer.default_url_options = { host: 'none.oftheabove.com' }
+    # config.action_mailer.delivery_method = :sendmail
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings = {
+        :address              => "smtp.verizon.net",
+        :port                 => 465,
+        :domain               => '11below.com',
+        :user_name            => 'collins.ted@verizon.net',
+        :password             => '1muffin2',
+        :authentication       => 'plain',
+        :enable_starttls_auto => true,
+        :ssl                  => true  }
+
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
