@@ -78,6 +78,14 @@ namespace :deploy do
 	end
   end
 
+  desc "Fix Permissions"
+  task :fix_permissions do
+    on roles(:app), in: :sequence, wait: 5 do
+      execute "cd '#{release_path}'; sudo chgrp www-data Gemfile.lock"
+	end
+  end
+
+  before :compile_assets, :fix_permissions
   before :restart, :compile_assets
   before :restart, :bin
 
