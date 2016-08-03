@@ -1,0 +1,35 @@
+<script type="text/javascript">
+    var rad = document.pledgeForm.partyGroup;
+    var prev = null;
+    for(var i = 0; i < rad.length; i++) {
+        rad[i].onclick = function() {
+            // (prev)? console.log(prev.value):null;
+            if(this !== prev) {
+                prev = this;
+				if(this.id.localeCompare('partyDemocrat') == 0) {
+					console.info('API:: Sending democrat');
+					Api.set_party('democrat');
+				} else
+				if(this.id.localeCompare('partyRepublican') == 0) {
+					console.info('API:: Sending republican');
+					Api.set_party('republican');
+				} else
+				if(this.id.localeCompare('partyNeither') == 0) {
+					console.info('API:: Sending neither');
+					Api.set_party('neither');
+				} else 
+				if(this.id.localeCompare('partyNoVote') == 0) {
+					console.info('API:: Sending no_vote');
+					Api.set_party('no_vote');
+				} else {
+					console.error('Unrecognized party type '+this.id);
+				}
+            }
+        };
+    }
+
+	$(document).ready(function() {
+		Api.init();
+		Api.fetch_user_details();
+	});
+</script>

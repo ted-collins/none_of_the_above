@@ -29,3 +29,13 @@ en:
   password: "Password"
   password_confirm: "Confirm Password"
   username: "Username or Email"
+
+  democrat: Democrat
+  republican: Republican
+  neither: UnDecided
+  noVote: Disgusted, Not Voting
+
+  save: Save
+
+  i_was_gonna_vote: I was planning to vote . . .
+  but_i_pledge_not_to: "... but I Pledge Not To. Or . . ."

@@ -1,0 +1,74 @@
+<div id="pledge_panel" class="panel round">
+<h4><%= t(:i_was_gonna_vote) %></h4>
+<form name="pledgeForm" >
+<fieldset class="switch" tabindex="0">
+	<div class="row">
+		<div class="large-6 small-6 medium-6 columns">
+			<div class="panel round democratColor">
+				<h5><%= t(:democrat) %></h5>
+				<div class="switch round large">
+					<input id="partyDemocrat" type="radio" name="partyGroup"
+						<% if current_user.party_affiliation.eql? 'democrat' %>
+							 checked="checked">
+						<% else %>
+							 >
+						<% end %>
+					<label for="partyDemocrat"><%= t(:democrat) %></label>
+				</div> 
+			</div> 
+		</div> 
+
+		<div class="large-6 small-6 medium-6 columns">
+			<div class="panel round republicanColor">
+				<h5><%= t(:republican) %></h5>
+				<div class="switch round large">
+					<input id="partyRepublican" type="radio" name="partyGroup"
+						<% if current_user.party_affiliation.eql? 'replublican' %>
+							 checked="checked">
+						<% else %>
+							 >
+						<% end %>
+					<label for="partyRepublican"><%= t(:republican) %></label>
+				</div> 
+			</div> 
+		</div> 
+	</div>
+
+	<h4><%= t(:but_i_pledge_not_to) %></h4>
+
+	<div class="row neitherRow">
+		<div class="large-12 small-12 medium-12 columns">
+			<div class="panel round neitherColor">
+				<h5><%= t(:neither) %></h5>
+				<div class="switch round large">
+					<input id="partyNeither" type="radio" name="partyGroup"
+						<% if current_user.party_affiliation.eql? 'neither' %>
+							 checked="checked">
+						<% else %>
+							 >
+						<% end %>
+					<label for="partyNeither"><%= t(:neither) %></label>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row noVoteRow">
+		<div class="large-12 small-12 medium-12 columns">
+			<div class="panel round noVoteColor">
+				<h5><%= t(:noVote) %></h5>
+				<div class="switch round large">
+					<input id="partyNoVote" type="radio" name="partyGroup"
+						<% if current_user.party_affiliation.eql? 'novote' %>
+							 checked="checked">
+						<% else %>
+							 >
+						<% end %>
+					<label for="partyNoVote"><%= t(:noVote) %></label>
+				</div>
+			</div>
+		</div>
+	</div>
+</fieldset>
+
+<form>
+</div>

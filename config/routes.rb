@@ -7,6 +7,10 @@ Rails.application.routes.draw do
 	get "/pages/:page" => "pages#show"
 	root 'pages#show', :page => 'home'
 
+  match 'api/user_details(.:format)', to: 'api#user_details', via: ['options']
+  get 'api/user_details(.:format)' => 'api#user_details', as: 'api/user_details'
+  post 'api/user_party(.:format)' => 'api#set_user_party', as: 'api/set_user_party'
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

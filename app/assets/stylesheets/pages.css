@@ -1,0 +1,44 @@
+#pledge_panel h4 {
+	font-weight: bold;
+}
+
+#pledge_panel h5 {
+	font-weight: bold;
+	color: white;
+}
+
+#pledge_panel .columns {
+	padding-left: 0.3em;
+	padding-right: 0.3em;
+}
+
+#pledge_panel .submitButton {
+	text-align: center;
+}
+
+#pledge_panel .democratColor {
+	background-color: #34AAE0;
+}
+
+#pledge_panel .republicanColor {
+	background-color: #FF3333;
+}
+
+#pledge_panel .noVoteColor,
+#pledge_panel .neitherColor {
+	background-color: #730065;
+	text-align: center;
+}
+
+#pledge_panel .noVoteColor {
+	background-color: #FA7B00;
+}
+
+#pledge_panel .neitherRow {
+	margin-top: 2.5em;
+}
+
+#pledge_panel .saveButton,
+#pledge_panel .switch input:checked+label {
+	background: #61B800;
+}

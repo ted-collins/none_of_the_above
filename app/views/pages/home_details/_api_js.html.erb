@@ -1,0 +1,207 @@
+<script type="text/javascript">
+
+/*jslint browser: true */
+/*global G_vmlCanvasManager, $ */
+
+var Api = (function () {
+
+    "use strict";
+
+	var gpsession = '<%= session[:gpsession] %>',
+		api_server = '<%= Rails.configuration.api_server %>',
+		error_msg = null,
+		active = false,
+		timer = null,
+		state = null,
+
+		// jQuery on an empty object, we are going to use this as our queue
+		ajaxQueue = new Queue(),
+
+		init = function() {
+			console.log('API Initialized');
+			Api.reset_queue_timer();
+		},
+ 
+		reset_queue_timer = function() {
+			if(timer != undefined && timer != null) {
+				// console.log('Clearing Timer [['+timer+']]');
+				clearInterval(timer);
+			}
+			Api.scan_queue();
+			timer = setInterval(function() { Api.scan_queue(); }, 5000);
+		},
+
+		scan_queue = function() {
+			console.info('Scanning ajax queue');
+			if(!Api.active) {
+				console.info('   Check for work');
+				if( Api.ajaxQueue.peek() != undefined ) {
+					console.info('   Work to do');
+					Api.active = true;
+       				var r = Api.ajaxQueue.dequeue();
+					Api.exec_request(r.uri, r.call_type, r.params, r.success_cb);
+				} else {
+					// Make sure we're updating the balances
+					console.log('API::No work to do');
+				}
+			}
+		},
+
+
+	fetch_user_details = function() {
+		console.log('API -- fetching user details');
+		state = 'fetch_user_details';
+		submit_request( Api.api_server + '/api/user_details.json',
+			'GET',
+      		{},
+			function(d) { 
+				if(d && d.user && d.user.party_affiliation) {
+					if(d.user.party_affiliation.localeCompare('neither') == 0) {
+						$('#partyNeither').prop('checked', true);
+						console.log('API:: NEITHER');
+					} else
+					if(d.user.party_affiliation.localeCompare('democrat') == 0) {
+						$('#partyDemocrat').prop('checked', true);
+						console.log('API:: DEMOCRAT ' + d.user.party_affiliation);
+					} else
+					if(d.user.party_affiliation.localeCompare('republican') == 0) {
+						$('#partyRepublican').prop('checked', true);
+						console.log('API:: REPUBLICAN');
+					}
+					if(d.user.party_affiliation.localeCompare('no_vote') == 0) {
+						$('#partyNoVote').prop('checked', true);
+						console.log('API:: NoVote');
+					}
+				}
+
+				console.log('API:: fetch_user_details return '+d);
+			});
+	},
+
+	set_party = function(party) {
+		console.log('API -- setting user party');
+		state = 'set_party';
+
+		var params = {
+			'party': party
+		};
+
+		submit_request( Api.api_server + '/api/user_party.json',
+			'POST',
+      		params,
+			function(d) { 
+				console.log('API:: SET PARTY return ');
+			});
+	},
+
+	fetch_spin = function( p_obj, cb ) {
+		console.log('API -- fetching spin');
+        Api.results_returned = null;
+		state = 'spin';
+		var params = {
+			'game_id': p_obj.game_id,
+			'game_type': p_obj.game_type,
+			'event_type': p_obj.event_type,
+			'event_seed': p_obj.event_seed,
+			'amount_bet': p_obj.amount_bet,
+			'account_id': Api.internal_account};
+      	ig.game.result_buckets = new Array();
+		var t_end = Api.api_server + '/results/spin.json';
+		submit_request( t_end,
+			'POST',
+      		params,
+			function(d) { 
+				console.warn('^^^^^^  Got spin result [['+d+']]');
+      			Api.results_of_spin = d;
+				cb.call(this,d);
+			});
+	},
+
+	submit_request = function( uri, call_type, params, success_cb ) {
+		Api.ajaxQueue.enqueue( {
+			uri: uri,
+			call_type: call_type,
+			params: params,
+			success_cb: success_cb
+		});
+		Api.scan_queue();
+	},
+
+	exec_request = function( uri, call_type, params, success_cb ) {
+		if(!Api.active) {
+			console.log('API Inactive due to error');
+			return;
+		}
+		params['gpsession'] = Api.gpsession;
+		$.ajax({
+	    	data: params,
+	    	timeout: 15000,
+	    	dataType: 'json',
+			cache: false,
+			type: call_type,
+			url: uri,
+	    	statusCode: {
+    			401: function() { Api.error_msg = 'Comm: Not Authorized'; Api.active = false; console.error(Api.error_msg); Api.report_error(Api.error_msg); },
+    			402: function() { Api.error_msg = 'Comm: Not Authorized'; Api.active = false;  console.error(Api.error_msg); Api.report_error(Api.error_msg);},
+    			403: function() { Api.error_msg = 'Comm: Forbidden'; Api.active = false;  console.error(Api.error_msg); Api.report_error(Api.error_msg);},
+    			404: function() { Api.error_msg = 'Comm: Page not found'; Api.active = false; console.error(Api.error_msg); Api.report_error(Api.error_msg); },
+    			500: function() { Api.error_msg = 'Comm: Internal Server Error'; Api.active = false; console.error(Api.error_msg); Api.report_error(Api.error_msg); }
+	    	}
+        }).success(function(data) {
+			if( data.status != true ) {
+				Api.error_msg = data.flash;
+				console.error(Api.error_msg);
+				Api.active = false;
+			} else {
+				success_cb.call(this, data.data);
+				Api.active = false;
+				if(state == 'set_party') {
+					Api.fetch_user_details();
+				} 
+			}
+        }).error(function(xhr,status,err) {
+	        Api.error_msg = 'Comm Error: '+status;
+			console.error(Api.error_msg);
+			Api.active = false;
+	  });
+	},
+
+	errMsg = function() {
+		return(Api.error_msg);
+	},
+
+	isError = function() {
+		return(((Api.error_msg == null) ? false : true));
+	},
+
+	isActive = function() {
+		return(Api.active);
+	},
+
+	report_error = function(msg) {
+		$('#api_alert_box_content').html(msg);
+		$('#api_alert_box').show();
+	};
+
+    return {
+		init: init,
+		fetch_user_details: fetch_user_details,
+		set_party: set_party,
+		isError: isError,
+		isActive: isActive,
+		active: active,
+		errMsg: errMsg,
+		gpsession: gpsession,
+		ajaxQueue: ajaxQueue,
+		scan_queue: scan_queue,
+		reset_queue_timer: reset_queue_timer,
+		submit_request: submit_request,
+		exec_request: exec_request,
+		api_server: api_server,
+		error_msg: error_msg,
+		report_error: report_error
+    };
+
+}());
+
+</script>
