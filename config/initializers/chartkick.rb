@@ -1,1 +1,1 @@
-Groupdate.time_zone = "Eastern Time (US & Canada)"
+Groupdate.time_zone = "Central Time (US & Canada)"

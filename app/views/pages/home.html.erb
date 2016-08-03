@@ -1,4 +1,4 @@
-<%= line_chart User.group_by_day(:created_at, time_zone: "Central Time (US & Canada)").count %>
+<%= line_chart User.group_by_day(:created_at).count %>
 <% if user_signed_in? %>
     <!-- LOGGED IN -->
     <%= render partial: 'pages/home_logged_in' %>
