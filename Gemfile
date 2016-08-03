@@ -19,6 +19,7 @@ gem 'foundation-rails'
 gem 'font-awesome-rails'
 
 gem 'devise'
+gem 'devise-encryptable'
 gem 'cancan'
 gem 'paperclip'
 
