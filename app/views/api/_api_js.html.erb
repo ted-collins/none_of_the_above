@@ -8,7 +8,8 @@ var Api = (function () {
     "use strict";
 
 	var gpsession = '<%= session[:gpsession] %>',
-		api_server = '<%= Rails.configuration.api_server %>',
+		api_read_server = '<%= Rails.configuration.api_read_server %>',
+		api_write_server = '<%= Rails.configuration.api_write_server %>',
 		error_msg = null,
 		active = false,
 		timer = null,
@@ -51,7 +52,7 @@ var Api = (function () {
 	fetch_user_details = function() {
 		console.log('API -- fetching user details');
 		state = 'fetch_user_details';
-		submit_request( Api.api_server + '/api/user_details.json',
+		submit_request( Api.api_read_server + '/api/user_details.json',
 			'GET',
       		{},
 			function(d) { 
@@ -86,7 +87,7 @@ var Api = (function () {
 			'party': party
 		};
 
-		submit_request( Api.api_server + '/api/user_party.json',
+		submit_request( Api.api_write_server + '/api/user_party.json',
 			'POST',
       		params,
 			function(d) { 
@@ -197,7 +198,8 @@ var Api = (function () {
 		reset_queue_timer: reset_queue_timer,
 		submit_request: submit_request,
 		exec_request: exec_request,
-		api_server: api_server,
+		api_read_server: api_read_server,
+		api_write_server: api_write_server,
 		error_msg: error_msg,
 		report_error: report_error
     };
