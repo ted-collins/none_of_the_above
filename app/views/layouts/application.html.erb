@@ -50,7 +50,7 @@
   <body>
 
     <!-- Small Navigation -->
-    <% render partial: 'layouts/nav_panel_sm' %>
+    <%= render partial: 'layouts/nav_panel_sm' %>
     <!-- End Small Navigation -->
 
     <!-- Large Navigation -->
@@ -74,4 +74,10 @@
     <%= javascript_include_tag '/shared/foundation-5.5.1/js/vendor/modernizr.js' %>
   </div>
   </body>
+  <script type="text/javascript">
+	  $(document).ready(function() {
+		console.log('Foundation starting');
+		$(document).foundation();
+	  });
+  </script>
 </html>
