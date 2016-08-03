@@ -2,6 +2,10 @@
 	font-weight: bold;
 }
 
+#pledge_panel .pp_title {
+	text-align: center;
+}
+
 #pledge_panel h5 {
 	font-weight: bold;
 	color: white;
@@ -18,10 +22,12 @@
 
 #pledge_panel .democratColor {
 	background-color: #34AAE0;
+	text-align: center;
 }
 
 #pledge_panel .republicanColor {
 	background-color: #FF3333;
+	text-align: center;
 }
 
 #pledge_panel .noVoteColor,
