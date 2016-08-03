@@ -7,6 +7,7 @@
 
     <title><%= t(:AppTitle) %></title>
 
+	<%= javascript_include_tag "https://www.google.com/jsapi" %>
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
@@ -63,44 +64,6 @@
   <div id="content" class="content">
 	<%= yield %>
   </div> <!-- End Content -->
-
-  <div id="drag-box">
-	<img src="<%= image_path('avatar.jpg') %>" />
-  </div>
- 
-  <div id="drop-box">
-	<p>Drop here</p>
-  </div>
-
-  <%# NB: has to be in body, to work with Turbolinks? %>
-  <%= yield :javascript %>
-
-  <script>
-	$(document).ready(function() {
-		$(document).foundation();
-		console.log('Started foundation');
-	});
-  </script>
-
-  <script>
-	$('#drag-box').draggable();
-    $("#drop-box" ).droppable({
-      drop: function( event, ui ) {
-        $( this )
-          .addClass( "ui-state-highlight" )
-          .find( "p" )
-            .html( "Dropped!" );
-      }
-    });
-  </script>
-  <style>
-	#drag-box {
- 		width: 200px; height: 200px;
-	}
-	#drop-box {
- 		width: 200px; height: 200px;
-	}
-  </style>
 
 	<!-- Timer to hide alert boxes -->
 	<%= render partial: 'layouts/alert_timer.html.erb' %>

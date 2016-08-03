@@ -1,3 +1,11 @@
-<div>
-	HOME
-</div>
+<%= line_chart User.group_by_day(:created_at, time_zone: "Central Time (US & Canada)").count %>
+<% if user_signed_in? %>
+    <!-- LOGGED IN -->
+    <%= render partial: 'pages/home_logged_in' %>
+    <!-- END LOGGED IN -->
+<% else %>
+    <!-- NOT LOGGED IN -->
+    <%= render partial: 'pages/home_not_logged_in' %>
+    <!-- END NOT LOGGED IN -->
+<% end %>
+

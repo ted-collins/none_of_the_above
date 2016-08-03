@@ -22,6 +22,8 @@ gem 'devise'
 gem 'devise-encryptable'
 gem 'cancan'
 gem 'paperclip'
+gem 'chartkick'
+gem 'groupdate'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
