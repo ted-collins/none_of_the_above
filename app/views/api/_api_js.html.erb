@@ -1,3 +1,6 @@
+<%= form_tag id: "dummy_form" do %>
+<% end %>
+
 <script type="text/javascript">
 
 /*jslint browser: true */
@@ -14,6 +17,7 @@ var Api = (function () {
 		timer = null,
 		state = null,
 		auth_token = null,
+		form_auth_token = null,
 
 		// jQuery on an empty object, we are going to use this as our queue
 		ajaxQueue = new Queue(),
@@ -139,7 +143,7 @@ var Api = (function () {
 	    	dataType: 'json',
 			cache: false,
 			type: call_type,
-			url: uri + '?&authenticity_token=' + encodeURIComponent(Api.auth_token),
+			url: uri + '?&authenticity_token=' + encodeURIComponent(Api.form_auth_token),
 	    	statusCode: {
     			401: function() { Api.error_msg = 'Comm: Not Authorized'; Api.active = false; console.error(Api.error_msg); Api.report_error(Api.error_msg); },
     			402: function() { Api.error_msg = 'Comm: Not Authorized'; Api.active = false;  console.error(Api.error_msg); Api.report_error(Api.error_msg);},
@@ -186,6 +190,7 @@ var Api = (function () {
     return {
 		init: init,
 		auth_token: auth_token,
+		form_auth_token: form_auth_token,
 		fetch_user_details: fetch_user_details,
 		set_party: set_party,
 		isError: isError,
@@ -205,4 +210,8 @@ var Api = (function () {
 
 }());
 
+$(document).ready(function() {
+	Api.form_auth_token = $('input[name="authenticity_token"]').attr('value');
+	console.info('FORM Auth Token is ' + Api.form_auth_token);
+});
 </script>
