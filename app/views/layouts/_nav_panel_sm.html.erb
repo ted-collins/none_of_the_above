@@ -11,9 +11,11 @@
 			  	<%= link_to edit_user_registration_path do %>
 					<span id="signed_in_as"><%= current_user.email.truncate(25, omission: '...') %></span>
 			  	<% end %>
-			  	<%= link_to destroy_user_session_path, :method => :delete do %>
-					<i class="fa fa-sign-out fa-2x icon-sm" aria-hidden="true"></i>
-				<% end %>
+      			<span class="has-dropdown icon-sm-additional">
+					<a href="#" data-reveal-id="additionalModal">
+						<i class="fa fa-bars fa-2x" aria-hidden="true"></i>
+					</a>
+				</span>
 			</li>
 			<% else %>
 			<li>
@@ -27,4 +29,5 @@
 			<% end %>
 		</ul>
 	</nav>
+   	<%= render partial: 'layouts/sm_additional_panel', :locals => { :resource => User.new , :resource_name => :user, :devise_mapping => Devise.mappings[:user]} %>
 </div>

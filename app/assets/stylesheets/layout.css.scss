@@ -45,12 +45,20 @@ body {
 	color: white;
 }
 
-.top-bar .right-sm {
-	padding-left: 0;
-	padding-right: 1em;
+.top-bar .user-name-sm {
+	padding-top: 0.5em;
 }
 
+.top-bar .icon-sm-additional,
 .top-bar .icon-sm {
 	color: white;
-	padding: 0.2em 0.1em 0 0.4em;
+	padding: 0.2em 1em 0 0.4em;
+}
+
+.top-bar .icon-sm-additional {
+	padding: 0.6em 1em 0 0.4em;
+}
+
+#additionalModal .font-correction {
+	font-family: "Helvetica Neue",Helvetica,Roboto,Arial,sans-serif;
 }

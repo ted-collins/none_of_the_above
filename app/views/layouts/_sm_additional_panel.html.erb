@@ -1,0 +1,29 @@
+<div id="additionalModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <div class="additional-box">
+  <div class="row">
+  <div class="small-12 columns">
+  <ul class="side-nav">
+	<li>
+	<%= link_to destroy_user_session_path, :method => :delete, :class => "button small round" do %>
+		<h2 class="fa fa-sign-out fa-2x" aria-hidden="true"><span class="font-correction">&nbsp;<%= t(:sign_out) %></span></h2>
+		</a>
+	<% end %>
+	</li>
+	<li>
+	<%= link_to edit_user_registration_path, :class => "button small round" do %>
+		<h2 class="fa fa-pencil-square-o fa-2x" aria-hidden="true"><span class="font-correction">&nbsp;<%= t(:edit_profile) %></h2>
+	<% end %>
+	</li>
+	<li>
+		<a href="#" class="button small round close_reveal_modal">
+			<h2 class="fa fa-times fa-2x" aria-hidden="true"><span class="font-correction">&nbsp;<%= t(:dismiss) %></span></h2>
+		</a>
+	</li>
+  </ul>
+
+
+  </div>
+  </div>
+  </div>
+  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>

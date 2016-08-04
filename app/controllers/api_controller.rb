@@ -1,6 +1,6 @@
 class ApiController < ApplicationController
 
-  # skip_before_filter :verify_authenticity_token
+  skip_before_filter :verify_authenticity_token
   before_filter :sanitize_params, :prep_for_json_response
 
   def user_details
