@@ -7,8 +7,7 @@ var Api = (function () {
 
     "use strict";
 
-	var gpsession = '<%= session[:gpsession] %>',
-		api_read_server = '<%= Rails.configuration.api_read_server %>',
+	var api_read_server = '<%= Rails.configuration.api_read_server %>',
 		api_write_server = '<%= Rails.configuration.api_write_server %>',
 		error_msg = null,
 		active = false,
@@ -85,8 +84,7 @@ var Api = (function () {
 		state = 'set_party';
 
 		var params = {
-			'party': party,
-			'authenticity_token': Api.auth_token
+			'party': party
 		};
 
 		submit_request( Api.api_write_server + '/api/user_party.json',
@@ -135,14 +133,13 @@ var Api = (function () {
 			console.log('API Inactive due to error');
 			return;
 		}
-		params['gpsession'] = Api.gpsession;
 		$.ajax({
 	    	data: params,
 	    	timeout: 15000,
 	    	dataType: 'json',
 			cache: false,
 			type: call_type,
-			url: uri,
+			url: uri + '?&authenticity_token=' + encodeURIComponent(Api.auth_token),
 	    	statusCode: {
     			401: function() { Api.error_msg = 'Comm: Not Authorized'; Api.active = false; console.error(Api.error_msg); Api.report_error(Api.error_msg); },
     			402: function() { Api.error_msg = 'Comm: Not Authorized'; Api.active = false;  console.error(Api.error_msg); Api.report_error(Api.error_msg);},
@@ -195,7 +192,6 @@ var Api = (function () {
 		isActive: isActive,
 		active: active,
 		errMsg: errMsg,
-		gpsession: gpsession,
 		ajaxQueue: ajaxQueue,
 		scan_queue: scan_queue,
 		reset_queue_timer: reset_queue_timer,
