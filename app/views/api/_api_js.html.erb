@@ -14,6 +14,7 @@ var Api = (function () {
 		active = false,
 		timer = null,
 		state = null,
+		auth_token = null,
 
 		// jQuery on an empty object, we are going to use this as our queue
 		ajaxQueue = new Queue(),
@@ -140,7 +141,7 @@ var Api = (function () {
 	    	dataType: 'json',
 			cache: false,
 			type: call_type,
-			url: uri,
+			url: uri + '?&authenticity_token=' + Api.auth_token,
 	    	statusCode: {
     			401: function() { Api.error_msg = 'Comm: Not Authorized'; Api.active = false; console.error(Api.error_msg); Api.report_error(Api.error_msg); },
     			402: function() { Api.error_msg = 'Comm: Not Authorized'; Api.active = false;  console.error(Api.error_msg); Api.report_error(Api.error_msg);},
@@ -186,6 +187,7 @@ var Api = (function () {
 
     return {
 		init: init,
+		auth_token: auth_token,
 		fetch_user_details: fetch_user_details,
 		set_party: set_party,
 		isError: isError,
