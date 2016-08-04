@@ -22,7 +22,7 @@
 en:
   AppTitle: "None Of The Above"
 
-  login: "Login"
+  sign_in: "Sign In"
   register: "Register"
   sign_me_up: "Sign Me Up!"
 
