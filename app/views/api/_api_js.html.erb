@@ -1,4 +1,6 @@
-<%= form_tag id: "dummy_form" do %>
+<%= form_tag("/api/set_party.json", method: "post", id: "dummy_form") do %>
+  <%= text_field_tag(:q) %>
+  <%= submit_tag("Search") %>
 <% end %>
 
 <script type="text/javascript">
