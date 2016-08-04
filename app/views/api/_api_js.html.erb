@@ -1,7 +1,10 @@
+</div>
+BLAH
 <%= form_tag("/api/set_party.json", method: "post", id: "dummy_form") do %>
   <%= text_field_tag(:q) %>
   <%= submit_tag("Search") %>
 <% end %>
+</div>
 
 <script type="text/javascript">
 
@@ -39,17 +42,16 @@ var Api = (function () {
 		},
 
 		scan_queue = function() {
-			console.info('Scanning ajax queue');
+			// console.info('Scanning ajax queue');
 			if(!Api.active) {
-				console.info('   Check for work');
+				// console.info('   Check for work');
 				if( Api.ajaxQueue.peek() != undefined ) {
 					console.info('   Work to do');
 					Api.active = true;
        				var r = Api.ajaxQueue.dequeue();
 					Api.exec_request(r.uri, r.call_type, r.params, r.success_cb);
 				} else {
-					// Make sure we're updating the balances
-					console.log('API::No work to do');
+					// console.log('API::No work to do');
 				}
 			}
 		},
@@ -145,7 +147,8 @@ var Api = (function () {
 	    	dataType: 'json',
 			cache: false,
 			type: call_type,
-			url: uri + '?&authenticity_token=' + encodeURIComponent(Api.form_auth_token),
+			//url: uri + '?&authenticity_token=' + encodeURIComponent(Api.form_auth_token),
+			url: uri,
 	    	statusCode: {
     			401: function() { Api.error_msg = 'Comm: Not Authorized'; Api.active = false; console.error(Api.error_msg); Api.report_error(Api.error_msg); },
     			402: function() { Api.error_msg = 'Comm: Not Authorized'; Api.active = false;  console.error(Api.error_msg); Api.report_error(Api.error_msg);},
