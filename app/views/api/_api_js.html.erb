@@ -142,7 +142,7 @@ var Api = (function () {
 	    	dataType: 'json',
 			cache: false,
 			type: call_type,
-			url: uri + '?&authenticity_token=' + Api.auth_token,
+			url: uri,
 	    	statusCode: {
     			401: function() { Api.error_msg = 'Comm: Not Authorized'; Api.active = false; console.error(Api.error_msg); Api.report_error(Api.error_msg); },
     			402: function() { Api.error_msg = 'Comm: Not Authorized'; Api.active = false;  console.error(Api.error_msg); Api.report_error(Api.error_msg);},
