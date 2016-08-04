@@ -85,7 +85,8 @@ var Api = (function () {
 		state = 'set_party';
 
 		var params = {
-			'party': party
+			'party': party,
+			'authenticity_token': Api.auth_token
 		};
 
 		submit_request( Api.api_write_server + '/api/user_party.json',
