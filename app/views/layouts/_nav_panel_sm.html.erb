@@ -1,24 +1,30 @@
 <div class="contain-to-grid sticky">
 	<nav id="sm_top_nav" class="top-bar show-for-small-only" data-topbar role="navigation">
   		<ul class="left">
-    		<li id="app_title" class="logfileName">
+    		<li id="app_title" class="name small-name">
 				<%= t(:AppTitle) %>
 			</li>
   		</ul>
     	<ul class="right">
-			<li>
-				<span class="panelLabel">Name:</span>
-				<%= link_to "Home", root_path %> |
-				<% if user_signed_in? %>
+			<% if user_signed_in? %>
+			<li class="user-name-sm">
 			  	<%= link_to edit_user_registration_path do %>
-					<span id="signed_in_as"><%= current_user.email %></span>
-			  	<% end %> |
-			  	<%= link_to "Log Out", destroy_user_session_path, :method => :delete %>
-				<% else %>
-			  	<%= link_to "Log In", new_user_session_path %> |
-			  	<%= link_to "Register", new_user_registration_path %>
+					<span id="signed_in_as"><%= current_user.email.truncate(25, omission: '...') %></span>
+			  	<% end %>
+			  	<%= link_to destroy_user_session_path, :method => :delete do %>
+					<i class="fa fa-sign-out fa-2x icon-sm" aria-hidden="true"></i>
 				<% end %>
 			</li>
+			<% else %>
+			<li>
+			  	<%= link_to new_user_session_path do %>
+					<i class="fa fa-sign-in fa-2x icon-sm" aria-hidden="true"></i>
+				<% end %>
+			  	<%= link_to new_user_registration_path do %>
+					<i class="fa fa-user-plus fa-2x icon-sm" aria-hidden="true"></i>
+				<% end %>
+			</li>
+			<% end %>
 		</ul>
 	</nav>
 </div>
