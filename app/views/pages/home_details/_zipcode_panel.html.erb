@@ -1,0 +1,7 @@
+<div id="zipcode_panel" class="panel round">
+<% if current_user.zipcode.nil? %>
+	<%= render partial: 'pages/home_details/zipcode_panel_enter' %>
+<% else %>
+	<%= render partial: 'pages/home_details/zipcode_panel_update' %>
+<% end %>
+</div>

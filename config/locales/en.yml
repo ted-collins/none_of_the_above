@@ -42,3 +42,18 @@ en:
 
   i_was_gonna_vote: I was planning to vote . . .
   but_i_pledge_not_to: "... but I Pledge Not To. Or . . ."
+
+  zipcodeFormat: "Zipcode should be in format of 12345 or 12345-1234"
+  EnterZipcode: "Enter Zipcode"
+  AddMyZipcode: "Add My Zipcode"
+  UpdateMyZipcode: "Update My Zipcode"
+  InvalidZipcode: "Invalid Zipcode"
+  NoZipcodeSupplied: "No Zipcode Stored"
+  CouldNotStoreZipcode: "Could Not Store Zipcode"
+  CouldNotDeleteZipcode: "Could Not Delete Zipcode"
+
+  CommNotAuthorized: "Comm: Not Authorized"
+  CommForbidden: "Comm: Forbidden"
+  CommPageNotFound: "Comm: Page Not Found"
+  CommInternalServerError: "Comm: Internal Server Error"
+  CommError: "Comm Error:"

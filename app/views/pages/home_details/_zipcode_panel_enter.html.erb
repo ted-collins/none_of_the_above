@@ -1,0 +1,15 @@
+<form name="zipcodeForm" >
+	<div class="row">
+		<div class="large-12 small-12 medium-12 centered centered centered columns">
+    		<input id="zipcode_field" class="zipcode-field" type="text" placeholder="<%= t(:EnterZipcode) %>" />
+		</div>
+	</div>
+	<div class="row">
+		<%= render partial: 'pages/home_details/zipcode_panel_place_name' %>
+	</div>
+	<div class="row">
+		<div class="large-12 small-12 medium-12 centered centered centered columns">
+			<div id="zipcode_field_button" href="#" class="button round" onclick="ApiExternal.check_zipcode($('#zipcode_field').first(':input').val());return(false);"><%= t(:AddMyZipcode) %></div>
+		</div> 
+	</div> 
+<form>

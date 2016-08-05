@@ -1,2 +1,9 @@
 $color-flash-notice: #421c52;
 $color-flash-error: #ff0000;
+
+.columns.centered,
+.column.centered {
+margin-left: auto;
+margin-right: auto;
+float: none !important;
+text-align: center; }

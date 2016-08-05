@@ -48,3 +48,21 @@
 #pledge_panel .switch input:checked+label {
 	background: #61B800;
 }
+
+.zipcode-field {
+	max-width: 14em;
+	margin-right: auto !important;
+	margin-left: auto !important;
+}
+
+.zipcode-place {
+	height: 1.5em;
+	padding-top: 0 !important;
+	padding-bottom: 0 !important;
+	padding-right: 0.5em !important;
+}
+
+.zipcode-place-close {
+	float: right;
+	line-height: 1.3em;
+}

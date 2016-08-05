@@ -1,0 +1,77 @@
+<script type="text/javascript">
+
+/*jslint browser: true */
+/*global G_vmlCanvasManager, $ */
+
+var ApiExternal = (function () {
+
+    "use strict";
+
+	var zipcode_read_server = 'http://api.zippopotam.us/us/',
+		state = null,
+		initialized = false,
+
+	init = function() {
+		//console.log('API Initialized');
+		if(!ApiExternal.initialized) {
+			ApiExternal.initialized = true;
+		}
+	},
+
+	check_zipcode = function(zip) {
+		console.log('API -- checking zipcode');
+		if(zip == null || zip.length < 5) {
+			$('#zipcode_field').prop('placeholder', '<%= t(:NoZipcodeSupplied) %>');
+			$('#zipcode_place_content').text('');
+			$('#zipcode_field_button').text('<%= t(:AddMyZipcode) %>');
+		}
+		state = 'check_zipcode';
+		var client = new XMLHttpRequest();
+		client.open("GET", ApiExternal.zipcode_read_server + zip, true);
+		client.onreadystatechange = function() {
+			if(client.readyState == 4) {
+				if(client.responseText == null || client.responseText == '{}') {
+					$('#zipcode_field').prop('placeholder', '<%= t(:InvalidZipcode) %>');
+					$('#zipcode_field').val('');
+					$('#zipcode_place_content').text('');
+					$('#zipcode_place').hide();
+					$('#zipcode_field_button').text('<%= t(:AddMyZipcode) %>');
+				} else {
+					console.log('API Extern :::: Response '+client.responseText);
+					var j = JSON.parse(client.responseText);
+					var post_code = j['post code'];
+					var place_name = j['places'][0]['place name'];
+					var state_abbreviation = j['places'][0]['state abbreviation'];
+					console.log('API Extern :::: Response '+ post_code + ' -- ' + place_name + ' -- ' + state_abbreviation);
+					// Update the panel
+					$('#zipcode_field').val(post_code);
+					$('#zipcode_place_content').text(place_name + ', ' + state_abbreviation);
+					$('#zipcode_field_button').text('<%= t(:UpdateMyZipcode) %>');
+					$('#zipcode_place').show();
+					place_name = place_name == null ? '?' : place_name;
+					state_abbreviation = state_abbreviation == null ? '?' : state_abbreviation;
+					// Send to our server
+					Api.set_zipcode(post_code, place_name, state_abbreviation);
+				}
+			};
+		};
+
+		client.send();
+
+	};
+
+    return {
+		init: init,
+		initialized: initialized,
+		check_zipcode: check_zipcode,
+		zipcode_read_server: zipcode_read_server,
+    };
+
+}());
+
+$(document).ready(function() {
+	console.log("API EXTERN::::: READY :::::: Initialized "+ApiExternal.initialized);
+	ApiExternal.init();
+	console.log("API EXTERN::::: READY :::::: Initialized "+ApiExternal.initialized);
+});
+</script>

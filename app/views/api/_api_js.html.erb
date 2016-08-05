@@ -1,13 +1,3 @@
-<!--
-</div>
-BLAH
-<%= form_tag("/api/set_party.json", method: "post", id: "dummy_form") do %>
-  <%= text_field_tag(:q) %>
-  <%= submit_tag("Search") %>
-<% end %>
-</div>
--->
-
 <script type="text/javascript">
 
 /*jslint browser: true */
@@ -29,9 +19,15 @@ var Api = (function () {
 		// jQuery on an empty object, we are going to use this as our queue
 		ajaxQueue = new Queue(),
 
+		initialized = false,
+
 		init = function() {
-			console.log('API Initialized');
-			Api.reset_queue_timer();
+			//console.log('API Initialized');
+			if(!Api.initialized) {
+				Api.reset_queue_timer();
+				Api.initialized = true;
+				Api.fetch_user_details();
+			}
 		},
  
 		reset_queue_timer = function() {
@@ -48,7 +44,7 @@ var Api = (function () {
 			if(!Api.active) {
 				// console.info('   Check for work');
 				if( Api.ajaxQueue.peek() != undefined ) {
-					console.info('   Work to do');
+					//console.info('   Work to do');
 					Api.active = true;
        				var r = Api.ajaxQueue.dequeue();
 					Api.exec_request(r.uri, r.call_type, r.params, r.success_cb);
@@ -69,19 +65,19 @@ var Api = (function () {
 				if(d && d.user && d.user.party_affiliation) {
 					if(d.user.party_affiliation.localeCompare('neither') == 0) {
 						$('#partyNeither').prop('checked', true);
-						console.log('API:: NEITHER');
+						//console.log('API:: NEITHER');
 					} else
 					if(d.user.party_affiliation.localeCompare('democrat') == 0) {
 						$('#partyDemocrat').prop('checked', true);
-						console.log('API:: DEMOCRAT ' + d.user.party_affiliation);
+						//console.log('API:: DEMOCRAT ' + d.user.party_affiliation);
 					} else
 					if(d.user.party_affiliation.localeCompare('republican') == 0) {
 						$('#partyRepublican').prop('checked', true);
-						console.log('API:: REPUBLICAN');
+						//console.log('API:: REPUBLICAN');
 					}
 					if(d.user.party_affiliation.localeCompare('no_vote') == 0) {
 						$('#partyNoVote').prop('checked', true);
-						console.log('API:: NoVote');
+						//console.log('API:: NoVote');
 					}
 				}
 
@@ -105,26 +101,41 @@ var Api = (function () {
 			});
 	},
 
-	fetch_spin = function( p_obj, cb ) {
-		console.log('API -- fetching spin');
-        Api.results_returned = null;
-		state = 'spin';
+	reset_zipcode = function() {
+		console.log('API -- setting user zipcode');
+		state = 'reset_zipcode';
+
 		var params = {
-			'game_id': p_obj.game_id,
-			'game_type': p_obj.game_type,
-			'event_type': p_obj.event_type,
-			'event_seed': p_obj.event_seed,
-			'amount_bet': p_obj.amount_bet,
-			'account_id': Api.internal_account};
-      	ig.game.result_buckets = new Array();
-		var t_end = Api.api_server + '/results/spin.json';
-		submit_request( t_end,
+		};
+
+		submit_request( Api.api_write_server + '/api/user_zipcode_reset.json',
 			'POST',
       		params,
 			function(d) { 
-				console.warn('^^^^^^  Got spin result [['+d+']]');
-      			Api.results_of_spin = d;
-				cb.call(this,d);
+				console.log('API:: RESET ZIPCODE return ');
+				$('#zipcode_field').prop('placeholder', '<%= t(:EnterZipcode) %>');
+				$('#zipcode_field').val('');
+				$('#zipcode_place_content').text('');
+				$('#zipcode_field_button').text('<%= t(:AddMyZipcode) %>');
+				$('#zipcode_place').hide();
+			});
+	},
+
+	set_zipcode = function(zip, place_name, state_abbreviation) {
+		console.log('API -- setting user zipcode');
+		state = 'set_zipcode';
+
+		var params = {
+			'zipcode': zip,
+			'place_name': place_name,
+			'state_abbreviation': state_abbreviation
+		};
+
+		submit_request( Api.api_write_server + '/api/user_zipcode.json',
+			'POST',
+      		params,
+			function(d) { 
+				console.log('API:: SET ZIPCODE return ');
 			});
 	},
 
@@ -149,14 +160,13 @@ var Api = (function () {
 	    	dataType: 'json',
 			cache: false,
 			type: call_type,
-			//url: uri + '?&authenticity_token=' + encodeURIComponent(Api.form_auth_token),
 			url: uri,
 	    	statusCode: {
-    			401: function() { Api.error_msg = 'Comm: Not Authorized'; Api.active = false; console.error(Api.error_msg); Api.report_error(Api.error_msg); },
-    			402: function() { Api.error_msg = 'Comm: Not Authorized'; Api.active = false;  console.error(Api.error_msg); Api.report_error(Api.error_msg);},
-    			403: function() { Api.error_msg = 'Comm: Forbidden'; Api.active = false;  console.error(Api.error_msg); Api.report_error(Api.error_msg);},
-    			404: function() { Api.error_msg = 'Comm: Page not found'; Api.active = false; console.error(Api.error_msg); Api.report_error(Api.error_msg); },
-    			500: function() { Api.error_msg = 'Comm: Internal Server Error'; Api.active = false; console.error(Api.error_msg); Api.report_error(Api.error_msg); }
+    			401: function() { Api.error_msg = '<%= t(:CommNotAuthorized) %>'; Api.active = false; console.error(Api.error_msg); Api.report_error(Api.error_msg); },
+    			402: function() { Api.error_msg = '<%= t(:CommNotAuthorized) %>'; Api.active = false; console.error(Api.error_msg); Api.report_error(Api.error_msg); },
+    			403: function() { Api.error_msg = '<%= t(:CommForbidden) %>'; Api.active = false; console.error(Api.error_msg); Api.report_error(Api.error_msg); },
+    			404: function() { Api.error_msg = '<%= t(:CommPageNotFound) %>'; Api.active = false; console.error(Api.error_msg); Api.report_error(Api.error_msg); },
+    			500: function() { Api.error_msg = '<%= t(:CommInternalServerError) %>'; Api.active = false; console.error(Api.error_msg); Api.report_error(Api.error_msg); }
 	    	}
         }).success(function(data) {
 			if( data.status != true ) {
@@ -171,9 +181,22 @@ var Api = (function () {
 				} 
 			}
         }).error(function(xhr,status,err) {
-	        Api.error_msg = 'Comm Error: '+status;
+	        Api.error_msg = '<%= t(:CommError) %> '+status +'::'+err;
 			console.error(Api.error_msg);
 			Api.active = false;
+			if(state == 'set_zipcode') {
+				$('#zipcode_field').prop('placeholder', '<%= t(:CouldNotStoreZipcode) %>');
+				$('#zipcode_field').val('');
+				$('#zipcode_place_content').text('');
+				$('#zipcode_place').hide();
+				$('#zipcode_field_button').text('<%= t(:AddMyZipcode) %>');
+			} 
+			if(state == 'reset_zipcode') {
+				$('#zipcode_field').prop('placeholder', '<%= t(:CouldNotDeleteZipcode) %>');
+				$('#zipcode_field').val('');
+				$('#zipcode_place').show();
+				$('#zipcode_field_button').text('<%= t(:AddMyZipcode) %>');
+			} 
 	  });
 	},
 
@@ -196,10 +219,13 @@ var Api = (function () {
 
     return {
 		init: init,
+		initialized: initialized,
 		auth_token: auth_token,
 		form_auth_token: form_auth_token,
 		fetch_user_details: fetch_user_details,
 		set_party: set_party,
+		set_zipcode: set_zipcode,
+		reset_zipcode: reset_zipcode,
 		isError: isError,
 		isActive: isActive,
 		active: active,
@@ -212,13 +238,15 @@ var Api = (function () {
 		api_read_server: api_read_server,
 		api_write_server: api_write_server,
 		error_msg: error_msg,
-		report_error: report_error
+		report_error: report_error,
     };
 
 }());
 
 $(document).ready(function() {
+	console.log("API::::: READY :::::: Initialized "+Api.initialized);
+	Api.init();
+	console.log("API::::: READY :::::: Initialized "+Api.initialized);
 	Api.form_auth_token = $('input[name="authenticity_token"]').attr('value');
-	console.info('FORM Auth Token is ' + Api.form_auth_token);
 });
 </script>

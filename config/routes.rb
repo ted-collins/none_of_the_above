@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   match 'api/user_details(.:format)', to: 'api#user_details', via: ['options']
   get 'api/user_details(.:format)' => 'api#user_details', as: 'api/user_details'
   post 'api/user_party(.:format)' => 'api#set_user_party', as: 'api/set_user_party'
+  post 'api/user_zipcode(.:format)' => 'api#set_user_zipcode', as: 'api/set_user_zipcode'
+  post 'api/user_zipcode_reset(.:format)' => 'api#reset_user_zipcode', as: 'api/reset_user_zipcode'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
