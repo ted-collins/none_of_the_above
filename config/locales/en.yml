@@ -51,6 +51,8 @@ en:
   NoZipcodeSupplied: "No Zipcode Stored"
   CouldNotStoreZipcode: "Could Not Store Zipcode"
   CouldNotDeleteZipcode: "Could Not Delete Zipcode"
+  ChangeOrDeleteItAnyTime: "You can change or delete it any time"
+  ChangeItAnyTime: "You can change your mind any time"
 
   CommNotAuthorized: "Comm: Not Authorized"
   CommForbidden: "Comm: Forbidden"
