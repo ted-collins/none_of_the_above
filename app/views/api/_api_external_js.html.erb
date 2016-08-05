@@ -7,7 +7,7 @@ var ApiExternal = (function () {
 
     "use strict";
 
-	var zipcode_read_server = 'http://api.zippopotam.us/us/',
+	var zipcode_read_server = '<%= Rails.configuration.zipcode_read_server %>',
 		state = null,
 		initialized = false,
 

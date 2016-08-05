@@ -2,6 +2,7 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 	config.api_read_server = 'http://me:8663'
 	config.api_write_server = 'http://me:8663'
+	config.zipcode_read_server = 'http://api.zippopotam.us/us/'
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
