@@ -59,3 +59,6 @@ en:
   CommPageNotFound: "Comm: Page Not Found"
   CommInternalServerError: "Comm: Internal Server Error"
   CommError: "Comm Error:"
+
+  English: "English"
+  Spanish: "Spanish"

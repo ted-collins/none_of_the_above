@@ -1,0 +1,16 @@
+    <ul class="button-group round toggle" data-toggle="buttons-radio">
+      <li>
+		  <%= link_to users_set_locale_path(locale: 'en'), :method => :post, :class => "button small round", :type => 'radio', :id => 'r1', :name => 'r-group', 'data-toggle' => 'button' do %>
+			<h2>
+			<%= image_tag 'english_icon.png', :class => 'language-icon' %>
+			<%= t(:English) %></h2>
+		  <% end %>
+      </li>
+      <li>
+		  <%= link_to users_set_locale_path(locale: 'es'), :method => :post, :class => "button small round", :type => 'radio', :id => 'r2', :name => 'r-group', 'data-toggle' => 'button' do %>
+			<h2>
+			<%= image_tag 'spanish_icon.png', :class => 'language-icon'%>
+			<%= t(:Spanish) %></h2>
+		  <% end %>
+      </li>
+    </ul>

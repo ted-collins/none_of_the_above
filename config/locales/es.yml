@@ -1,0 +1,64 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+es:
+  AppTitle: "Ninguna de las anteriores"
+
+  sign_in: "Registrarse"
+  register: "Registro"
+  sign_me_up: "Inscríbeme"
+  dismiss: "Despedir"
+  edit_profile: "Editar perfil"
+  sign_out: "Desconectar"
+
+  password: "Contraseña"
+  password_confirm: "Confirmar contraseña"
+  username: "Nombre de usuario o correo electrónico"
+
+  democrat: Democrat
+  republican: Republican
+  neither: Indeciso
+  noVote: Disgustado, No votar
+
+  save: Salvar
+
+  i_was_gonna_vote: Yo tenía la intención de votar . . .
+  but_i_pledge_not_to: "... pero se comprometen a no . O . . ."
+
+  zipcodeFormat: "Código postal debe estar en formato de 12345"
+  EnterZipcode: "Introduzca código postal"
+  AddMyZipcode: "Agregar mi código postal"
+  UpdateMyZipcode: "Actualizar mi Código Postal"
+  InvalidZipcode: "Código postal no válido"
+  NoZipcodeSupplied: "Sin Código postal almacenado"
+  CouldNotStoreZipcode: "No podía almacenar Código Postal"
+  CouldNotDeleteZipcode: "No se pudo eliminar Código Postal"
+  ChangeOrDeleteItAnyTime: "Puede cambiar o eliminar en cualquier momento"
+  ChangeItAnyTime: "Usted puede cambiar de opinión en cualquier momento"
+
+  CommNotAuthorized: "Comm: No autorizado"
+  CommForbidden: "Comm: Prohibido"
+  CommPageNotFound: "Comm: Página no encontrada"
+  CommInternalServerError: "Comm: Error de servidor interno"
+  CommError: "Comm Error:"
+
+  English: "English"
+  Spanish: "Spanish"

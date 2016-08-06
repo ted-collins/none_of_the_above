@@ -38,6 +38,17 @@
    			<%= render partial: 'layouts/register_panel', :locals => { :resource => User.new , :resource_name => :user, :devise_mapping => Devise.mappings[:user]} %>
    			<%= render partial: 'layouts/login_panel', :locals => { :resource => User.new , :resource_name => :user, :devise_mapping => Devise.mappings[:user]} %>
 		<% end %>
+		<li>
+		<% if current_user.nil? || current_user.locale.eql?('en') %>
+		  <%= link_to users_set_locale_path(locale: 'es'), :method => :post do %>
+			<%= image_tag 'spanish_icon_lg.png', :class => 'language-icon' %>
+		  <% end %>
+		<% else %>
+		  <%= link_to users_set_locale_path(locale: 'en'), :method => :post do %>
+			<%= image_tag 'english_icon_lg.png', :class => 'language-icon' %>
+		  <% end %>
+		<% end %>
+		</li>
 	</ul>
 	</section>
 
