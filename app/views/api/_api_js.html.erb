@@ -247,6 +247,9 @@ $(document).ready(function() {
 	console.log("API::::: READY :::::: Initialized "+Api.initialized);
 	Api.init();
 	console.log("API::::: READY :::::: Initialized "+Api.initialized);
+	Api.auth_token = $('meta[name=csrf-token]').attr('content');
+	console.log("API::::: READY :::::: AUTH "+Api.auth_token);
 	Api.form_auth_token = $('input[name="authenticity_token"]').attr('value');
+	console.log("API::::: READY :::::: FORM AUTH "+Api.form_auth_token);
 });
 </script>
