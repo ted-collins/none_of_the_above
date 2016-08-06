@@ -11,7 +11,6 @@
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
-	<%= javascript_tag "$(document).ready(function() {Api.auth_token = $('meta[name=csrf-token]').attr('content');console.info('AUTH TOKEN IS '+Api.auth_token);});" if protect_against_forgery? %>
 
 	<%= stylesheet_link_tag "/shared/foundation-5.5.1/css/foundation.min.css" %>
 	<script src="https://use.fontawesome.com/8e8d894760.js"></script>
@@ -80,6 +79,8 @@
 	  $(document).ready(function() {
 		// console.log('Foundation starting');
 		$(document).foundation();
+		Api.auth_token = $('meta[name=csrf-token]').attr('content');
+		console.info('AUTH TOKEN IS '+Api.auth_token);
 	  });
   </script>
 </html>
