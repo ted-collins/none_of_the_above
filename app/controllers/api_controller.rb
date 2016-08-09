@@ -99,6 +99,30 @@ class ApiController < ApplicationController
     end
   end
 
+  def recommenders_list
+    logger.debug("Params #{params.inspect}\n")
+	params.require(:page)
+	# Check Zipcode here
+
+	@data = {list: current_user.recommenders(params[:page])}
+	@data.merge!({page: params[:page]})
+    logger.debug("Getting Recommenders For #{current_user.email}")
+
+	@status = true
+	@flash = current_user.errors.full_messages
+    logger.debug("Returning #{@data.count} entries")
+
+    respond_to do |format|
+      if(@status)
+        format.html { redirect_to root_path, :notice => 'Recommenders Success' }
+        format.json  { render 'generic.json' }
+      else
+        format.html { redirect_to root_path, :error => 'Recommenders Failed' }
+        format.json  { render 'generic.json' }
+      end
+    end
+  end
+
 protected
     def prep_for_json_response
         @flash = "No Errors"
@@ -107,6 +131,6 @@ protected
     end
 
     def sanitize_params
-        params.permit(:authenticity_token, :id, :format, :zipcode, :party, :place_name, :state_abbreviation)
+        params.permit(:authenticity_token, :id, :format, :zipcode, :party, :place_name, :state_abbreviation, :page, '_')
     end
 end

@@ -1,0 +1,23 @@
+<div id="recommendersModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <input class="search" placeholder="Search" />
+  <span class="sort" data-sort="rec_email">Sort by Email</span>
+  <span class="sort" data-sort="rec_buttons">Sort by Buttons</span>
+	<table>
+		<thead>
+			<tr>
+				<th>Email</th>
+				<th>Buttons</th>
+    		</tr>
+  		</thead>
+  		<tbody id="recommendersContent" class="list">
+			<tr>
+				<td class="rec_email"></td>
+				<td class="rec_buttons"></td>
+			</tr>
+		</tbody>
+	</table>
+    <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+	<div style="text-align: center;">
+		<i id="recommendersSpinner" class="fa fa-spinner fa-2x fa-spin" style="display:none"></i>
+	</div>
+</div>

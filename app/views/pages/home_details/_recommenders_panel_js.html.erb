@@ -1,0 +1,27 @@
+<script type="text/javascript">
+
+	var rec_options = {
+		valueNames: ['rec_email','rec_buttons']
+	};
+
+	var recommendersList = new List('recommendersModal', rec_options);
+
+	var recommendersPage = 1;
+	var moreRecommenders = true;
+	//console.info("FETCHING Recommenders")
+	Api.get_recommenders(recommendersPage);
+
+	$(window).scroll(function() {
+		if($(window).scrollTop() + $(window).height() == $(document).height()) {
+			if( $('#recommendersModal').is(':visible')) {
+				if( moreRecommenders ) {
+					console.info('Requesting more');
+					Api.get_recommenders(++recommendersPage);
+				}
+			} else {
+				console.info('Modal not visible');
+			}
+		}
+	});
+
+</script>

@@ -139,6 +139,49 @@ var Api = (function () {
 			});
 	},
 
+	get_recommenders = function(page) {
+		console.log('API -- getting recommenders page '+page);
+		state = 'get_recommenders';
+
+		var params = {
+			'page': page
+		};
+
+		$('#recommendersSpinner').show();
+		submit_request( Api.api_write_server + '/api/recommenders_list.json',
+			'GET',
+      		params,
+			function(d) { 
+				$('#recommendersSpinner').hide();
+				var lst = d.list;
+				var pg = d.page;
+				if(typeof lst === "undefined" || lst == null || lst.length == 0) {
+					// Set up the list
+					if(page == 1) {
+						$('#recommendersContent').text('No Recommenders');
+						$('#recommendersButton').text('<%= t(:InviteFriends) %>');
+					}
+					moreRecommenders = false; // Flag no more recommenders
+				} else {
+					console.log('API:: GET RECOMMENDERS return ' + lst[0].email);
+					$('#recommendersButton').text('<%= t(:AddModifyFriends) %>');
+					for(i=0;i<lst.length;i++) {
+						if(i == 0 && (typeof pg === "undefined" || pg == null || pg == 1)) {
+							// Re-write the first list entry
+							$('#recommendersContent tr td.rec_email').text(lst[i].email);
+							$('#recommendersContent tr td.rec_buttons').html('<h5>BUTT</h5>');
+						} else {
+							var temp = {
+								rec_email: lst[i].email,
+								rec_buttons: '<h5>BUTT</h5>'
+							};
+							recommendersList.add(temp);
+						}
+					}
+				}
+			});
+	},
+
 	submit_request = function( uri, call_type, params, success_cb ) {
 		Api.ajaxQueue.enqueue( {
 			uri: uri,
@@ -226,6 +269,7 @@ var Api = (function () {
 		set_party: set_party,
 		set_zipcode: set_zipcode,
 		reset_zipcode: reset_zipcode,
+		get_recommenders: get_recommenders,
 		isError: isError,
 		isActive: isActive,
 		active: active,

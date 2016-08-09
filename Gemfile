@@ -24,6 +24,7 @@ gem 'cancan'
 gem 'paperclip'
 gem 'chartkick'
 gem 'groupdate'
+gem 'will_paginate'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

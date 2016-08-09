@@ -5,3 +5,9 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+#Recommenders
+@user = User.where(email: 'collins.ted@gmail.com').first
+for i in 1..100
+	Recommenders.create(user_id: @user.id, email: "booger-#{i}@farm.com")
+end

@@ -8,6 +8,11 @@ class User < ActiveRecord::Base
 		message: :zipcodeFormat,
 		allow_blank: true
 
+  def recommenders(page)
+	@recommenders = Recommenders.where(user_id: id).paginate(:page => page, :per_page => 20)
+	return(@recommenders)
+  end
+
   def self.party
     [:neither, :democrat, :republican, :no_vote]
   end
