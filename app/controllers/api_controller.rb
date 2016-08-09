@@ -105,14 +105,20 @@ class ApiController < ApplicationController
 	# Invite friend to recommend user
 
 	@flash = ''
- 	rec = Recommenders.new({user_id: current_user.id, email: params[:email]})
-	@status = rec.save
-	if(!@status)
-		@flash = rec.errors.full_messages
+ 	@rec = Recommenders.new({user_id: current_user.id, email: params[:email]})
+	begin
+		@status = @rec.save
+		if(!@status)
+			@flash = @rec.errors.full_messages
+		end
+		@rec_send = @rec.attributes.to_options
+		@rec_send.merge!({originally_sent_in_words: time_ago_in_words(DateTime.now)})
+		@flash = @rec.errors.full_messages
+		@data = @rec_send
+	rescue
+		@status = false
+		@flash = t(:TroubleSavingEmail)
 	end
-	@rec_send = rec.attributes.to_options
-	@rec_send.merge!({originally_sent_in_words: time_ago_in_words(DateTime.now)})
-	@data = @rec_send
 
     respond_to do |format|
       if(@status)
@@ -125,15 +131,55 @@ class ApiController < ApplicationController
     end
   end
 
+  def del_email
+	params.require(:id)
+    # logger.debug("Params #{params.inspect}\n")
+	# Invite friend to recommend user
+
+	@flash = ''
+ 	@rec = Recommenders.find(params[:id])
+	if(@rec.nil? || @rec.user_id != current_user.id)
+		@flash = t(:CannotDeleteEmail)
+		@status = false
+		@data = {}
+	else
+		@rec.delete
+		if(@rec.errors.any?)
+			@flash = t(:CannotDeleteEmail)
+			@status = false
+			@data = {}
+		else
+			@flash = ''
+			@status = true
+			@data = @rec.attributes.to_options
+			@data.merge!({originally_sent_in_words: time_ago_in_words(DateTime.now)})
+		end
+	end
+
+    respond_to do |format|
+      if(@status)
+        format.html { redirect_to root_path, :notice => 'Del Email Success' }
+        format.json  { render 'generic.json' }
+      else
+        format.html { redirect_to root_path, :error => 'Del Email Failed' }
+        format.json  { render 'generic.json' }
+      end
+    end
+  end
+
   def recommenders_list
 	params.require(:page)
 
 	@rec_list = current_user.recommenders(params[:page])
 	@arr = []
 	@rec_list.each { |r|
-		base = r.attributes.to_options
-		base.merge!({originally_sent_in_words: time_ago_in_words(r.originally_sent)})
-		@arr.push(base)
+		base_list = r.attributes.to_options
+		if(r.originally_sent.nil?)
+			base_list.merge!({originally_sent_in_words: t(:InProcess)})
+		else
+			base_list.merge!({originally_sent_in_words: time_ago_in_words(r.originally_sent)})
+		end
+		@arr.push(base_list)
 	}
 	@data = {list: @arr}
 	@data.merge!({page: params[:page]})

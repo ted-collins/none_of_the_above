@@ -158,7 +158,7 @@ var Api = (function () {
 				if(typeof lst === "undefined" || lst == null || lst.length == 0) {
 					// Set up the list
 					if(page == 1) {
-						$('#recommendersContent').text('No Recommenders');
+						$('#recommendersContent').html('<div id="no_recommenders_yet"><%= t(:NoRecommenders) %></div>');
 						$('#recommendersButton').text('<%= t(:InviteFriends) %>');
 					}
 					moreRecommenders = false; // Flag no more recommenders
@@ -175,13 +175,13 @@ var Api = (function () {
 							$('#recommendersContent tr td.rec_response').html(response_html);
 							$('#recommendersContent tr td.rec_email').text(lst[i].email);
 							$('#recommendersContent tr td.rec_invited_date').text(lst[i].originally_sent_in_words);
-							$('#recommendersContent tr td.rec_buttons').html('<h5>BUTT</h5>');
+							$('#recommendersContent tr td.rec_buttons').html('<button class="tiny radius" onclick="Api.del_email('+lst[i].id+');$(this).parent().parent().remove();return(false);"><%= t(:Delete) %></button>');
 						} else {
 							var temp = {
 								rec_response: response_html,
 								rec_email: lst[i].email,
 								rec_invited_date: lst[i].originally_sent_in_words,
-								rec_buttons: '<h5>BUTT</h5>'
+								rec_buttons: '<button class="tiny radius" onclick="Api.del_email('+lst[i].id+');$(this).parent().parent().remove();return(false);"><%= t(:Delete) %></button>'
 							};
 							recommendersList.add(temp);
 						}
@@ -206,9 +206,28 @@ var Api = (function () {
 			  var str = '<td>'+Api.html_for_response(d.response)+'</td>' +
 						'<td>'+d.email+'</td>' + 
 						'<td>'+d.originally_sent_in_words+'</td>' +
-						'<td></td>';
+						'<td><button class="tiny radius" onclick="Api.del_email('+d.id+');return(false);"><%= t(:Delete) %></button></td>';
 			  $('#newuser'+d.id).html(str);
+			console.log("Removing div");
+			$('#no_recommenders_yet').remove();
+
 			  console.log('API:: ADD Email return '+d.status);
+			});
+	},
+
+	del_email = function(email_record_id) {
+		console.log('API -- deleting email');
+		state = 'del_email';
+
+		var params = {
+			'id': email_record_id,
+		};
+
+		submit_request( Api.api_write_server + '/api/user_del_email.json',
+			'POST',
+      		params,
+			function(d) { 
+			  console.log('API:: DEL Email return '+d.status);
 			});
 	},
 
@@ -244,7 +263,18 @@ var Api = (function () {
         }).success(function(data) {
 			if( data.status != true ) {
 				Api.error_msg = data.flash;
-				console.error(Api.error_msg);
+				console.error(Api.error_msg + ' STATE '+state);
+				switch(state) {
+				case 'add_email':
+					// Show an alert
+					$('#modal_alert_box_content').html(Api.error_msg);
+					$('#modal_alert_box').show();
+					console.log('Showing alert');
+					setTimeout(function(){ $('#modal_alert_box').hide(1000); }, 5000);
+					break;
+				default:
+					break;
+				}
 				Api.active = false;
 			} else {
 				success_cb.call(this, data.data);
@@ -318,6 +348,7 @@ var Api = (function () {
 		reset_zipcode: reset_zipcode,
 		get_recommenders: get_recommenders,
 		add_email: add_email,
+		del_email: del_email,
 		isError: isError,
 		isActive: isActive,
 		active: active,

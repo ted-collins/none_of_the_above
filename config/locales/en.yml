@@ -68,8 +68,14 @@ en:
 
   Email: Email
   Invited: When
+  NoRecommenders: No Recommenders (Yet)
 
   AddUsers: Invite Friends
   Search: Search
 
   Send: Send
+  Delete: Delete
+
+  InProcess: in process
+  TroubleSavingEmail: Trouble Saving Email
+  CannotDeleteEmail: Cannot Delete Email

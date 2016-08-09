@@ -74,3 +74,8 @@ es:
   Search: Search
 
   Send: Send
+  Delete: Delete
+
+  InProcess: in process
+  TroubleSavingEmail: Trouble Saving Email
+  CannotDeleteEmail: Cannot Delete Email

@@ -1,4 +1,11 @@
 <div id="recommendersModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+	<!-- Begin modal alert -->
+	<div id="modal_alert_box" data-alert class="alert-box warning round" style="display:none;">
+    	<div id="modal_alert_box_content">
+    	</div>
+	<a href="#" class="close">&times;</a>
+	</div>
+	<!-- End modal alert -->
 	<div class="panel round rec-invite-panel">
   		<input id="addEmail" class="rec-invite" placeholder="<%= t(:AddUsers) %>">
   		<button class="button tiny radius rec-invite-button"><i class="fa fa-paper-plane fa-2x rec-invite-button-send" onclick="Api.add_email($('#addEmail').val());return(false);"></i></button>
