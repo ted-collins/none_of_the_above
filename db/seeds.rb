@@ -7,7 +7,22 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 #Recommenders
+Recommenders.delete_all
+@date = DateTime.now - 200.days
 @user = User.where(email: 'collins.ted@gmail.com').first
-for i in 1..100
-	Recommenders.create(user_id: @user.id, email: "booger-#{i}@farm.com")
+for i in 1..50
+	Recommenders.create(user_id: @user.id, email: "booger-#{i}@farm.com", originally_sent: @date)
+	@date = @date + 1.day
+end
+for i in 51..75
+	foo = Recommenders.create(user_id: @user.id, email: "booger-#{i}@farm.com", originally_sent: @date, responded_at: @date + 1.day, response: :accepted)
+	@date = @date + 1.day
+	foo.response = :accepted
+	foo.save
+end
+for i in 76..100
+	foo = Recommenders.create(user_id: @user.id, email: "booger-#{i}@farm.com", originally_sent: @date, responded_at: @date + 1.day, response: :rejected)
+	@date = @date + 1.day
+	foo.response = :rejected
+	foo.save
 end

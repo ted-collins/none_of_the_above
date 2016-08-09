@@ -65,3 +65,12 @@ es:
 
   InviteFriends: "Invitar a Amigos"
   AddModifyFriends: "Añadir o Modificar Los Amigos"
+
+  Email: Email
+  Invited: Cuando
+
+# Fix these
+  AddUsers: Invite Friends
+  Search: Search
+
+  Send: Send

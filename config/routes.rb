@@ -17,5 +17,6 @@ Rails.application.routes.draw do
   	post 'api/user_zipcode_reset(.:format)' => 'api#reset_user_zipcode', as: 'reset_user_zipcode'
   	post 'users/set_locale(.:format)' => 'users#set_locale', as: 'users_set_locale'
 	get 'api/recommenders_list(.format)' => 'api#recommenders_list', as: 'recommenders_list'
+  	post 'api/user_add_email(.:format)' => 'api#add_email', as: 'add_email_for_user'
 
 end

@@ -1,17 +1,26 @@
 <div id="recommendersModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-  <input class="search" placeholder="Search" />
-  <span class="sort" data-sort="rec_email">Sort by Email</span>
-  <span class="sort" data-sort="rec_buttons">Sort by Buttons</span>
+	<div class="panel round rec-invite-panel">
+  		<input id="addEmail" class="rec-invite" placeholder="<%= t(:AddUsers) %>">
+  		<button class="button tiny radius rec-invite-button"><i class="fa fa-paper-plane fa-2x rec-invite-button-send" onclick="Api.add_email($('#addEmail').val());return(false);"></i></button>
+		</input>
+	</div>
+	<div class="panel round rec-search-panel">
+  		<input class="search rec-search" placeholder="<%= t(:Search) %>" />
+	</div>
 	<table>
 		<thead>
 			<tr>
-				<th>Email</th>
-				<th>Buttons</th>
+				<th><span class="sort" data-sort="rec_response"></span></th>
+				<th><span class="sort" data-sort="rec_email"><%= t(:Email) %><br/><i class="fa fa-caret-up fa-2x"></i><i class="fa fa-caret-down fa-2x"></i></span></th>
+				<th><span class="sort" data-sort="rec_invited_date"><%= t(:Invited) %><br/><i class="fa fa-caret-up fa-2x"></i><i class="fa fa-caret-down fa-2x"></i></span></th>
+				<th></th>
     		</tr>
   		</thead>
   		<tbody id="recommendersContent" class="list">
 			<tr>
+				<td class="rec_response"></td>
 				<td class="rec_email"></td>
+				<td class="rec_invited_date"></td>
 				<td class="rec_buttons"></td>
 			</tr>
 		</tbody>

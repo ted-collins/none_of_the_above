@@ -99,12 +99,43 @@ class ApiController < ApplicationController
     end
   end
 
-  def recommenders_list
-    logger.debug("Params #{params.inspect}\n")
-	params.require(:page)
-	# Check Zipcode here
+  def add_email
+	params.require(:email)
+    # logger.debug("Params #{params.inspect}\n")
+	# Invite friend to recommend user
 
-	@data = {list: current_user.recommenders(params[:page])}
+	@flash = ''
+ 	rec = Recommenders.new({user_id: current_user.id, email: params[:email]})
+	@status = rec.save
+	if(!@status)
+		@flash = rec.errors.full_messages
+	end
+	@rec_send = rec.attributes.to_options
+	@rec_send.merge!({originally_sent_in_words: time_ago_in_words(DateTime.now)})
+	@data = @rec_send
+
+    respond_to do |format|
+      if(@status)
+        format.html { redirect_to root_path, :notice => 'Add Email Success' }
+        format.json  { render 'generic.json' }
+      else
+        format.html { redirect_to root_path, :error => 'Add Email Failed' }
+        format.json  { render 'generic.json' }
+      end
+    end
+  end
+
+  def recommenders_list
+	params.require(:page)
+
+	@rec_list = current_user.recommenders(params[:page])
+	@arr = []
+	@rec_list.each { |r|
+		base = r.attributes.to_options
+		base.merge!({originally_sent_in_words: time_ago_in_words(r.originally_sent)})
+		@arr.push(base)
+	}
+	@data = {list: @arr}
 	@data.merge!({page: params[:page]})
     logger.debug("Getting Recommenders For #{current_user.email}")
 

@@ -1,3 +1,6 @@
+require 'action_view'
+require 'action_view/helpers'
+include ActionView::Helpers::DateHelper
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

@@ -164,21 +164,51 @@ var Api = (function () {
 					moreRecommenders = false; // Flag no more recommenders
 				} else {
 					console.log('API:: GET RECOMMENDERS return ' + lst[0].email);
+
 					$('#recommendersButton').text('<%= t(:AddModifyFriends) %>');
 					for(i=0;i<lst.length;i++) {
+	
+						var response_html = html_for_response(lst[i].response);
+
 						if(i == 0 && (typeof pg === "undefined" || pg == null || pg == 1)) {
 							// Re-write the first list entry
+							$('#recommendersContent tr td.rec_response').html(response_html);
 							$('#recommendersContent tr td.rec_email').text(lst[i].email);
+							$('#recommendersContent tr td.rec_invited_date').text(lst[i].originally_sent_in_words);
 							$('#recommendersContent tr td.rec_buttons').html('<h5>BUTT</h5>');
 						} else {
 							var temp = {
+								rec_response: response_html,
 								rec_email: lst[i].email,
+								rec_invited_date: lst[i].originally_sent_in_words,
 								rec_buttons: '<h5>BUTT</h5>'
 							};
 							recommendersList.add(temp);
 						}
 					}
 				}
+			});
+	},
+
+	add_email = function(email) {
+		console.log('API -- adding email');
+		state = 'add_email';
+
+		var params = {
+			'email': email,
+		};
+
+		submit_request( Api.api_write_server + '/api/user_add_email.json',
+			'POST',
+      		params,
+			function(d) { 
+			  $('#recommendersContent').prepend('<tr id="newuser'+d.id+'"></tr>');
+			  var str = '<td>'+Api.html_for_response(d.response)+'</td>' +
+						'<td>'+d.email+'</td>' + 
+						'<td>'+d.originally_sent_in_words+'</td>' +
+						'<td></td>';
+			  $('#newuser'+d.id).html(str);
+			  console.log('API:: ADD Email return '+d.status);
 			});
 	},
 
@@ -258,6 +288,23 @@ var Api = (function () {
 	report_error = function(msg) {
 		$('#api_alert_box_content').html(msg);
 		$('#api_alert_box').show();
+	},
+
+	html_for_response = function(response) {
+		console.info('Response '+response);
+		var response_html = '<i class="fa fa-circle fa-2x"></i>';
+		if(response === "undefined" || response == null || response == 'pending') {
+			response_html = '<i class="fa fa-envelope fa-2x"></i>';
+		} else {
+			if(response == 'accepted') {
+				response_html = '<i class="fa fa-check fa-2x"></i>';
+			} else {
+				if(response == 'rejected') {
+					response_html = '<i class="fa fa-times fa-2x"></i>';
+				}
+			}
+		}
+		return(response_html);
 	};
 
     return {
@@ -270,6 +317,7 @@ var Api = (function () {
 		set_zipcode: set_zipcode,
 		reset_zipcode: reset_zipcode,
 		get_recommenders: get_recommenders,
+		add_email: add_email,
 		isError: isError,
 		isActive: isActive,
 		active: active,
@@ -283,6 +331,8 @@ var Api = (function () {
 		api_write_server: api_write_server,
 		error_msg: error_msg,
 		report_error: report_error,
+		// Utility Functions
+		html_for_response: html_for_response
     };
 
 }());
