@@ -11,24 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160808140930) do
-
-  create_table "recommenders", force: :cascade do |t|
-    t.integer  "user_id",         limit: 4,                null: false
-    t.string   "email",           limit: 255, default: "", null: false
-    t.datetime "originally_sent"
-    t.string   "response_token",  limit: 255
-    t.integer  "nag_count",       limit: 4
-    t.datetime "last_nagged_at"
-    t.string   "response",        limit: 255
-    t.datetime "responded_at"
-    t.datetime "created_at",                               null: false
-    t.datetime "updated_at",                               null: false
-  end
-
-  add_index "recommenders", ["email"], name: "index_recommenders_on_email", unique: true, using: :btree
-  add_index "recommenders", ["response_token"], name: "index_recommenders_on_response_token", unique: true, using: :btree
-  add_index "recommenders", ["user_id"], name: "index_recommenders_on_user_id", using: :btree
+ActiveRecord::Schema.define(version: 20160806012159) do
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false

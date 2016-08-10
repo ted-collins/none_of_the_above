@@ -23,11 +23,11 @@ Rails.application.configure do
     # config.action_mailer.delivery_method = :sendmail
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
-        :address              => "smtp.verizon.net",
+        :address              => "smtp.mailgun.org",
         :port                 => 465,
-        :domain               => '11below.com',
-        :user_name            => 'collins.ted@verizon.net',
-        :password             => '1muffin2',
+        :domain               => 'none.oftheabove.com',
+        :user_name            => 'postmaster@oftheabove.com',
+        :password             => '630ecaec8f74e95744ea212a6857e094',
         :authentication       => 'plain',
         :enable_starttls_auto => true,
         :ssl                  => true  }

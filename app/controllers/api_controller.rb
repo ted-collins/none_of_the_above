@@ -117,7 +117,21 @@ class ApiController < ApplicationController
 		@data = @rec_send
 	rescue
 		@status = false
-		@flash = t(:TroubleSavingEmail)
+		@flash = t(:PossibleDuplicate)
+	end
+
+	if(@status)
+		@mail_status = UserMailer.validate(params[:email], @rec.response_token, current_user).deliver_later
+		if(@mail_status.nil? || @mail_status.job_id.nil?)
+			@flash = t(:TroubleSavingEmail)
+			@status = false
+		else
+			@rec.originally_sent = DateTime.now
+			@status = @rec.save
+			if(!@status)
+				@flash = t(:TroubleSavingEmail)
+			end
+		end
 	end
 
     respond_to do |format|

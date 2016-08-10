@@ -206,7 +206,7 @@ var Api = (function () {
 			  var str = '<td>'+Api.html_for_response(d.response)+'</td>' +
 						'<td>'+d.email+'</td>' + 
 						'<td>'+d.originally_sent_in_words+'</td>' +
-						'<td><button class="tiny radius" onclick="Api.del_email('+d.id+');return(false);"><%= t(:Delete) %></button></td>';
+						'<td><button class="tiny radius" onclick="Api.del_email('+d.id+');$(this).parent().parent().remove();return(false);"><%= t(:Delete) %></button></td>';
 			  $('#newuser'+d.id).html(str);
 			console.log("Removing div");
 			$('#no_recommenders_yet').remove();

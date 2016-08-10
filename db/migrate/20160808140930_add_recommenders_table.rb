@@ -17,7 +17,7 @@ class AddRecommendersTable < ActiveRecord::Migration
 
 	end
 	add_index :recommenders, :user_id,              unique: false
-	add_index :recommenders, :email,                unique: true
+	add_index :recommenders, :email,                unique: false
 	add_index :recommenders, :response_token,		unique: true
   end
 end
