@@ -326,7 +326,7 @@ var Api = (function () {
 		if(response === "undefined" || response == null || response == 'pending') {
 			response_html = '<i class="fa fa-envelope fa-2x"></i>';
 		} else {
-			if(response == 'accepted') {
+			if(response == 'accepted' || response == 'approved') {
 				response_html = '<i class="fa fa-check fa-2x"></i>';
 			} else {
 				if(response == 'rejected') {

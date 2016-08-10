@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
 
   before_validation(on: :create) do
     self.party_affiliation = :neither
-    self.local = :en
+    self.locale = :en
   end
 
 end
