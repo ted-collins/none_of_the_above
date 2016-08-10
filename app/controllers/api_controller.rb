@@ -117,19 +117,23 @@ class ApiController < ApplicationController
 		@data = @rec_send
 	rescue
 		@status = false
-		@flash = t(:PossibleDuplicate)
+		if(@rec.errors.any?)
+			@flash = @rec.errors.full_messages
+		else
+			@flash = t(:PossibleDuplicate)
+		end
 	end
 
 	if(@status)
 		@mail_status = UserMailer.validate(params[:email], @rec.response_token, current_user).deliver_later
 		if(@mail_status.nil? || @mail_status.job_id.nil?)
-			@flash = t(:TroubleSavingEmail)
+			@flash = 'Booger'
 			@status = false
 		else
 			@rec.originally_sent = DateTime.now
 			@status = @rec.save
 			if(!@status)
-				@flash = t(:TroubleSavingEmail)
+				@flash = @rec.errors.full_messages
 			end
 		end
 	end
@@ -201,7 +205,7 @@ class ApiController < ApplicationController
 
 	@status = true
 	@flash = current_user.errors.full_messages
-    logger.debug("Returning #{@data.count} entries")
+    logger.debug("Returning #{@arr.count} entries")
 
     respond_to do |format|
       if(@status)
@@ -222,6 +226,6 @@ protected
     end
 
     def sanitize_params
-        params.permit(:authenticity_token, :id, :format, :zipcode, :party, :place_name, :state_abbreviation, :page, '_')
+        params.permit(:authenticity_token, :id, :format, :zipcode, :party, :place_name, :state_abbreviation, :email, :page, '_')
     end
 end
