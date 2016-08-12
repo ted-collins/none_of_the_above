@@ -1,0 +1,25 @@
+<%= render partial: 'pages/charts/users_js' %>
+<%= render partial: 'pages/charts/total_users_js' %>
+<%= render partial: 'pages/charts/balance_of_users_js' %>
+<!-- Start Total Users Chart Div -->
+<div class="row">
+	<!-- Start Chart Div SMALL -->
+	<div class="show-for-small-only">
+		<%= render partial: 'pages/charts/small_slider' %>
+	</div>
+	<!-- End Chart Div SMALL -->
+	<!-- Start Chart Div MEDIUM -->
+	<div class="show-for-medium-up">
+		<%= render partial: 'pages/charts/big_slider' %>
+	</div
+	<!-- End Chart Div MEDIUM -->
+
+	<div style="text-align: center;">
+		<button id="chartRefresh" class="button round tiny info" onclick="Chart.draw_chart(Chart.current_size);return false;">Refresh</i>
+	</div>
+
+	<div style="text-align: center;position: relative; top: -250px">
+		<i id="chartSpinner" class="fa fa-spinner fa-2x fa-spin" style="display:none"></i>
+	</div>
+</div>
+<!-- End Chart Div -->

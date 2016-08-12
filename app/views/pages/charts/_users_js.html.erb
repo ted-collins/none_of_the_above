@@ -1,0 +1,214 @@
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<script type="text/javascript">
+	$(document).ready( function() {
+		Chart_00.init();
+		console.log("Chart_00 ready");
+	});
+
+var Chart_00 = (function () {
+
+    "use strict";
+
+	var error_msg = null,
+		initialized = false,
+		big_chart = null,
+		small_chart = null,
+		is_visible = [ false, false ],
+		chart_data = null,
+		fetch_active = false,
+		num_charts = [ 3, 3 ],
+        // Set chart options
+        options_small = {'title':'<%= t(:SignupsOverTime) %>',
+						'titlePosition': 'in',
+						'colors':['#34AAE0','#FF3333', '#730065', '#FA7B00'],
+						'width':350,
+						'height':300,
+						'legend':{'position': 'in'},
+						'chartArea': {left:'8%',top:'4%',width:'87%',height:'88%'}},
+        options_big = {'title':'<%= t(:SignupsOverTime) %>',
+						'titlePosition': 'in',
+						'colors':['#34AAE0','#FF3333', '#730065', '#FA7B00'],
+						'width':1100,
+						'height':500,
+						'chartArea': {left:'8%',top:'2%',width:'87%',height:'88%'}},
+
+		current_size = 'small',
+
+
+	init = function() {
+		//console.log('API Initialized');
+		if(!Chart_00.initialized) {
+			$('#chartSpinner').show();
+      		// Load the Visualization API and the corechart package.
+      		google.charts.load('current', {'packages':['corechart']});
+      		// Set a callback to run when the Google Visualization API is loaded.
+      		google.charts.setOnLoadCallback(Chart_00.create_charts);
+
+		}
+	},
+
+    create_charts = function() {
+
+        Chart_00.big_chart = new google.visualization.ColumnChart(document.getElementById('chart_div_big_00'));
+        Chart_00.small_chart = new google.visualization.ColumnChart(document.getElementById('chart_div_small_00'));
+		Chart_00.initialized = true;
+
+		Chart_00.reveal_chart();
+	
+		Chart_01.reveal_chart();
+	},
+
+	reveal_chart = function() {
+		if($('#big_chart_slider_box').is(':visible')) {
+			if(!is_visible[0]) {
+				Chart_00.draw_chart('big');
+				console.log("Showing MEDIUM UP");
+				is_visible[0] = true;
+			}
+		} else {
+			is_visible[0] = false;
+		}
+		if($('#small_chart_slider_box').is(':visible')) {
+			if(!is_visible[1]) {
+				Chart_00.draw_chart('small');
+				console.log("Showing SMALL");
+				is_visible[1] = true;
+			}
+		} else {
+			is_visible[1] = false;
+		}
+	},
+
+	draw_chart = function(size) {
+
+		console.log('Drawing Chart 00');
+		if(Chart_00.fetch_active) return;
+		Chart_00.fetch_active = true;
+
+        Chart_00.chart_data = new google.visualization.DataTable();
+        Chart_00.chart_data.addColumn('string', 'Date');
+        Chart_00.chart_data.addColumn('number', 'Dem');
+        Chart_00.chart_data.addColumn('number', 'Rep');
+        Chart_00.chart_data.addColumn('number', 'Und');
+        Chart_00.chart_data.addColumn('number', 'None');
+
+		Chart_00.current_size = size;
+        // Create the data table.
+		$('#chartSpinner').show();
+		Api.fetch_chart(0, function(d) {
+			console.log('Got chart info back '+d);
+			if(Chart_00.current_size == 'small') {
+				for(var i = 10; i < d.dates.length; i++) {
+        			Chart_00.chart_data.addRow( [d.dates[i], d.values_dem[i], d.values_rep[i], d.values_und[i], d.values_not[i]] );
+        		}
+			} else {
+				for(var i = 0; i < d.dates.length; i++) {
+        			Chart_00.chart_data.addRow( [d.dates[i], d.values_dem[i], d.values_rep[i], d.values_und[i], d.values_not[i]] );
+        		}
+			}
+
+			switch(Chart_00.current_size) {
+			case 'big':
+        		Chart_00.big_chart.draw(Chart_00.chart_data, options_big);
+				Chart_00.start_slider('big');
+				break;
+			case 'small':
+				var ticks = [ d.dates[10], d.dates[13], d.dates[15], d.dates[17], d.dates[19] ];
+				console.log('TICKS '+ticks);
+				options_small['hAxis'] = { 'showTextEvery': 3 };
+				console.log('TICKS '+options_small);
+        		Chart_00.small_chart.draw(Chart_00.chart_data, options_small);
+				Chart_00.start_slider('small');
+				break;
+			default:
+				console.error("unknown chart size "+size);
+				break;
+			}
+			$('#chartSpinner').hide();
+			Chart_00.fetch_active = false;
+		});
+	},
+
+	start_slider = function(size) {
+		// Are all the charts down?
+		if(size == 'small') {
+			Chart_00.num_charts[0]--;
+			if(Chart_00.num_charts[0] == 0) {
+				$('#chart_div_small_01').show();
+				$('#chart_div_small_02').show();
+				$('#small_chart_slider_box').slick({
+  					dots: true,
+  					slidesToShow: 1,
+  					slidesToScroll: 1,
+  					autoplay: true,
+  					autoplaySpeed: 2000,
+  					variableWidth: true,
+  					centerMode: true
+  				});
+			}
+		} else {
+			if(size == 'big') {
+				Chart_00.num_charts[1]--;
+				if(Chart_00.num_charts[1] == 0) {
+					$('#chart_div_big_01').show();
+					$('#chart_div_big_02').show();
+					$('#big_chart_slider_box').slick({
+  						dots: true,
+  						slidesToShow: 1,
+  						slidesToScroll: 1,
+  						autoplay: true,
+  						autoplaySpeed: 2000,
+  						variableWidth: true,
+  						centerMode: true
+  					});
+				}
+			}
+		}
+	};
+
+    return {
+		init: init,
+		initialized: initialized,
+		error_msg: error_msg,
+		big_chart: big_chart,
+		small_chart: small_chart,
+		create_charts: create_charts,
+		reveal_chart: reveal_chart,
+		draw_chart: draw_chart,
+		// Globals
+		chart_data: chart_data,
+		options_small: options_small,
+		options_big: options_big,
+		current_size: current_size,
+		fetch_active: fetch_active,
+		num_charts: num_charts,
+		start_slider: start_slider
+    };
+
+}());
+
+// Watch for changes in the size
+setInterval(function () {
+	Chart_00.reveal_chart();
+	Chart_01.reveal_chart();
+	Chart_02.reveal_chart();
+}, 2000);
+
+$(document).ready( function() {
+/*
+	$('#big_chart_slider_box').slick({
+  		dots: true,
+  		slidesToShow: 1,
+  		slidesToScroll: 1,
+  		autoplay: true,
+  		autoplaySpeed: 2000,
+		fade: true,
+  		variableWidth: true,
+  		infinite: true,
+  		centerMode: true
+  	});
+*/
+});
+
+</script>

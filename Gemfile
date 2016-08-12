@@ -25,10 +25,12 @@ gem 'paperclip'
 gem 'chartkick'
 gem 'groupdate'
 gem 'will_paginate'
+gem 'sidekiq'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+gem "jquery-slick-rails"
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'

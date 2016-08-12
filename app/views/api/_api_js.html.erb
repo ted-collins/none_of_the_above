@@ -231,6 +231,23 @@ var Api = (function () {
 			});
 	},
 
+	fetch_chart = function(chart_type, cb_func) {
+		console.log('API -- Fetching chart info');
+		state = 'fetch_chart_01';
+
+		var params = {
+			chart_type: chart_type
+		};
+
+		submit_request( Api.api_write_server + '/api/chart.json',
+			'GET',
+      		params,
+			function(d) { 
+			  console.log('API:: Fetch Chart Email returned '+d);
+			  cb_func.call(this, d);
+			});
+	},
+
 	submit_request = function( uri, call_type, params, success_cb ) {
 		Api.ajaxQueue.enqueue( {
 			uri: uri,
@@ -349,6 +366,7 @@ var Api = (function () {
 		get_recommenders: get_recommenders,
 		add_email: add_email,
 		del_email: del_email,
+		fetch_chart: fetch_chart,
 		isError: isError,
 		isActive: isActive,
 		active: active,

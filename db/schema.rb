@@ -11,7 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160808140930) do
+ActiveRecord::Schema.define(version: 20160811020045) do
+
+  create_table "generators", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "recommenders", force: :cascade do |t|
     t.integer  "user_id",         limit: 4,                null: false

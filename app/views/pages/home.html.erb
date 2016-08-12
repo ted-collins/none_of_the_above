@@ -1,4 +1,9 @@
-<%= line_chart User.group_by_day(:created_at).count %>
+<!-- API Javascript -->
+<%= render partial: 'api/api_js' %>
+<!-- End API Javascript -->
+
+<%= render partial: 'pages/charts/users' %>
+
 <% if user_signed_in? %>
     <!-- LOGGED IN -->
     <%= render partial: 'pages/home_details/home_logged_in' %>
@@ -9,3 +14,6 @@
     <!-- END NOT LOGGED IN -->
 <% end %>
 
+	<!-- API Extenal Javascript -->
+	<%= render partial: 'api/api_external_js' %>
+	<!-- End API Extenal Javascript -->

@@ -20,5 +20,6 @@ Rails.application.routes.draw do
   	post 'api/user_add_email(.:format)' => 'api#add_email', as: 'add_email_for_user'
   	post 'api/user_del_email(.:format)' => 'api#del_email', as: 'del_email_for_user'
 	get 'validate(.:format)' => 'recommenders#validate', as: 'validate'
+	get 'api/chart(.:format)' => 'api#fetch_chart', as: 'fetch_chart'
 
 end

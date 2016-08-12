@@ -26,3 +26,28 @@ for i in 76..100
 	foo.response = :rejected
 	foo.save
 end
+
+#Users
+User.where("email like 'dummy_%'").delete_all
+@old_date = DateTime.now - 20.days
+for j in 0..19
+	for i in 0..60
+		u = User.new({email: "dummy_#{(j*60)+i}@example.com", password: SecureRandom.hex, confirmed_at: @old_date, created_at: @old_date})
+		u.save
+		
+		rand = Random.rand(10)
+		case rand
+		when 0..3
+			u.party_affiliation = :democrat
+		when 4..7
+			u.party_affiliation = :republican
+		when 8
+			u.party_affiliation = :neither
+		when 9
+			u.party_affiliation = :no_vote
+		end
+		u.save
+		puts("#{u.email}  #{u.created_at}  #{j}  #{i}")
+	end
+	@old_date = @old_date + 1.day
+end

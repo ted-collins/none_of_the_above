@@ -1,5 +1,7 @@
 class ApiController < ApplicationController
 
+  include ApiHelper
+
   # skip_before_filter :verify_authenticity_token
   before_filter :sanitize_params, :prep_for_json_response
 
@@ -218,6 +220,25 @@ class ApiController < ApplicationController
     end
   end
 
+  def fetch_chart
+	params.require(:chart_type)
+	logger.debug("LOCALE is #{I18n.locale}")
+
+	@data = fetch_users_chart_data(params[:chart_type]) 
+	@status = true
+	@flash = ''
+
+    respond_to do |format|
+      if(@status)
+        format.html { redirect_to root_path, :notice => 'Fetch Chart Success' }
+        format.json  { render 'generic.json' }
+      else
+        format.html { redirect_to root_path, :error => 'Fetch Chart Failed' }
+        format.json  { render 'generic.json' }
+      end
+    end
+  end
+
 protected
     def prep_for_json_response
         @flash = "No Errors"
@@ -226,6 +247,6 @@ protected
     end
 
     def sanitize_params
-        params.permit(:authenticity_token, :id, :format, :zipcode, :party, :place_name, :state_abbreviation, :email, :page, '_')
+        params.permit(:authenticity_token, :id, :format, :zipcode, :party, :place_name, :state_abbreviation, :email, :page, '_', :chart_type)
     end
 end

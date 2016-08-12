@@ -41,7 +41,7 @@ en:
   save: Save
 
   i_was_gonna_vote: I was planning to vote . . .
-  but_i_pledge_not_to: "... but I Pledge Not To. Or . . ."
+  but_i_pledge_not_to: "... but I Pledge To NOT vote for Clinton or Trump. Or . . ."
 
   zipcodeFormat: "Zipcode should be in format of 12345 or 12345-1234"
   EnterZipcode: "Enter Zipcode"
@@ -81,3 +81,7 @@ en:
   CannotDeleteEmail: Cannot Delete Email
   PossibleDuplicate: Possible Duplicate Email Address
   CannotRecommendSelf: Cannot email yourself
+
+  SignupsOverTime: Pledges NOT to vote Trump or Clinton
+  TotalSignups: Total Pledges toward goal
+  BalanceOfPledges: Balance of pledges
