@@ -23,7 +23,13 @@ var Chart_02 = (function () {
 						'height':300,
 						'legend':'none',
 						'lineWidth': 8,
-						'chartArea': {left:'8%',top:'4%',width:'87%',height:'88%'}},
+						'annotations': {
+								textStyle: {
+      								fontSize: 18,
+      								bold: true
+    							},
+								stem: 15 },
+						'chartArea': {left:'12%',top:'4%',width:'84%',height:'88%'}},
         options_big = {'title':'<%= t(:BalanceOfPledges) %>',
 						'titlePosition': 'in',
 						'colors':['#FA7B00','#34AAE0','#FF3333', '#730065', '#FA7B00'],
@@ -86,6 +92,7 @@ var Chart_02 = (function () {
         Chart_02.chart_data = new google.visualization.DataTable();
         Chart_02.chart_data.addColumn('string', 'Date');
         Chart_02.chart_data.addColumn('number', 'Total');
+        Chart_02.chart_data.addColumn({type: 'string', role: 'annotation'} );
 
 		Chart_02.current_size = size;
         // Create the data table.
@@ -93,8 +100,42 @@ var Chart_02 = (function () {
 		Api.fetch_chart(2, function(d) {
 			console.log('Got chart 02 info back '+d);
 			if(Chart_02.current_size == 'small') {
+				var ann_0 = null;
+				var col_0 = '#FA7B00';
 				for(var i = 10; i < d.dates.length; i++) {
-        			Chart_02.chart_data.addRow( [d.dates[i], d.values_bal[i]] );
+					if(i == (d.values_bal.length - 4)) {
+						if(d.values_bal[d.values_bal.length-1] > 0) {
+							ann_0 = '<%= t(:MoreDThanRPledged) %>';
+							col_0 = '#D40E1F';
+							Chart_02.options_small.title = '<%= t(:NeedMoreRs) %>';
+							Chart_02.options_small.annotations = {
+								textStyle: {
+									color: '#2790D1',
+      								fontSize: 18,
+      								bold: true
+    							},
+								stem: 15 };
+						} else {
+							if(d.values_bal[d.values_bal.length-1] < 0) {
+								ann_0 = '<%= t(:MoreRThanDPledged) %>';
+								col_0 = '#D40E1F';
+								Chart_02.options_small.title = '<%= t(:NeedMoreDs) %>';
+								Chart_02.options_small.annotations = {
+									textStyle: {
+										color: '#0c0c0c',
+      									fontSize: 18,
+      									bold: true
+    								},
+									stem: 15 };
+							} else {
+								ann_0 = '<%= t(:EqualRandDPledged) %>';
+							}
+						}
+					} else {
+						ann_0 = null;
+					}
+					Chart_02.options_small.colors = [col_0];
+        			Chart_02.chart_data.addRow( [d.dates[i], d.values_bal[i], ann_0] );
         		}
 			} else {
 				for(var i = 0; i < d.dates.length; i++) {
@@ -109,9 +150,7 @@ var Chart_02 = (function () {
 				break;
 			case 'small':
 				var ticks = [ d.dates[10], d.dates[13], d.dates[15], d.dates[17], d.dates[19] ];
-				console.log('TICKS '+ticks);
 				options_small['hAxis'] = { 'showTextEvery': 3 };
-				console.log('TICKS '+options_small);
         		Chart_02.small_chart.draw(Chart_02.chart_data, options_small);
 				Chart_00.start_slider('small');
 				break;

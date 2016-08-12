@@ -1,19 +1,23 @@
-<%= render partial: 'pages/charts/users_js' %>
-<%= render partial: 'pages/charts/total_users_js' %>
-<%= render partial: 'pages/charts/balance_of_users_js' %>
+<!-- API Javascript -->
+<%= render partial: 'api/api_js' %>
+<!-- End API Javascript -->
+
+<!-- Chart_00 Javascript -->
+<%= render partial: 'graphs/chart_00_js' %>
+<!-- End Chart_00 Javascript -->
+
 <!-- Start Total Users Chart Div -->
 <div class="row">
 	<!-- Start Chart Div SMALL -->
 	<div class="show-for-small-only">
-		<%= render partial: 'pages/charts/small_slider' %>
+		<div id="chart_div_small_00"></div>
 	</div>
 	<!-- End Chart Div SMALL -->
 	<!-- Start Chart Div MEDIUM -->
 	<div class="show-for-medium-up">
-		<%= render partial: 'pages/charts/big_slider' %>
+		<div id="chart_div_big_00"></div>
 	</div
 	<!-- End Chart Div MEDIUM -->
-
 	<div style="text-align: center;">
 		<button id="chartRefresh" class="button round tiny info" onclick="Chart_00.draw_chart(Chart_00.current_size);return false;">Refresh</i>
 	</div>

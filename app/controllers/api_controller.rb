@@ -222,7 +222,6 @@ class ApiController < ApplicationController
 
   def fetch_chart
 	params.require(:chart_type)
-	logger.debug("LOCALE is #{I18n.locale}")
 
 	@data = fetch_users_chart_data(params[:chart_type]) 
 	@status = true
@@ -239,6 +238,38 @@ class ApiController < ApplicationController
     end
   end
 
+  def upload_chart
+	params.require(:chart_type)
+	params.require(:name)
+	params.require(:uri)
+
+	@data = ''
+	@status = true
+	@flash = ''
+
+	rec = Chart.find_by_name(params['name'])
+	if(rec.nil?)
+		rec = Chart.new(name: params['name'])
+	end
+	rec.chart_type =  params['chart_type']
+	rec.original_filename = params['name']
+	rec.content_type = 'image/png'
+	rec.image_data = params['uri'].split(',')[1]
+	logger.debug("Received URI #{params['name']}")
+	@status = rec.save
+	logger.debug("URI SAVE is #{@status} ERRORS #{rec.errors.full_messages}")
+
+    respond_to do |format|
+      if(@status)
+        format.html { redirect_to root_path, :notice => 'Upload Chart Success' }
+        format.json  { render 'generic.json' }
+      else
+        format.html { redirect_to root_path, :error => 'Upload Chart Failed' }
+        format.json  { render 'generic.json' }
+      end
+    end
+  end
+
 protected
     def prep_for_json_response
         @flash = "No Errors"
@@ -247,6 +278,6 @@ protected
     end
 
     def sanitize_params
-        params.permit(:authenticity_token, :id, :format, :zipcode, :party, :place_name, :state_abbreviation, :email, :page, '_', :chart_type)
+        params.permit(:authenticity_token, :id, :format, :zipcode, :party, :place_name, :state_abbreviation, :email, :page, '_', :chart_type,:uri,:name)
     end
 end

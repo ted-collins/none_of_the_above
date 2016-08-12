@@ -16,22 +16,34 @@ var Chart_01 = (function () {
 		chart_data = null,
 		fetch_active = false,
         // Set chart options
+        //'Date');
+        //'Other');
+        //'Dem');
+        //'Rep');
+        //'annotation'} );
+        //'Goal');
+        //'annotation'} );
+        //'Goal Pad');
         options_small = {'title':'<%= t(:TotalSignups) %>',
 						'titlePosition': 'in',
-						'colors':['#007700', '#909090','#FF3333', '#730065', '#FA7B00'],
+						'colors':['#007700', '#2790D1', '#D40E1F', '683E7D', '#FFFFFF'],
 						'width':350,
 						'height':300,
 						'legend':'none',
+						seriesType: 'bars',
+						isStacked: true,
 						'lineWidth': 8,
 						'vAxis': {'format': 'short'},
-						'annotations': {
+      					series: {0: {type: 'bar'}, 1: {type: 'bar'}, 2: {type: 'bar'}, 3: {type: 'line'}, 4: {type: 'line'}},
+						annotations: {
+								alwaysOutside: true,
 								textStyle: {
-    								fontName: 'Helvetica',
+									color: '#0c0c0c',
       								fontSize: 18,
       								bold: true
     							},
 								stem: 15 },
-						'chartArea': {left:'12%',top:'4%',width:'84%',height:'88%'}},
+						'chartArea': {left:'12%',top:'8%',width:'82%',height:'84%'}},
         options_big = {'title':'<%= t(:TotalSignups) %>',
 						'titlePosition': 'in',
 						'colors':['#007700', '#909090','#FF3333', '#730065', '#FA7B00'],
@@ -40,8 +52,9 @@ var Chart_01 = (function () {
 						'legend':'none',
 						'lineWidth': 8,
 						'vAxis': {'format': 'short'},
+						'isStacked': true,
 						'annotations': { 'highContrast': true },
-						'chartArea': {left:'12%',top:'4%',width:'84%',height:'88%'}},
+						'chartArea': {left:'12%',top:'8%',width:'84%',height:'84%'}},
 
 		current_size = 'small',
 
@@ -59,8 +72,8 @@ var Chart_01 = (function () {
 
     create_charts = function() {
 
-        Chart_01.big_chart = new google.visualization.LineChart(document.getElementById('chart_div_big_01'));
-        Chart_01.small_chart = new google.visualization.LineChart(document.getElementById('chart_div_small_01'));
+        Chart_01.big_chart = new google.visualization.ComboChart(document.getElementById('chart_div_big_01'));
+        Chart_01.small_chart = new google.visualization.ComboChart(document.getElementById('chart_div_small_01'));
 		Chart_01.initialized = true;
 
 		Chart_01.reveal_chart();
@@ -95,12 +108,13 @@ var Chart_01 = (function () {
 
         Chart_01.chart_data = new google.visualization.DataTable();
         Chart_01.chart_data.addColumn('string', 'Date');
-        Chart_01.chart_data.addColumn('number', 'Total');
+        Chart_01.chart_data.addColumn('number', 'Other');
+        Chart_01.chart_data.addColumn('number', 'Dem');
+        Chart_01.chart_data.addColumn('number', 'Rep');
         Chart_01.chart_data.addColumn({type: 'string', role: 'annotation'} );
-        Chart_01.chart_data.addColumn({type: 'string', role: 'style'} );
         Chart_01.chart_data.addColumn('number', 'Goal');
-        Chart_01.chart_data.addColumn('number', 'GoalPad');
         Chart_01.chart_data.addColumn({type: 'string', role: 'annotation'} );
+        Chart_01.chart_data.addColumn('number', 'Goal Pad');
 
 		Chart_01.current_size = size;
         // Create the data table.
@@ -109,7 +123,6 @@ var Chart_01 = (function () {
 			console.log('Got chart 01 info back '+d);
 			var ann_0 = null;
 			var ann_1 = null;
-			var st = 'left: -15px;'
 			if(Chart_01.current_size == 'small') {
 				for(var i = 10; i < d.dates.length; i++) {
 					if(i == 15) {
@@ -118,11 +131,11 @@ var Chart_01 = (function () {
 						ann_0 = null;
 					}
 					if(i == (d.dates.length - 1)) {
-						ann_1 = d.values_tot[i]+' ';
+						ann_1 = (d.values_oth[i] + d.values_dem[i] + d.values_rep[i])+' ';
 					} else {
 						ann_1 = null;
 					}
-        			Chart_01.chart_data.addRow( [d.dates[i], d.values_tot[i], ann_1, st, d.values_goal[i], d.values_goal[i] + 100, ann_0] );
+        			Chart_01.chart_data.addRow( [d.dates[i], d.values_oth[i], d.values_dem[i], d.values_rep[i], ann_1, d.values_goal[i], ann_0, d.values_goal[i] + 100] );
         		}
 			} else {
 				for(var i = 0; i < d.dates.length; i++) {

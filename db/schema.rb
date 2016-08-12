@@ -11,7 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160811020045) do
+ActiveRecord::Schema.define(version: 20160812151942) do
+
+  create_table "charts", force: :cascade do |t|
+    t.string   "name",                      limit: 255
+    t.integer  "chart_type",                limit: 4
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.string   "static_image_file_name",    limit: 255
+    t.string   "static_image_content_type", limit: 255
+    t.integer  "static_image_file_size",    limit: 4
+    t.datetime "static_image_updated_at"
+  end
 
   create_table "generators", force: :cascade do |t|
     t.datetime "created_at", null: false

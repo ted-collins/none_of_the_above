@@ -41,16 +41,22 @@ protected
 	def fetch_total_users
 		logger.debug("Fetching Total Users")
 		arr_date = []
-		arr_value_tot = []
+		arr_value_dem = []
+		arr_value_rep = []
+		arr_value_oth = []
 		arr_value_goal = []
 		for i in 0..19
 			qu_start = (DateTime.now - (20 - i).days).strftime("%Y-%m-%d")
-			arr_value_tot[19 - i] = User.where("created_at > '#{qu_start}'").count
+			arr_value_dem[19 - i] = User.where("created_at > '#{qu_start}' AND party_affiliation = 'democrat'").count
+			arr_value_rep[19 - i] = User.where("created_at > '#{qu_start}' AND party_affiliation = 'republican'").count
+			arr_value_oth[19 - i] = User.where("created_at > '#{qu_start}' AND party_affiliation != 'democrat' AND party_affiliation != 'republican'").count
 			arr_date[i] = (DateTime.now - (19 - i).days).strftime("%b %d")
-			arr_value_goal[i] = 10000
+			arr_value_goal[i] = 2000
 		end
 		return { dates: arr_date,
-				 values_tot: arr_value_tot,
+				 values_dem: arr_value_dem,
+				 values_rep: arr_value_rep,
+				 values_oth: arr_value_oth,
 				 values_goal: arr_value_goal
 				}
 	end

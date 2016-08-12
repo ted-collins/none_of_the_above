@@ -21,5 +21,9 @@ Rails.application.routes.draw do
   	post 'api/user_del_email(.:format)' => 'api#del_email', as: 'del_email_for_user'
 	get 'validate(.:format)' => 'recommenders#validate', as: 'validate'
 	get 'api/chart(.:format)' => 'api#fetch_chart', as: 'fetch_chart'
+	post 'api/chart(.:format)' => 'api#upload_chart', as: 'upload_chart'
+
+	get 'cache_graph(.:format)' => 'graphs#cache_graph', as: 'cache_graph'
+	get 'static_graph(.:format)' => 'graphs#fetch_static_graph', as: 'static_graph'
 
 end

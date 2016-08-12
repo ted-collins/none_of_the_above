@@ -233,7 +233,7 @@ var Api = (function () {
 
 	fetch_chart = function(chart_type, cb_func) {
 		console.log('API -- Fetching chart info');
-		state = 'fetch_chart_01';
+		state = 'fetch_chart';
 
 		var params = {
 			chart_type: chart_type
@@ -245,6 +245,24 @@ var Api = (function () {
 			function(d) { 
 			  console.log('API:: Fetch Chart Email returned '+d);
 			  cb_func.call(this, d);
+			});
+	},
+
+	upload_chart = function(chart_type, name, uri) {
+		console.log('API -- Uploading chart info');
+		state = 'upload_chart';
+
+		var params = {
+			chart_type: chart_type,
+			name: name,
+			uri: uri
+		};
+
+		submit_request( Api.api_write_server + '/api/chart.json',
+			'POST',
+      		params,
+			function(d) { 
+			  console.log('API:: Upload Chart returned '+d);
 			});
 	},
 
@@ -367,6 +385,7 @@ var Api = (function () {
 		add_email: add_email,
 		del_email: del_email,
 		fetch_chart: fetch_chart,
+		upload_chart: upload_chart,
 		isError: isError,
 		isActive: isActive,
 		active: active,
