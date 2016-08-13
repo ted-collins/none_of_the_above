@@ -1,0 +1,192 @@
+<script type="text/javascript">
+	$(document).ready( function() {
+		Chart_03.init();
+		console.log("Chart_03 ready");
+	});
+
+var Chart_03 = (function () {
+
+    "use strict";
+
+	var error_msg = null,
+		initialized = false,
+		big_chart = null,
+		small_chart = null,
+		is_visible = [ false, false ],
+		chart_data = null,
+		fetch_active = false,
+		states = [],	
+		values_tot = [],	
+		values_dem = [],	
+		values_rep = [],	
+		values_und = [],	
+        options_small = {title:'<%= t(:TheStates) %>',
+						 titleTextStyle: { color: '#0a0a0a',
+  										fontSize: 20,
+  										bold: true },
+						titlePosition: 'in',
+						region: 'US',
+						resolution: 'provinces',
+						//sizeAxis: { minValue: 0, maxValue: 100 },
+						colorAxis: {colors: ['#ffffff', '#007700']},
+						width:$(window).width(),
+						height:300,
+						legend:'none',
+						chartArea: {left:'12%',top:'4%',width:'84%',height:'88%'}},
+        options_big = {'title':'<%= t(:TheStates) %>',
+						'titlePosition': 'in',
+						'colors':['#007700', '#909090','#FF3333', '#730065', '#FA7B00'],
+						'width':'100%',
+						'height':'100%',
+						'legend':'none',
+						region: 'US',
+						resolution: 'provinces',
+						'lineWidth': 8,
+						'vAxis': {'format': 'short'},
+						'isStacked': true,
+						'annotations': { 'highContrast': true },
+						'chartArea': {left:'12%',top:'8%',width:'84%',height:'84%'}},
+
+		current_size = 'small',
+
+
+	init = function() {
+		//console.log('API Initialized');
+		if(!Chart_03.initialized) {
+			$('#chartSpinner').show();
+      		// Load the Visualization API and the corechart package.
+      		// google.charts.load('current', {'packages':['corechart']});
+      		// Set a callback to run when the Google Visualization API is loaded.
+      		google.charts.setOnLoadCallback(Chart_03.create_charts);
+		}
+	},
+
+    create_charts = function() {
+
+        Chart_03.big_chart = new google.visualization.GeoChart(document.getElementById('chart_div_big_03'));
+        Chart_03.small_chart = new google.visualization.GeoChart(document.getElementById('chart_div_small_03'));
+		Chart_03.initialized = true;
+
+		Chart_03.reveal_chart();
+	},
+
+	reveal_chart = function() {
+		if($('#big_chart_slider_box').is(':visible')) {
+			if(!is_visible[0]) {
+				Chart_03.draw_chart('big');
+				console.log("Showing MEDIUM UP");
+				is_visible[0] = true;
+			}
+		} else {
+			is_visible[0] = false;
+		}
+		if($('#small_chart_slider_box').is(':visible')) {
+			if(!is_visible[1]) {
+				Chart_03.draw_chart('small');
+				console.log("Showing SMALL");
+				is_visible[1] = true;
+			}
+		} else {
+			is_visible[1] = false;
+		}
+	},
+
+	draw_chart = function(size) {
+
+		if(Chart_03.fetch_active) return;
+		Chart_03.fetch_active = true;
+
+        Chart_03.chart_data = new google.visualization.DataTable();
+        Chart_03.chart_data.addColumn('string', 'State');
+        Chart_03.chart_data.addColumn('number', 'Total');
+
+		Chart_03.current_size = size;
+        // Create the data table.
+		$('#chartSpinner').show();
+		Api.fetch_chart(3, function(d) {
+			console.log('Got chart 03 info back '+d);
+			Chart_03.states = d.states.slice();
+			Chart_03.values_tot = d.values_tot.slice();
+			Chart_03.values_dem = d.values_dem.slice();
+			Chart_03.values_rep = d.values_rep.slice();
+			Chart_03.values_und = d.values_und.slice();
+
+			Chart_03.redraw_chart(0);
+
+			if(Chart_03.current_size == 'small') {
+				Chart_00.start_slider('small');
+			} else
+			if(Chart_03.current_size == 'big') {
+				Chart_00.start_slider('big');
+			}
+
+			$('#chartSpinner').hide();
+			Chart_03.fetch_active = false;
+		});
+	},
+
+	redraw_chart = function(set) {
+		switch(Chart_03.current_size) {
+		case 'big':
+			for(var i = 0; i < d.states.length; i++) {
+       			Chart_03.chart_data.addRow( [d.states[i], d.values_tot[i], d.values_goal[i], d.values_goal[i] + 100, 'Foo'] );
+       		}
+       		Chart_03.big_chart.draw(Chart_03.chart_data, options_big);
+			break;
+		case 'small':
+			for(var i = 0; i < Chart_03.states.length; i++) {
+				switch(set) {
+				case 0:
+       				Chart_03.chart_data.addRow( [Chart_03.states[i], (Chart_03.values_tot[i] * 100) ] );
+					Chart_03.options_small.colorAxis.colors = ['#ffffff', '#007700'];
+					break;
+				case 1:
+       				Chart_03.chart_data.addRow( [Chart_03.states[i], (Chart_03.values_dem[i] * 100) ] );
+					Chart_03.options_small.colorAxis.colors = ['#ffffff', '#34AAE0'];
+					break;
+				case 2:
+       				Chart_03.chart_data.addRow( [Chart_03.states[i], (Chart_03.values_rep[i] * 100) ] );
+					Chart_03.options_small.colorAxis.colors = ['#ffffff', '#FF3333'];
+					break;
+				case 3:
+       				Chart_03.chart_data.addRow( [Chart_03.states[i], (Chart_03.values_und[i] * 100) ] );
+					Chart_03.options_small.colorAxis.colors = ['#ffffff', '#730065'];
+					break;
+				default:
+					break;
+				}
+       		}
+       		Chart_03.small_chart.draw(Chart_03.chart_data, Chart_03.options_small);
+			break;
+		default:
+			console.error("unknown chart size "+size);
+			break;
+		}
+	};
+
+    return {
+		init: init,
+		initialized: initialized,
+		error_msg: error_msg,
+		big_chart: big_chart,
+		small_chart: small_chart,
+		create_charts: create_charts,
+		reveal_chart: reveal_chart,
+		draw_chart: draw_chart,
+		// Globals
+		chart_data: chart_data,
+		options_small: options_small,
+		options_big: options_big,
+		current_size: current_size,
+		fetch_active: fetch_active,
+		redraw_chart: redraw_chart,
+		states: states,
+		values_tot: values_tot,
+		values_dem: values_dem,
+		values_rep: values_rep,
+		values_und: values_und
+    };
+
+}());
+
+</script>

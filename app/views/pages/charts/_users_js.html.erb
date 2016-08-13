@@ -17,7 +17,7 @@ var Chart_00 = (function () {
 		is_visible = [ false, false ],
 		chart_data = null,
 		fetch_active = false,
-		num_charts = [ 3, 3 ],
+		num_charts = [ 4, 4 ],
         // Set chart options
         options_small = {title:'<%= t(:SignupsOverTime) %>',
 						 titleTextStyle: { color: '#0a0a0a',
@@ -118,9 +118,7 @@ var Chart_00 = (function () {
 				break;
 			case 'small':
 				var ticks = [ d.dates[10], d.dates[13], d.dates[15], d.dates[17], d.dates[19] ];
-				console.log('TICKS '+ticks);
 				options_small['hAxis'] = { 'showTextEvery': 3 };
-				console.log('TICKS '+options_small);
         		Chart_00.small_chart.draw(Chart_00.chart_data, options_small);
 				Chart_00.start_slider('small');
 				break;
@@ -140,8 +138,11 @@ var Chart_00 = (function () {
 			if(Chart_00.num_charts[0] == 0) {
 				$('#chart_div_small_01').show();
 				$('#chart_div_small_02').show();
+				$('#chart_div_small_03').show();
+				$('#chart_div_small_03_but').show();
 				$('#chartRefreshBox').show();
 				$('#chart_div_small_00').css('background','none');
+				$('#chart_div_small_03_but').css('left', ($(window).width() * .80)+'px');
 				$('#small_chart_slider_box').slick({
 					arrows: false,
   					dots: true,
@@ -159,6 +160,7 @@ var Chart_00 = (function () {
 				if(Chart_00.num_charts[1] == 0) {
 					$('#chart_div_big_01').show();
 					$('#chart_div_big_02').show();
+					$('#chart_div_big_03').show();
 					$('#big_chart_slider_box').slick({
   						dots: true,
   						slidesToShow: 1,
@@ -199,6 +201,7 @@ setInterval(function () {
 	Chart_00.reveal_chart();
 	Chart_01.reveal_chart();
 	Chart_02.reveal_chart();
+	Chart_03.reveal_chart();
 }, 2000);
 
 $(document).ready( function() {

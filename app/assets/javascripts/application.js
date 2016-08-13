@@ -14,7 +14,7 @@
 //= require jquery-ui
 //= require jquery_ujs
 //= require turbolinks
-//= require Chart.bundle
-//= require chartkick
+// require Chart.bundle
+// require chartkick
 //= require slick.min
 //= require_tree .

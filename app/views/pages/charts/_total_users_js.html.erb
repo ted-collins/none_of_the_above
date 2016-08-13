@@ -137,7 +137,7 @@ var Chart_01 = (function () {
 					} else {
 						ann_1 = null;
 					}
-        			Chart_01.chart_data.addRow( [d.dates[i], d.values_oth[i], d.values_dem[i], d.values_rep[i], ann_1, d.values_goal[i], ann_0, d.values_goal[i] + 100] );
+        			Chart_01.chart_data.addRow( [d.dates[i], d.values_oth[i], d.values_dem[i], d.values_rep[i], ann_1, d.values_goal[i], ann_0, d.values_goal[i] * 1.3] );
         		}
 			} else {
 				for(var i = 0; i < d.dates.length; i++) {
@@ -152,9 +152,7 @@ var Chart_01 = (function () {
 				break;
 			case 'small':
 				var ticks = [ d.dates[10], d.dates[13], d.dates[15], d.dates[17], d.dates[19] ];
-				console.log('TICKS '+ticks);
 				options_small['hAxis'] = { 'showTextEvery': 3 };
-				console.log('TICKS '+options_small);
         		Chart_01.small_chart.draw(Chart_01.chart_data, options_small);
 				Chart_00.start_slider('small');
 				break;

@@ -21,8 +21,8 @@
 }
 
 #pledge_panel .democratColor {
-	background-color: #34AAE0;
 	text-align: center;
+	background-color: #34AAE0;
 }
 
 #pledge_panel .republicanColor {
@@ -88,3 +88,31 @@
 	width: 70%;
 	margin-right: 0.4em;
 }
+
+.geoButtonSm {
+	width: 6em;
+	margin-bottom: 0.25em !important;
+	height: 2em;
+	padding-top: 0.125em !important;
+}
+
+.totalColor.geoButtonSm:hover,
+.totalColor.geoButtonSm {
+	background-color: #007700;
+}
+
+.democratColor.geoButtonSm:hover,
+.democratColor.geoButtonSm {
+	background-color: #34AAE0;
+}
+
+.republicanColor.geoButtonSm:hover,
+.republicanColor.geoButtonSm {
+	background-color: #FF3333;
+}
+
+.neitherColor.geoButtonSm:hover,
+.neitherColor.geoButtonSm {
+	background-color: #730065;
+}
+

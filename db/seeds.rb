@@ -46,6 +46,8 @@ for j in 0..19
 		when 9
 			u.party_affiliation = :no_vote
 		end
+		rand_1 = Random.rand(51)
+		u.state_abbreviation = CS.states(:us).keys[rand_1]
 		u.save
 		puts("#{u.email}  #{u.created_at}  #{j}  #{i}")
 	end

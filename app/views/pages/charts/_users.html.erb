@@ -1,6 +1,7 @@
 <%= render partial: 'pages/charts/users_js' %>
 <%= render partial: 'pages/charts/total_users_js' %>
 <%= render partial: 'pages/charts/balance_of_users_js' %>
+<%= render partial: 'pages/charts/geo_by_state_js' %>
 <!-- Start Total Users Chart Div -->
 <div class="row">
 	<!-- Start Chart Div SMALL -->
@@ -14,9 +15,11 @@
 	</div
 	<!-- End Chart Div MEDIUM -->
 
+<!--
 	<div id="chartRefreshBox" style="text-align: center;">
 		<button id="chartRefresh" class="button round tiny info" onclick="Chart_00.draw_chart(Chart_00.current_size);return false;">Refresh</i>
 	</div>
+-->
 
 	<div style="text-align: center;position: relative; top: -250px">
 		<i id="chartSpinner" class="fa fa-spinner fa-2x fa-spin" style="display:none"></i>

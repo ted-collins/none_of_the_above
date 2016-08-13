@@ -79,6 +79,7 @@ es:
   InProcess: in process
   TroubleSavingEmail: Trouble Saving Email
   CannotDeleteEmail: Cannot Delete Email
-  SignupsOverTime: Se compromete a NO votar Trump o Clinton
-  TotalSignups: Total Pledges toward goal
+  SignupsOverTime: NO votar Trump o Clinton
+  TotalSignups: Hoy promesa!
   BalanceOfPledges: Balance of pledges
+  TheStates: Pledged By State

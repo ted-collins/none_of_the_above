@@ -82,11 +82,12 @@ en:
   PossibleDuplicate: Possible Duplicate Email Address
   CannotRecommendSelf: Cannot email yourself
 
-  SignupsOverTime: Pledges NOT to vote Trump or Clinton
-  TotalSignups: Total Pledges toward goal
+  SignupsOverTime: NOT voting Trump or Clinton
+  TotalSignups: Pledge Today!
   BalanceOfPledges: Pledges are balanced!
   NeedMoreDs: Need More Democrats to Pledge!
   NeedMoreRs: Need More Republicans to Pledge!
   MoreRThanDPledged: More Rs than Ds Pledged
   MoreDThanRPledged: More Ds than Rs Pledged
   EqualRandDPledged: Equal Number Rs and Ds!
+  TheStates: Pledged By State
