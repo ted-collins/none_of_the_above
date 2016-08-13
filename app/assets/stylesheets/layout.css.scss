@@ -1,20 +1,13 @@
 @import "globals";
 
 // restore a few useful default styles that reset.css took away
-/*
-p {
-  margin: 1em 0;
-}
-*/
 
 body {
-	margin: 2em;
 }
 
 #drag-box,
 #drop-box,
 .content {
-	padding: 0 2em;
 }
 
 /*
