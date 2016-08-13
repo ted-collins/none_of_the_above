@@ -19,13 +19,16 @@ var Chart_00 = (function () {
 		fetch_active = false,
 		num_charts = [ 3, 3 ],
         // Set chart options
-        options_small = {'title':'<%= t(:SignupsOverTime) %>',
-						'titlePosition': 'in',
-						'colors':['#34AAE0','#FF3333', '#730065', '#FA7B00'],
-						'width':350,
-						'height':300,
-						'legend':{'position': 'in'},
-						'chartArea': {left:'8%',top:'4%',width:'87%',height:'88%'}},
+        options_small = {title:'<%= t(:SignupsOverTime) %>',
+						 titleTextStyle: { color: '#0a0a0a',
+  										fontSize: 20,
+  										bold: true },
+						titlePosition: 'in',
+						colors:['#34AAE0','#FF3333', '#730065', '#FA7B00'],
+						width:$(window).width(),
+						height:300,
+						legend:{'position': 'in'},
+						chartArea: {left:'8%',top:'4%',width:'87%',height:'88%'}},
         options_big = {'title':'<%= t(:SignupsOverTime) %>',
 						'titlePosition': 'in',
 						'colors':['#34AAE0','#FF3333', '#730065', '#FA7B00'],
@@ -40,6 +43,7 @@ var Chart_00 = (function () {
 		//console.log('API Initialized');
 		if(!Chart_00.initialized) {
 			$('#chartSpinner').show();
+			$('#chartRefreshBox').hide();
       		// Load the Visualization API and the corechart package.
       		google.charts.load('current', {'packages':['corechart']});
       		// Set a callback to run when the Google Visualization API is loaded.
@@ -72,7 +76,6 @@ var Chart_00 = (function () {
 		if($('#small_chart_slider_box').is(':visible')) {
 			if(!is_visible[1]) {
 				Chart_00.draw_chart('small');
-				console.log("Showing SMALL");
 				is_visible[1] = true;
 			}
 		} else {
@@ -137,6 +140,8 @@ var Chart_00 = (function () {
 			if(Chart_00.num_charts[0] == 0) {
 				$('#chart_div_small_01').show();
 				$('#chart_div_small_02').show();
+				$('#chartRefreshBox').show();
+				$('#chart_div_small_00').css('background','none');
 				$('#small_chart_slider_box').slick({
 					arrows: false,
   					dots: true,

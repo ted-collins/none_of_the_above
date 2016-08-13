@@ -24,16 +24,19 @@ var Chart_01 = (function () {
         //'Goal');
         //'annotation'} );
         //'Goal Pad');
-        options_small = {'title':'<%= t(:TotalSignups) %>',
-						'titlePosition': 'in',
-						'colors':['#007700', '#2790D1', '#D40E1F', '683E7D', '#FFFFFF'],
-						'width':350,
-						'height':300,
-						'legend':'none',
+        options_small = {title:'<%= t(:TotalSignups) %>',
+						 titleTextStyle: { color: '#0a0a0a',
+  										fontSize: 20,
+  										bold: true },
+						titlePosition: 'in',
+						colors:['#007700', '#2790D1', '#D40E1F', '683E7D', '#FFFFFF'],
+						width:$(window).width(),
+						height:300,
+						legend:'none',
 						seriesType: 'bars',
 						isStacked: true,
-						'lineWidth': 8,
-						'vAxis': {'format': 'short'},
+						lineWidth: 8,
+						vAxis: {'format': 'short'},
       					series: {0: {type: 'bar'}, 1: {type: 'bar'}, 2: {type: 'bar'}, 3: {type: 'line'}, 4: {type: 'line'}},
 						annotations: {
 								alwaysOutside: true,
@@ -41,14 +44,13 @@ var Chart_01 = (function () {
 									color: '#0c0c0c',
       								fontSize: 18,
       								bold: true
-    							},
-								stem: 15 },
-						'chartArea': {left:'12%',top:'8%',width:'82%',height:'84%'}},
+    							}},
+						chartArea: {left:'12%',top:'4%',width:'84%',height:'88%'}},
         options_big = {'title':'<%= t(:TotalSignups) %>',
 						'titlePosition': 'in',
 						'colors':['#007700', '#909090','#FF3333', '#730065', '#FA7B00'],
-						'width':1100,
-						'height':500,
+						'width':'100%',
+						'height':'100%',
 						'legend':'none',
 						'lineWidth': 8,
 						'vAxis': {'format': 'short'},
@@ -125,8 +127,8 @@ var Chart_01 = (function () {
 			var ann_1 = null;
 			if(Chart_01.current_size == 'small') {
 				for(var i = 10; i < d.dates.length; i++) {
-					if(i == 15) {
-						ann_0 = 'Goal';
+					if(i == 18) {
+						ann_0 = d.values_goal[d.values_goal.length-1]+' ';
 					} else {
 						ann_0 = null;
 					}

@@ -16,25 +16,28 @@ var Chart_02 = (function () {
 		chart_data = null,
 		fetch_active = false,
         // Set chart options
-        options_small = {'title':'<%= t(:BalanceOfPledges) %>',
-						'titlePosition': 'in',
-						'colors':['#FA7B00','#34AAE0','#FF3333', '#730065', '#FA7B00'],
-						'width':350,
-						'height':300,
-						'legend':'none',
-						'lineWidth': 8,
-						'annotations': {
+        options_small = {title:'<%= t(:BalanceOfPledges) %>',
+						 titleTextStyle: { color: '#0a0a0a',
+  										fontSize: 20,
+  										bold: true },
+						titlePosition: 'in',
+						colors:['#FA7B00','#34AAE0','#FF3333', '#730065', '#FA7B00'],
+						width:$(window).width(),
+						height:300,
+						legend:'none',
+						lineWidth: 8,
+						annotations: {
 								textStyle: {
       								fontSize: 18,
       								bold: true
     							},
 								stem: 15 },
-						'chartArea': {left:'12%',top:'4%',width:'84%',height:'88%'}},
+						chartArea: {left:'8%',top:'4%',width:'87%',height:'88%'}},
         options_big = {'title':'<%= t(:BalanceOfPledges) %>',
 						'titlePosition': 'in',
 						'colors':['#FA7B00','#34AAE0','#FF3333', '#730065', '#FA7B00'],
-						'width':1100,
-						'height':500,
+						'width':'100%',
+						'height':'100%',
 						'legend':'none',
 						'lineWidth': 8,
 						'chartArea': {left:'8%',top:'4%',width:'87%',height:'88%'}},
@@ -113,8 +116,7 @@ var Chart_02 = (function () {
 									color: '#2790D1',
       								fontSize: 18,
       								bold: true
-    							},
-								stem: 15 };
+    							}};
 						} else {
 							if(d.values_bal[d.values_bal.length-1] < 0) {
 								ann_0 = '<%= t(:MoreRThanDPledged) %>';
