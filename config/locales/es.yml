@@ -43,6 +43,12 @@ es:
   i_was_gonna_vote: Yo tenía la intención de votar . . .
   but_i_pledge_not_to: "... pero se comprometen a no . O . . ."
 
+  LogInToParticipate: "Inicio de sesión/Registro Ahora!"
+  ReadMore: Aprende más
+
+  PrivacyPolicy: Política de Privacidad
+  TermsOfUse: Términos de Uso
+
   zipcodeFormat: "Código postal debe estar en formato de 12345"
   EnterZipcode: "Introduzca código postal"
   AddMyZipcode: "Agregar mi código postal"

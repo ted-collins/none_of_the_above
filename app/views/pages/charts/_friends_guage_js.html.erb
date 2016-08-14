@@ -1,0 +1,121 @@
+<script type="text/javascript">
+	$(document).ready( function() {
+		Chart_Friend.init();
+		console.log("Chart_Friend ready");
+	});
+
+var Chart_Friend = (function () {
+
+    "use strict";
+
+	var error_msg = null,
+		initialized = false,
+		ready = false,
+		charts = [null,null],
+		is_visible = [ false, false ],
+		chart_data = [null,null],
+		friends_sent = 0,	
+		friends_confirmed = 0,	
+        options = [
+					// Left Chart
+					{
+					height:$('#recommenders_button_box').height(),
+					legend:'none',
+					pieHole: 0.3,
+					chartArea: {left:'0',top:'0',width:'100%',height:'100%'},
+   					slices: {
+            					0: { color: 'orange', textStyle: { color: 'transparent' } },
+            					1: { color: '#e0e0e0', textStyle: { color: 'transparent', fontSize: 1 } }
+          					}
+					},
+					// Right Chart
+					{
+					height:$('#recommenders_button_box').height(),
+					legend:'none',
+					pieHole: 0.3,
+					chartArea: {left:'0',top:'0',width:'100%',height:'100%'},
+   					slices: {
+            					0: { color: '#007700', textStyle: {color: 'transparent'} },
+            					1: { color: '#e0e0e0', textStyle: { color: 'transparent', fontSize: 1 } }
+          					}
+					},
+					],
+
+	init = function() {
+		//console.log('API Initialized');
+		if(!Chart_Friend.initialized) {
+			$('#chartSpinner').show();
+      		// Load the Visualization API and the corechart package.
+      		// google.charts.load('current', {'packages':['corechart']});
+      		// Set a callback to run when the Google Visualization API is loaded.
+      		google.charts.setOnLoadCallback(Chart_Friend.create_charts);
+		}
+	},
+
+    create_charts = function() {
+
+        Chart_Friend.charts[0] = new google.visualization.PieChart(document.getElementById('friend_guage_sent'));
+        Chart_Friend.charts[1] = new google.visualization.PieChart(document.getElementById('friend_guage_confirmed'));
+		Chart_Friend.initialized = true;
+
+		Chart_Friend.reveal_charts();
+	},
+
+	reveal_charts = function() {
+		for(var i=0;i<2;i++) {
+			if(!is_visible[i]) {
+				Chart_Friend.draw_charts(i);
+				is_visible[i] = true;
+			} else {
+				is_visible[i] = false;
+			}
+		}
+        // Create the data table.
+		Chart_Friend.redraw_charts();
+		Chart_Friend.ready = true;
+	},
+
+	draw_charts = function(indx) {
+
+        Chart_Friend.chart_data[indx] = new google.visualization.DataTable();
+        Chart_Friend.chart_data[indx].addColumn('string', 'Cat');
+        Chart_Friend.chart_data[indx].addColumn('number', 'Total');
+
+	},
+
+	redraw_charts = function() {
+
+		if(!Chart_Friend.ready || Chart_Friend.friends_sent == null || Chart_Friend.friends_sent === 'undefined') return;
+
+		//console.log('Friends Sent '+Chart_Friend.friends_sent);
+		//console.log('Friends Confirmed '+Chart_Friend.friends_confirmed);
+       	Chart_Friend.chart_data[0].addRow( ['sent', Chart_Friend.friends_sent]);
+       	Chart_Friend.chart_data[0].addRow( ['sent', Chart_Friend.friends_sent * 0.5]);
+		$('#friend_guage_sent_number').text(Chart_Friend.friends_sent)
+       	Chart_Friend.chart_data[1].addRow( ['confirmed', Chart_Friend.friends_confirmed]);
+       	Chart_Friend.chart_data[1].addRow( ['confirmed', Chart_Friend.friends_confirmed * 0.5]);
+		$('#friend_guage_confirmed_number').text(Chart_Friend.friends_confirmed)
+       	Chart_Friend.charts[0].draw(Chart_Friend.chart_data[0], Chart_Friend.options[0]);
+       	Chart_Friend.charts[1].draw(Chart_Friend.chart_data[1], Chart_Friend.options[1]);
+	};
+
+    return {
+		init: init,
+		initialized: initialized,
+		error_msg: error_msg,
+		create_charts: create_charts,
+		reveal_charts: reveal_charts,
+		draw_charts: draw_charts,
+		redraw_charts: redraw_charts,
+		// Globals
+		ready: ready,
+		charts: charts,
+		chart_data: chart_data,
+		options: options,
+		friends_sent: friends_sent,
+		friends_confirmed: friends_confirmed,
+    };
+
+}());
+
+</script>

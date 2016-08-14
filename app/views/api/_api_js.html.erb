@@ -26,7 +26,11 @@ var Api = (function () {
 			if(!Api.initialized) {
 				Api.reset_queue_timer();
 				Api.initialized = true;
-				Api.fetch_user_details();
+				if($('#userIsLoggedInSM').is(':visible') ||
+					$('#userIsLoggedInSM').is(':visible')) {
+					console.info('********** Fetching User Details *******');
+					Api.fetch_user_details();
+				}
 			}
 		},
  
@@ -81,7 +85,12 @@ var Api = (function () {
 					}
 				}
 
-				console.log('API:: fetch_user_details return '+d);
+				Chart_Friend.friends_sent = d.user.friends_sent;
+				Chart_Friend.friends_confirmed = d.user.friends_confirmed;
+				console.log('Friend Chart Data is Ready SENT '+ Chart_Friend.friends_sent+' CONFIRMED '+Chart_Friend.friends_confirmed);
+				Chart_Friend.redraw_charts();
+
+				//console.log('API:: fetch_user_details return '+d);
 			});
 	},
 

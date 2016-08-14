@@ -43,6 +43,12 @@ en:
   i_was_gonna_vote: I was planning to vote . . .
   but_i_pledge_not_to: "... but I Pledge To NOT vote for Clinton or Trump. Or . . ."
 
+  LogInToParticipate: "Log In/Register Now!"
+  ReadMore: "Learn More"
+
+  PrivacyPolicy: Privacy Policy
+  TermsOfUse: Terms of Use
+
   zipcodeFormat: "Zipcode should be in format of 12345 or 12345-1234"
   EnterZipcode: "Enter Zipcode"
   AddMyZipcode: "Add My Zipcode"

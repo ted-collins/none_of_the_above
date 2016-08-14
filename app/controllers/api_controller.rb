@@ -7,7 +7,12 @@ class ApiController < ApplicationController
 
   def user_details
 	
-	@data = { 'user' => current_user }
+	@resp = current_user.attributes.to_options
+	sent_count = Recommenders.where("user_id = #{current_user.id} AND responded_at IS NULL").count
+	confirmed_count = Recommenders.where("user_id = #{current_user.id} AND responded_at IS NOT NULL").count
+	@resp.merge!({friends_sent: sent_count, friends_confirmed: confirmed_count})
+	logger.debug("RESP #{@resp.inspect}")
+	@data = { 'user' => @resp }
 
     respond_to do |format|
       if(@status)

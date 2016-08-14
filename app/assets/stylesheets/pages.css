@@ -116,3 +116,12 @@
 	background-color: #730065;
 }
 
+.columns.friendGuageBox,
+.column.friendGuageBox {
+	padding: 0;
+}
+
+.friendGuage {
+	margin: 0 10%;
+	width: 80%;
+}
