@@ -62,9 +62,9 @@ cnt=0
 				u.state_abbreviation = k.to_s
 				u.save
 				puts("#{u.email}  #{u.created_at} #{k.to_s} #{u.party_affiliation}")
+				cnt += 1
 			end
 			@old_date = @old_date + 1.day
-			cnt += 1
 		end
 	end
 end
