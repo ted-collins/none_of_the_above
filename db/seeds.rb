@@ -38,13 +38,14 @@ else
 	@max_i = 2
 end
 
+cnt=0
 @states.each do |k,v|
 	puts("  Doing #{k} #{v}")
 	v.times do
 		@old_date = DateTime.now - 20.days
 		for j in 0..19
 			for i in 0..@max_i
-				u = User.new({email: "dummy_#{(v*j*60)+i}@example.com", password: SecureRandom.hex, confirmed_at: @old_date, created_at: @old_date})
+				u = User.new({email: "dummy_#{(cnt*j*60)+i}@example.com", password: SecureRandom.hex, confirmed_at: @old_date, created_at: @old_date})
 				u.save
 			
 				rand = Random.rand(10)
@@ -65,4 +66,5 @@ end
 			@old_date = @old_date + 1.day
 		end
 	end
+	cnt += 1
 end
