@@ -137,15 +137,15 @@ var Chart_03 = (function () {
 			for(var i = 0; i < Chart_03.states.length; i++) {
 				switch(set) {
 				case 0:
-       				Chart_03.chart_data.addRow( [Chart_03.states[i], (Chart_03.values_tot[i] * 100) ] );
+       				Chart_03.chart_data.addRow( [Chart_03.states[i], (Chart_03.values_tot[i]) ] );
 					Chart_03.options_small.colorAxis.colors = ['#ffffff', '#007700'];
 					break;
 				case 1:
-       				Chart_03.chart_data.addRow( [Chart_03.states[i], (Chart_03.values_dem[i] * 100) ] );
+       				Chart_03.chart_data.addRow( [Chart_03.states[i], (Chart_03.values_dem[i]) ] );
 					Chart_03.options_small.colorAxis.colors = ['#ffffff', '#34AAE0'];
 					break;
 				case 2:
-       				Chart_03.chart_data.addRow( [Chart_03.states[i], (Chart_03.values_rep[i] * 100) ] );
+       				Chart_03.chart_data.addRow( [Chart_03.states[i], (Chart_03.values_rep[i]) ] );
 					Chart_03.options_small.colorAxis.colors = ['#ffffff', '#FF3333'];
 					break;
 				case 3:
