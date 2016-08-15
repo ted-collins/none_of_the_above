@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160812151942) do
+ActiveRecord::Schema.define(version: 20160815182636) do
 
   create_table "charts", force: :cascade do |t|
     t.string   "name",                      limit: 255
@@ -75,7 +75,10 @@ ActiveRecord::Schema.define(version: 20160812151942) do
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["party_affiliation"], name: "index_users_on_party_affiliation", using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["state_abbreviation"], name: "index_users_on_state_abbreviation", using: :btree
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
+  add_index "users", ["zipcode"], name: "index_users_on_zipcode", using: :btree
 
 end
