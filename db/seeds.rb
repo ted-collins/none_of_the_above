@@ -11,17 +11,17 @@ Recommenders.delete_all
 @date = DateTime.now - 200.days
 @user = User.where(email: 'collins.ted@gmail.com').first
 for i in 1..50
-	Recommenders.create(user_id: @user.id, email: "booger-#{i}@farm.com", originally_sent: @date)
+	Recommenders.create(user_id: @user.id, email: "booger-#{i}@example.com", originally_sent: @date)
 	@date = @date + 1.day
 end
 for i in 51..75
-	foo = Recommenders.create(user_id: @user.id, email: "booger-#{i}@farm.com", originally_sent: @date, responded_at: @date + 1.day, response: :accepted)
+	foo = Recommenders.create(user_id: @user.id, email: "booger-#{i}@example.com", originally_sent: @date, responded_at: @date + 1.day, response: :accepted)
 	@date = @date + 1.day
 	foo.response = :accepted
 	foo.save
 end
 for i in 76..100
-	foo = Recommenders.create(user_id: @user.id, email: "booger-#{i}@farm.com", originally_sent: @date, responded_at: @date + 1.day, response: :rejected)
+	foo = Recommenders.create(user_id: @user.id, email: "booger-#{i}@example.com", originally_sent: @date, responded_at: @date + 1.day, response: :rejected)
 	@date = @date + 1.day
 	foo.response = :rejected
 	foo.save
@@ -46,7 +46,6 @@ cnt=0
 		for j in 0..19
 			for i in 0..@max_i
 				u = User.new({email: "dummy_#{cnt}@example.com", password: SecureRandom.hex, confirmed_at: @old_date, created_at: @old_date})
-				u.save
 			
 				rand = Random.rand(10)
 				case rand
