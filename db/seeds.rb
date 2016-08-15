@@ -44,7 +44,7 @@ end
 		@old_date = DateTime.now - 20.days
 		for j in 0..19
 			for i in 0..@max_i
-				u = User.new({email: "dummy_#{(j*60)+i}@example.com", password: SecureRandom.hex, confirmed_at: @old_date, created_at: @old_date})
+				u = User.new({email: "dummy_#{(v*j*60)+i}@example.com", password: SecureRandom.hex, confirmed_at: @old_date, created_at: @old_date})
 				u.save
 			
 				rand = Random.rand(10)
