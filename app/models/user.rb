@@ -21,8 +21,8 @@ class User < ActiveRecord::Base
   end
 
   before_validation(on: :create) do
-    self.party_affiliation = :neither
-    self.locale = :en
+    self.party_affiliation = :neither if self.party_affiliation.nil?
+    self.locale |= :en
   end
 
 end
