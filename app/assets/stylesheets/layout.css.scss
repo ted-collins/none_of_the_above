@@ -30,8 +30,9 @@ body {
 .top-bar .small-name {
 	color: #cccccc;
 	padding-left: 0em;
-	font-size: .85em;
+	font-size: 1em !important;
 	width: 100%;
+	font-weight: bold;
 }
 
 .top-bar .user-name-sm a {

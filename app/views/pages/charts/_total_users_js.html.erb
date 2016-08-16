@@ -138,7 +138,7 @@ var Chart_01 = (function () {
 						ann_1 = null;
 					}
 <% if (Rails.env.production?)  %>
-        			Chart_01.chart_data.addRow( [d.dates[i], d.values_oth[i], d.values_dem[i], d.values_rep[i], ann_1, d.values_goal[i], ann_0, 200000] );
+        			Chart_01.chart_data.addRow( [d.dates[i], d.values_oth[i], d.values_dem[i], d.values_rep[i], ann_1, 200000, ann_0, 201000] );
 <% else %>
         			Chart_01.chart_data.addRow( [d.dates[i], d.values_oth[i], d.values_dem[i], d.values_rep[i], ann_1, d.values_goal[i], ann_0, d.values_goal[i] * 1.3] );
 <% end %>

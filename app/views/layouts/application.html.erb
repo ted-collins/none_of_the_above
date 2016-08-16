@@ -95,6 +95,10 @@
 	  $(document).ready(function() {
 		// console.log('Foundation starting');
 		$(document).foundation();
+		// Fix for small screens
+		if($(window).width() < 400) {
+			$('#app_title').hide();
+		}
 	  });
   </script>
 </html>
