@@ -125,3 +125,10 @@
 	margin: 0 10%;
 	width: 80%;
 }
+
+#big_slider_row {
+	margin-left:1em !important;
+	margin-right:1em !important;
+	width: 100%;
+	height: 500px;
+}

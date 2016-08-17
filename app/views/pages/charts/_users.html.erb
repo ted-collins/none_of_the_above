@@ -3,15 +3,19 @@
 <%= render partial: 'pages/charts/balance_of_users_js' %>
 <%= render partial: 'pages/charts/geo_by_state_js' %>
 <!-- Start Total Users Chart Div -->
-<div class="row">
+<div>
 	<!-- Start Chart Div SMALL -->
 	<div class="show-for-small-only">
-		<%= render partial: 'pages/charts/small_slider' %>
+		<div class="row">
+			<%= render partial: 'pages/charts/small_slider' %>
+		</div>
 	</div>
 	<!-- End Chart Div SMALL -->
 	<!-- Start Chart Div MEDIUM -->
 	<div class="show-for-medium-up">
-		<%= render partial: 'pages/charts/big_slider' %>
+		<div id="big_slider_row" class="row">
+			<%= render partial: 'pages/charts/big_slider' %>
+		</div>
 	</div
 	<!-- End Chart Div MEDIUM -->
 

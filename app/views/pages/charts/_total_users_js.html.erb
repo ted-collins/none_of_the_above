@@ -47,16 +47,27 @@ var Chart_01 = (function () {
     							}},
 						chartArea: {left:'12%',top:'4%',width:'84%',height:'88%'}},
         options_big = {'title':'<%= t(:TotalSignups) %>',
-						'titlePosition': 'in',
-						'colors':['#007700', '#909090','#FF3333', '#730065', '#FA7B00'],
-						'width':'100%',
-						'height':'100%',
-						'legend':'none',
-						'lineWidth': 8,
-						'vAxis': {'format': 'short'},
-						'isStacked': true,
-						'annotations': { 'highContrast': true },
-						'chartArea': {left:'12%',top:'8%',width:'84%',height:'84%'}},
+						 titleTextStyle: { color: '#0a0a0a',
+  										fontSize: 20,
+  										bold: true },
+						titlePosition: 'in',
+						colors:['#007700', '#2790D1', '#D40E1F', '683E7D', '#FFFFFF'],
+						width:$(window).width(),
+						height:500,
+						legend:'none',
+						seriesType: 'bars',
+						isStacked: true,
+						lineWidth: 8,
+						vAxis: {'format': 'short'},
+      					series: {0: {type: 'bar'}, 1: {type: 'bar'}, 2: {type: 'bar'}, 3: {type: 'line'}, 4: {type: 'line'}},
+						annotations: {
+								alwaysOutside: true,
+								textStyle: {
+									color: '#0c0c0c',
+      								fontSize: 18,
+      								bold: true
+    							}},
+						chartArea: {left:'12%',top:'4%',width:'84%',height:'88%'}},
 
 		current_size = 'small',
 
@@ -127,7 +138,7 @@ var Chart_01 = (function () {
 			var ann_1 = null;
 			if(Chart_01.current_size == 'small') {
 				for(var i = 10; i < d.dates.length; i++) {
-					if(i == 18) {
+					if(i == d.dates.length - 2) {
 						ann_0 = d.values_goal[d.values_goal.length-1]+' ';
 					} else {
 						ann_0 = null;
@@ -138,14 +149,28 @@ var Chart_01 = (function () {
 						ann_1 = null;
 					}
 <% if (Rails.env.production?)  %>
-        			Chart_01.chart_data.addRow( [d.dates[i], d.values_oth[i], d.values_dem[i], d.values_rep[i], ann_1, 200000, ann_0, 201000] );
+        			Chart_01.chart_data.addRow( [d.dates[i], d.values_oth[i], d.values_dem[i], d.values_rep[i], ann_1, d.values_goal[i], ann_0, d.values_goal[i] * 1.2 ] );
 <% else %>
-        			Chart_01.chart_data.addRow( [d.dates[i], d.values_oth[i], d.values_dem[i], d.values_rep[i], ann_1, d.values_goal[i], ann_0, d.values_goal[i] * 1.3] );
+        			Chart_01.chart_data.addRow( [d.dates[i], d.values_oth[i], d.values_dem[i], d.values_rep[i], ann_1, d.values_goal[i], ann_0, d.values_goal[i] * 1.2 ] );
 <% end %>
         		}
 			} else {
 				for(var i = 0; i < d.dates.length; i++) {
-        			Chart_01.chart_data.addRow( [d.dates[i], d.values_tot[i], d.values_goal[i], d.values_goal[i] + 100, 'Foo'] );
+					if(i == d.dates.length - 2) {
+						ann_0 = d.values_goal[d.values_goal.length-1]+' ';
+					} else {
+						ann_0 = null;
+					}
+					if(i == (d.dates.length - 1)) {
+						ann_1 = (d.values_oth[i] + d.values_dem[i] + d.values_rep[i])+' ';
+					} else {
+						ann_1 = null;
+					}
+<% if (Rails.env.production?)  %>
+        			Chart_01.chart_data.addRow( [d.dates[i], d.values_oth[i], d.values_dem[i], d.values_rep[i], ann_1, d.values_goal[i], ann_0, d.values_goal[i] * 1.2 );
+<% else %>
+        			Chart_01.chart_data.addRow( [d.dates[i], d.values_oth[i], d.values_dem[i], d.values_rep[i], ann_1, d.values_goal[i], ann_0, d.values_goal[i] * 1.2 ] );
+<% end %>
         		}
 			}
 

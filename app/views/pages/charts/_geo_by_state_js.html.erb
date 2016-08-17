@@ -34,18 +34,18 @@ var Chart_03 = (function () {
 						legend:'none',
 						chartArea: {left:'12%',top:'4%',width:'84%',height:'88%'}},
         options_big = {'title':'<%= t(:TheStates) %>',
-						'titlePosition': 'in',
-						'colors':['#007700', '#909090','#FF3333', '#730065', '#FA7B00'],
-						'width':'100%',
-						'height':'100%',
-						'legend':'none',
+						 titleTextStyle: { color: '#0a0a0a',
+  										fontSize: 20,
+  										bold: true },
+						titlePosition: 'in',
 						region: 'US',
 						resolution: 'provinces',
-						'lineWidth': 8,
-						'vAxis': {'format': 'short'},
-						'isStacked': true,
-						'annotations': { 'highContrast': true },
-						'chartArea': {left:'12%',top:'8%',width:'84%',height:'84%'}},
+						//sizeAxis: { minValue: 0, maxValue: 100 },
+						colorAxis: {colors: ['#ffffff', '#007700']},
+						width:$(window).width(),
+						height:500,
+						legend:'none',
+						chartArea: {left:'12%',top:'4%',width:'84%',height:'88%'}},
 
 		current_size = 'small',
 
@@ -126,36 +126,38 @@ var Chart_03 = (function () {
 	},
 
 	redraw_chart = function(set) {
+       	Chart_03.chart_data.removeRows( 0, Chart_03.chart_data.getNumberOfRows());
+		for(var i = 0; i < Chart_03.states.length; i++) {
+			switch(set) {
+			case 0:
+       			Chart_03.chart_data.addRow( [Chart_03.states[i], (Chart_03.values_tot[i]) ] );
+				Chart_03.options_small.colorAxis.colors = ['#ffffff', '#007700'];
+				Chart_03.options_big.colorAxis.colors = ['#ffffff', '#007700'];
+				break;
+			case 1:
+       			Chart_03.chart_data.addRow( [Chart_03.states[i], (Chart_03.values_dem[i]) ] );
+				Chart_03.options_small.colorAxis.colors = ['#ffffff', '#34AAE0'];
+				Chart_03.options_big.colorAxis.colors = ['#ffffff', '#34AAE0'];
+				break;
+			case 2:
+       			Chart_03.chart_data.addRow( [Chart_03.states[i], (Chart_03.values_rep[i]) ] );
+				Chart_03.options_small.colorAxis.colors = ['#ffffff', '#FF3333'];
+				Chart_03.options_big.colorAxis.colors = ['#ffffff', '#FF3333'];
+				break;
+			case 3:
+       			Chart_03.chart_data.addRow( [Chart_03.states[i], (Chart_03.values_und[i]) ] );
+				Chart_03.options_small.colorAxis.colors = ['#ffffff', '#730065'];
+				Chart_03.options_big.colorAxis.colors = ['#ffffff', '#730065'];
+				break;
+			default:
+				break;
+			}
+       	}
 		switch(Chart_03.current_size) {
 		case 'big':
-			for(var i = 0; i < d.states.length; i++) {
-       			Chart_03.chart_data.addRow( [d.states[i], d.values_tot[i], d.values_goal[i], d.values_goal[i] + 100, 'Foo'] );
-       		}
-       		Chart_03.big_chart.draw(Chart_03.chart_data, options_big);
+       		Chart_03.big_chart.draw(Chart_03.chart_data, Chart_03.options_big);
 			break;
 		case 'small':
-			for(var i = 0; i < Chart_03.states.length; i++) {
-				switch(set) {
-				case 0:
-       				Chart_03.chart_data.addRow( [Chart_03.states[i], (Chart_03.values_tot[i]) ] );
-					Chart_03.options_small.colorAxis.colors = ['#ffffff', '#007700'];
-					break;
-				case 1:
-       				Chart_03.chart_data.addRow( [Chart_03.states[i], (Chart_03.values_dem[i]) ] );
-					Chart_03.options_small.colorAxis.colors = ['#ffffff', '#34AAE0'];
-					break;
-				case 2:
-       				Chart_03.chart_data.addRow( [Chart_03.states[i], (Chart_03.values_rep[i]) ] );
-					Chart_03.options_small.colorAxis.colors = ['#ffffff', '#FF3333'];
-					break;
-				case 3:
-       				Chart_03.chart_data.addRow( [Chart_03.states[i], (Chart_03.values_und[i]) ] );
-					Chart_03.options_small.colorAxis.colors = ['#ffffff', '#730065'];
-					break;
-				default:
-					break;
-				}
-       		}
        		Chart_03.small_chart.draw(Chart_03.chart_data, Chart_03.options_small);
 			break;
 		default:

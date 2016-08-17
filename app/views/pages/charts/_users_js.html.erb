@@ -30,11 +30,15 @@ var Chart_00 = (function () {
 						legend:{'position': 'in'},
 						chartArea: {left:'8%',top:'4%',width:'87%',height:'88%'}},
         options_big = {'title':'<%= t(:SignupsOverTime) %>',
+						 titleTextStyle: { color: '#0a0a0a',
+  										fontSize: 20,
+  										bold: true },
 						'titlePosition': 'in',
 						'colors':['#34AAE0','#FF3333', '#730065', '#FA7B00'],
-						'width':1100,
+						'width':$(window).width(),
 						'height':500,
-						'chartArea': {left:'8%',top:'2%',width:'87%',height:'88%'}},
+						legend:{'position': 'in'},
+						'chartArea': {left:'8%',top:'4%',width:'87%',height:'88%'}},
 
 		current_size = 'small',
 
@@ -161,12 +165,14 @@ var Chart_00 = (function () {
 					$('#chart_div_big_01').show();
 					$('#chart_div_big_02').show();
 					$('#chart_div_big_03').show();
+					$('#chart_div_big_03_but').show();
 					$('#big_chart_slider_box').slick({
+						arrows: false,
   						dots: true,
   						slidesToShow: 1,
   						slidesToScroll: 1,
   						autoplay: true,
-  						autoplaySpeed: 2000,
+  						autoplaySpeed: 4000,
   						variableWidth: true,
   						centerMode: true
   					});
