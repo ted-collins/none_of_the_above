@@ -1,6 +1,8 @@
 require 'action_view'
 require 'action_view/helpers'
 include ActionView::Helpers::DateHelper
+include SeederHelper
+
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -14,6 +16,10 @@ class User < ActiveRecord::Base
   def recommenders(page)
 	@recommenders = Recommenders.where(user_id: id).paginate(:page => page, :per_page => 20)
 	return(@recommenders)
+  end
+
+  def self.seed
+	return seed_one
   end
 
   def self.party
