@@ -6,6 +6,9 @@ class ApplicationController < ActionController::Base
  
 	def set_locale
   		I18n.locale = current_user.try(:locale) || I18n.default_locale
+  		if I18n.locale.eql?(:en) && I18n.locale.eql?(:es)
+			 I18n.locale = :en
+		end
 	end
 
 end
