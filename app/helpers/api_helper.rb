@@ -51,7 +51,7 @@ protected
 		arr_value_oth = []
 		arr_value_goal = []
 		for i in 0..19
-			qu_start = (DateTime.now - (20 - i).days).strftime("%Y-%m-%d")
+			qu_start = (DateTime.now - (18 - i).days).strftime("%Y-%m-%d")
 			arr_value_dem[i] = User.where("created_at <= '#{qu_start}' AND party_affiliation = 'democrat'").count
 			arr_value_rep[i] = User.where("created_at <= '#{qu_start}' AND party_affiliation = 'republican'").count
 			arr_value_oth[i] = User.where("created_at <= '#{qu_start}' AND party_affiliation != 'democrat' AND party_affiliation != 'republican'").count
@@ -75,7 +75,7 @@ protected
 		arr_date = []
 		arr_value_bal = []
 		for i in 0..19
-			qu_start = (DateTime.now - (20 - i).days).strftime("%Y-%m-%d")
+			qu_start = (DateTime.now - (18 - i).days).strftime("%Y-%m-%d")
 			arr_value_bal[i] = (User.where("created_at <= '#{qu_start}' AND party_affiliation = 'democrat'").count - User.where("created_at <= '#{qu_start}' AND party_affiliation = 'republican'").count)
 			arr_date[i] = (DateTime.now - (19 - i).days).strftime("%b %d")
 		end
