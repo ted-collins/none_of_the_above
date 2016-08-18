@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   end
 
   def self.seed
-	return seed_one
+	return seed_users(10)
   end
 
   def self.party
