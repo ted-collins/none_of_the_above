@@ -27,7 +27,7 @@ var Api = (function () {
 				Api.reset_queue_timer();
 				Api.initialized = true;
 				if($('#userIsLoggedInSM').is(':visible') ||
-					$('#userIsLoggedInSM').is(':visible')) {
+					$('#userIsLoggedInLG').is(':visible')) {
 					console.info('********** Fetching User Details *******');
 					Api.fetch_user_details();
 				}

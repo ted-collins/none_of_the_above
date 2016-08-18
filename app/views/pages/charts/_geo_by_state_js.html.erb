@@ -29,7 +29,7 @@ var Chart_03 = (function () {
 						resolution: 'provinces',
 						//sizeAxis: { minValue: 0, maxValue: 100 },
 						colorAxis: {colors: ['#ffffff', '#007700']},
-						width:$(window).width(),
+						width: Chart_00.lg_chart_width,
 						height:300,
 						legend:'none',
 						chartArea: {left:'12%',top:'4%',width:'84%',height:'88%'}},
@@ -42,10 +42,10 @@ var Chart_03 = (function () {
 						resolution: 'provinces',
 						//sizeAxis: { minValue: 0, maxValue: 100 },
 						colorAxis: {colors: ['#ffffff', '#007700']},
-						width:$(window).width(),
+						width: Chart_00.lg_chart_width,
 						height:500,
 						legend:'none',
-						chartArea: {left:'12%',top:'4%',width:'84%',height:'88%'}},
+						chartArea: {left:'18%',top:'4%',width:'64%',height:'88%'}},
 
 		current_size = 'small',
 
@@ -93,6 +93,7 @@ var Chart_03 = (function () {
 
 	draw_chart = function(size) {
 
+		if(!Chart_03.initialized) return;
 		if(Chart_03.fetch_active) return;
 		Chart_03.fetch_active = true;
 

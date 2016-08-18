@@ -22,7 +22,7 @@ var Chart_02 = (function () {
   										bold: true },
 						titlePosition: 'in',
 						colors:['#FA7B00','#34AAE0','#FF3333', '#730065', '#FA7B00'],
-						width:$(window).width(),
+						width: Chart_00.lg_chart_width,
 						height:300,
 						legend:'none',
 						lineWidth: 8,
@@ -39,17 +39,18 @@ var Chart_02 = (function () {
   										bold: true },
 						titlePosition: 'in',
 						colors:['#FA7B00','#34AAE0','#FF3333', '#730065', '#FA7B00'],
-						width:$(window).width(),
+						width: Chart_00.lg_chart_width,
 						height:500,
 						legend:'none',
 						lineWidth: 8,
+						hAxis: { 'showTextEvery': 2 },
 						annotations: {
 								textStyle: {
       								fontSize: 18,
       								bold: true
     							},
 								stem: 15 },
-						chartArea: {left:'8%',top:'4%',width:'87%',height:'88%'}},
+						'chartArea': {left:'18%',top:'4%',width:'64%',height:'88%'}},
 
 		current_size = 'small',
 
@@ -97,6 +98,7 @@ var Chart_02 = (function () {
 
 	draw_chart = function(size) {
 
+		if(!Chart_02.initialized) return;
 		console.info("*** Drawing BalanceOfPledges Users ***");
 		if(Chart_02.fetch_active) return;
 		Chart_02.fetch_active = true;

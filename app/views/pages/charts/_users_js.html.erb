@@ -18,6 +18,13 @@ var Chart_00 = (function () {
 		chart_data = null,
 		fetch_active = false,
 		num_charts = [ 4, 4 ],
+		sm_min_width = 300,
+		sm_max_width = 400,
+		lg_min_width = 800,
+		lg_max_width = 1800,
+		sm_chart_width = $(window).width(),
+		lg_chart_width = $(window).width(),
+						 
         // Set chart options
         options_small = {title:'<%= t(:SignupsOverTime) %>',
 						 titleTextStyle: { color: '#0a0a0a',
@@ -25,7 +32,7 @@ var Chart_00 = (function () {
   										bold: true },
 						titlePosition: 'in',
 						colors:['#34AAE0','#FF3333', '#730065', '#FA7B00'],
-						width:$(window).width(),
+						width: sm_chart_width,
 						height:300,
 						legend:{'position': 'in'},
 						chartArea: {left:'8%',top:'4%',width:'87%',height:'88%'}},
@@ -35,10 +42,11 @@ var Chart_00 = (function () {
   										bold: true },
 						'titlePosition': 'in',
 						'colors':['#34AAE0','#FF3333', '#730065', '#FA7B00'],
-						'width':$(window).width(),
+						'width': lg_chart_width,
+						hAxis: { 'showTextEvery': 2 },
 						'height':500,
 						legend:{'position': 'in'},
-						'chartArea': {left:'8%',top:'4%',width:'87%',height:'88%'}},
+						'chartArea': {left:'18%',top:'4%',width:'64%',height:'88%'}},
 
 		current_size = 'small',
 
@@ -54,6 +62,14 @@ var Chart_00 = (function () {
       		google.charts.setOnLoadCallback(Chart_00.create_charts);
 
 		}
+ 		sm_chart_width = sm_chart_width > sm_max_width ? sm_max_width : sm_chart_width;
+ 		sm_chart_width = sm_chart_width < sm_min_width ? sm_min_width : sm_chart_width;
+ 		lg_chart_width = lg_chart_width > lg_max_width ? lg_max_width : lg_chart_width;
+ 		lg_chart_width = lg_chart_width < lg_min_width ? lg_min_width : lg_chart_width;
+        options_small.width = sm_chart_width;
+        options_big.width = lg_chart_width;
+		//console.log('SM Width is '+sm_min_width+' < '+sm_chart_width+' < '+sm_max_width);
+		//console.log('LG Width is '+lg_min_width+' < '+lg_chart_width+' < '+lg_max_width);
 	},
 
     create_charts = function() {
@@ -64,7 +80,6 @@ var Chart_00 = (function () {
 
 		Chart_00.reveal_chart();
 	
-		Chart_01.reveal_chart();
 	},
 
 	reveal_chart = function() {
@@ -89,6 +104,7 @@ var Chart_00 = (function () {
 
 	draw_chart = function(size) {
 
+		if(!Chart_00.initialized) return;
 		console.log('Drawing Chart 00');
 		if(Chart_00.fetch_active) return;
 		Chart_00.fetch_active = true;
@@ -166,6 +182,8 @@ var Chart_00 = (function () {
 					$('#chart_div_big_02').show();
 					$('#chart_div_big_03').show();
 					$('#chart_div_big_03_but').show();
+					$('#chart_div_big_00').css('background','none');
+					$('#chart_div_big_03_but').css('left', ($(window).width() * .80)+'px');
 					$('#big_chart_slider_box').slick({
 						arrows: false,
   						dots: true,
@@ -197,7 +215,9 @@ var Chart_00 = (function () {
 		current_size: current_size,
 		fetch_active: fetch_active,
 		num_charts: num_charts,
-		start_slider: start_slider
+		start_slider: start_slider,
+		sm_chart_width: sm_chart_width,
+		lg_chart_width: lg_chart_width
     };
 
 }());
@@ -209,21 +229,5 @@ setInterval(function () {
 	Chart_02.reveal_chart();
 	Chart_03.reveal_chart();
 }, 2000);
-
-$(document).ready( function() {
-/*
-	$('#big_chart_slider_box').slick({
-  		dots: true,
-  		slidesToShow: 1,
-  		slidesToScroll: 1,
-  		autoplay: true,
-  		autoplaySpeed: 2000,
-		fade: true,
-  		variableWidth: true,
-  		infinite: true,
-  		centerMode: true
-  	});
-*/
-});
 
 </script>

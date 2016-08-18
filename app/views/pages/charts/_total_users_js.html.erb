@@ -30,7 +30,7 @@ var Chart_01 = (function () {
   										bold: true },
 						titlePosition: 'in',
 						colors:['#007700', '#2790D1', '#D40E1F', '683E7D', '#FFFFFF'],
-						width:$(window).width(),
+						width: Chart_00.sm_chart_width,
 						height:300,
 						legend:'none',
 						seriesType: 'bars',
@@ -45,20 +45,21 @@ var Chart_01 = (function () {
       								fontSize: 18,
       								bold: true
     							}},
-						chartArea: {left:'12%',top:'4%',width:'84%',height:'88%'}},
+						chartArea: {left:'8%',top:'4%',width:'87%',height:'88%'}},
         options_big = {'title':'<%= t(:TotalSignups) %>',
 						 titleTextStyle: { color: '#0a0a0a',
   										fontSize: 20,
   										bold: true },
 						titlePosition: 'in',
 						colors:['#007700', '#2790D1', '#D40E1F', '683E7D', '#FFFFFF'],
-						width:$(window).width(),
+						width: Chart_00.lg_chart_width,
 						height:500,
 						legend:'none',
 						seriesType: 'bars',
 						isStacked: true,
 						lineWidth: 8,
 						vAxis: {'format': 'short'},
+						hAxis: { 'showTextEvery': 2 },
       					series: {0: {type: 'bar'}, 1: {type: 'bar'}, 2: {type: 'bar'}, 3: {type: 'line'}, 4: {type: 'line'}},
 						annotations: {
 								alwaysOutside: true,
@@ -67,7 +68,7 @@ var Chart_01 = (function () {
       								fontSize: 18,
       								bold: true
     							}},
-						chartArea: {left:'12%',top:'4%',width:'84%',height:'88%'}},
+						'chartArea': {left:'20%',top:'4%',width:'60%',height:'88%'}},
 
 		current_size = 'small',
 
@@ -96,8 +97,9 @@ var Chart_01 = (function () {
 		if($('#big_chart_slider_box').is(':visible')) {
 			if(!is_visible[0]) {
 				Chart_01.draw_chart('big');
-				console.log("Showing MEDIUM UP");
+				console.log("Showing MEDIUM UP width: "+Chart_00.lg_chart_width);
 				is_visible[0] = true;
+				width: Chart_00.lg_chart_width;
 			}
 		} else {
 			is_visible[0] = false;
@@ -115,6 +117,7 @@ var Chart_01 = (function () {
 
 	draw_chart = function(size) {
 
+		if(!Chart_01.initialized) return;
 		console.info("*** Drawing Total Users ***");
 		if(Chart_01.fetch_active) return;
 		Chart_01.fetch_active = true;

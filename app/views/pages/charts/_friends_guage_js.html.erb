@@ -85,6 +85,7 @@ var Chart_Friend = (function () {
 
 	redraw_charts = function() {
 
+		console.log('Chart_Friend '+Chart_Friend.ready+'  '+Chart_Friend.friends_sent);
 		if(!Chart_Friend.ready || Chart_Friend.friends_sent == null || Chart_Friend.friends_sent === 'undefined') return;
 
 		//console.log('Friends Sent '+Chart_Friend.friends_sent);
