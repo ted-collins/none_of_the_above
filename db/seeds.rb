@@ -16,7 +16,7 @@ else
 	@max_i = 1
 end
 
-cnt=0
+cnt=User.count + 1
 @states.each do |k,v|
 	puts("  Doing #{k} #{v}")
 	v.times do
