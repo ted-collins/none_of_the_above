@@ -6,7 +6,29 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+#Recommenders
+Recommenders.delete_all
+@date = DateTime.now - 200.days
+@user = User.where(email: 'collins.ted@gmail.com').first
+for i in 1..50
+	Recommenders.create(user_id: @user.id, email: "booger-#{i}@example.com", originally_sent: @date)
+	@date = @date + 1.day
+end
+for i in 51..75
+	foo = Recommenders.create(user_id: @user.id, email: "booger-#{i}@example.com", originally_sent: @date, responded_at: @date + 1.day, response: :accepted)
+	@date = @date + 1.day
+	foo.response = :accepted
+	foo.save
+end
+for i in 76..100
+	foo = Recommenders.create(user_id: @user.id, email: "booger-#{i}@example.com", originally_sent: @date, responded_at: @date + 1.day, response: :rejected)
+	@date = @date + 1.day
+	foo.response = :rejected
+	foo.save
+end
+
 #Users
+User.where("email like 'dummy_%'").delete_all
 
 if Rails.env.production?
 	@states = {:CA=>383, :TX=>264, :NY=>196, :FL=>195, :IL=>128, :PA=>127, :OH=>115, :GA=>99, :MI=>98, :NC=>98, :NJ=>88, :VA=>82, :WA=>69, :MA=>66, :AZ=>66, :IN=>65, :TN=>64, :MO=>60, :MD=>59, :WI=>57, :MN=>54, :CO=>52, :AL=>48, :SC=>47, :LA=>46, :KY=>43, :OR=>39, :OK=>38, :CT=>35, :IA=>30, :MS=>29, :AR=>29, :UT=>29, :KS=>28, :NV=>27, :NM=>20, :NE=>18, :WV=>18, :ID=>16, :HI=>14, :ME=>13, :NH=>13, :RI=>10, :MT=>10, :DE=>9, :SD=>8, :AK=>7, :ND=>7, :DC=>6, :VT=>6, :WY=>5}
@@ -20,7 +42,7 @@ cnt=0
 @states.each do |k,v|
 	puts("  Doing #{k} #{v}")
 	v.times do
-		@old_date = DateTime.now - 1.days
+		@old_date = DateTime.now - 20.days
 		@party = :neither
 		for j in 0..19
 			for i in 0..@max_i
@@ -41,6 +63,7 @@ cnt=0
 				puts("#{u.email}  #{u.created_at} #{k.to_s} #{u.party_affiliation} #{u.errors.full_messages}")
 				cnt += 1
 			end
+			@old_date = @old_date + 1.day
 		end
 	end
 end
