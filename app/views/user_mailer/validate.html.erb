@@ -3,11 +3,56 @@
   <head>
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
-  <body>
-    <h1>Welcome to example.com, <%= @user %></h1>
-    <p>
-      To login to the site, just follow this link: <%= @url %>.
-    </p>
-    <p>Thanks for joining and have a great day!</p>
+  <body style="padding: 0 5%;font-family: Helvetica Neue,Helvetica,Arial,sans-serif;">
+  	<table>
+		<tr>
+    		<h2>This message is sent on behalf of <%= @user %></h2>
+		</tr>
+		<tr>
+			<td>
+				<img src="https://none.oftheabove.com/images/BellaForPres_square.png" width="200px" height="200px" />
+			</td>
+			<td style="padding: 0 5%;">
+			<h4>That's our mascot Bella. She makes sure we don't mess this up</h4>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<h2>Click this link to <strong>confirm</strong> <a href="<%= @url %>">HERE</a></h2>
+			</td>
+			<td style="padding: 0 5%;">
+				The <strong>None Of The Above</strong> project seeks an open election. We are concerned about the "Lesser Of Two Evils" scenario both the Rs and the Ds are pushing. We do not want people voting for either Trump or Clinton because they are scared. There is more information <a href="https://blog.oftheabove.com">HERE</a></h3>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<strong>Confirming means</strong> that <%= @user %> will probably do what they pledge to do.
+			</td>
+			<td>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			</td>
+			<td style="padding: 0 5%;">
+				<%= @user %> has pledged to <strong>not</strong> vote for either Trump or Clinton. <%= @user %> has pledged to vote for someone else instead. They are asking you to <strong>confirm</strong> that they are probably going to do what they pledge to do. By confirming this email with the link <a href="<%= @url %>">HERE</a>, you will be helping us out. And, if enough people break away from the Rs and the Ds, we may change the course of the election.
+			</td>
+		</tr>
+		<tr>
+			<td>
+			To learn more about <strong>None Of The Above</strong> project, click <a href="https://blog.oftheabove.com">HERE</a>
+			</td>
+			<td>
+			</td>
+		</tr>
+		<tr>
+			<td>
+			</td>
+			<td>
+			<h1>Thanks for your help!</h1><br/>
+			<h5 style="padding: 0 0 0 5em;">Sincerely, Team Happy Trout</h5>
+			</td>
+		</tr>
+	</table>
   </body>
 </html>

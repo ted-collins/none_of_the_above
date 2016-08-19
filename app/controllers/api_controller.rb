@@ -113,6 +113,7 @@ class ApiController < ApplicationController
 
 	@flash = ''
  	@rec = Recommenders.new({user_id: current_user.id, email: params[:email]})
+	@user = current_user.email
 	begin
 		@status = @rec.save
 		if(!@status)

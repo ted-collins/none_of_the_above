@@ -13,6 +13,7 @@ class RecommendersController < ApplicationController
 		logger.debug("Checking for token #{params[:token]}")
 		rec = Recommenders.find_by_response_token(params[:token])
 		logger.debug(" FIND #{rec.inspect}")
+		@user = current_user.email
 		if(rec.nil?)
 			redirect_to root_url
 		else
