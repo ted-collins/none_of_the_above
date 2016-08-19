@@ -3,7 +3,7 @@ class UserMailer < ApplicationMailer
 	@token = token
     @url  = validate_url({token: token})
 	@user = user.email
-    mail(to: email, subject: "The person with email #{user.email} requests your help")
+    mail(to: email, subject: "Requesting your help")
   end
 
 end

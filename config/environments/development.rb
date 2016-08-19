@@ -26,7 +26,7 @@ Rails.application.configure do
         :address              => "smtp.mailgun.org",
         :port                 => 465,
         :domain               => 'none.oftheabove.com',
-        :user_name            => 'postmaster@oftheabove.com',
+        :user_name            => 'support@oftheabove.com',
         :password             => '630ecaec8f74e95744ea212a6857e094',
         :authentication       => 'plain',
         :enable_starttls_auto => true,
