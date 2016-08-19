@@ -1,4 +1,5 @@
 class UserMailer < ApplicationMailer
+
   def validate(email, token, user)
 	@token = token
     @url  = validate_url({token: token})
