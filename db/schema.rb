@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160815182636) do
+ActiveRecord::Schema.define(version: 20160820011004) do
 
   create_table "charts", force: :cascade do |t|
     t.string   "name",                      limit: 255
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 20160815182636) do
     t.string   "place_name",             limit: 255
     t.string   "state_abbreviation",     limit: 255
     t.string   "locale",                 limit: 255
+    t.datetime "opt_out_at"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

@@ -5,3 +5,5 @@
 <p>Click the link below to unlock your account:</p>
 
 <p><%= link_to 'Unlock my account', unlock_url(@resource, unlock_token: @token) %></p>
+
+<p><h5>You are receiving this email because you signed up with None_Of_The_Above. To opt_out, click <%= link_to opt_out_url(@c_user.email), 'HERE' %> </h5></p>

@@ -25,5 +25,6 @@ Rails.application.routes.draw do
 
 	get 'cache_graph(.:format)' => 'graphs#cache_graph', as: 'cache_graph'
 	get 'static_graph(.:format)' => 'graphs#fetch_static_graph', as: 'static_graph'
+	get 'users/opt_out(.:format)' => 'users#opt_out', as: 'opt_out'
 
 end
