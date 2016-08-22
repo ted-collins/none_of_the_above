@@ -40,8 +40,14 @@ es:
 
   save: Salvar
 
+  if_we_balance: Si equilibramos ex- Ds y ex -Rs, ganamos!
+
   i_was_gonna_vote: Yo tenía la intención de votar . . .
   but_i_pledge_not_to: "... pero se comprometen a no . O . . ."
+
+  democrat_no_clump: Dem, NOT no va a Clump
+  republican_no_clump: Rep, NOT no va a Clump
+  gonna_clump: Voy a Clump
 
   LogInToParticipate: "Inicio de sesión/Registro Ahora!"
   ReadMore: Aprende más

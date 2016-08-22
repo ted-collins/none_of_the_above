@@ -38,10 +38,13 @@ en:
   neither: UnDecided
   noVote: Disgusted, Not Voting
 
+  democrat_no_clump: Dem, NOT going to Clump
+  republican_no_clump: Rep, NOT going to Clump
+  gonna_clump: I'm going to Clump
+
   save: Save
 
-  i_was_gonna_vote: I was planning to vote . . .
-  but_i_pledge_not_to: "... but I Pledge To NOT vote for Clinton or Trump. Or . . ."
+  if_we_balance: If we balance ex-Ds and ex-Rs, we win!
 
   LogInToParticipate: "Log In/Register Now!"
   ReadMore: "Learn More"
@@ -88,7 +91,7 @@ en:
   PossibleDuplicate: Possible Duplicate Email Address
   CannotRecommendSelf: Cannot email yourself
 
-  SignupsOverTime: NOT voting Trump or Clinton
+  SignupsOverTime: NOT voting Clinton or Trump
   TotalSignups: Pledge Today!
   BalanceOfPledges: Pledges are balanced!
   NeedMoreDs: Need More Democrats to Pledge!
