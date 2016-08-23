@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 	get "/pages/:page" => "pages#show"
+	get "/memes/:page" => "pages#show_meme"
 	root 'pages#show', :page => 'home'
 
   	match 'api/user_details(.:format)', to: 'api#user_details', via: ['options']
