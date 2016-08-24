@@ -13,8 +13,10 @@ class PagesController < ApplicationController
 		@meme_url = 'clinton_trump_meme_00.jpg'
 	when 1
 		@meme_url = 'clinton_trump_meme_01.jpg'
+	when 2
+		@meme_url = 'clinton_trump_meme_02.png'
 	else
-		@meme_url = 'clinton_trump_meme_00.jpg'
+		@meme_url = 'clinton_trump_meme_02.png'
 	end
     render template: "pages/memes/meme", layout: false
   end
