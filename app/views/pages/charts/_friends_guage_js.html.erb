@@ -19,7 +19,7 @@ var Chart_Friend = (function () {
         options = [
 					// Left Chart
 					{
-					height:$('#recommenders_button_box').height(),
+					height:$('#recommenders_button_box').height() * 0.95,
 					legend:'none',
 					pieHole: 0.3,
 					chartArea: {left:'0',top:'0',width:'100%',height:'100%'},
@@ -30,7 +30,7 @@ var Chart_Friend = (function () {
 					},
 					// Right Chart
 					{
-					height:$('#recommenders_button_box').height(),
+					height:$('#recommenders_button_box').height() * 0.95,
 					legend:'none',
 					pieHole: 0.3,
 					chartArea: {left:'0',top:'0',width:'100%',height:'100%'},
@@ -83,6 +83,16 @@ var Chart_Friend = (function () {
 
 	},
 
+	delete_chart_data = function() {
+		for(var j = 0; j < 2; j++) {
+			while(Chart_Friend.chart_data[j].getNumberOfRows() > 0) {
+				console.log('Deleting Row '+i+' in table '+j);
+				Chart_Friend.chart_data[j].removeRow(0);
+			}
+		}
+
+	},
+
 	redraw_charts = function() {
 
 		console.log('Chart_Friend '+Chart_Friend.ready+'  '+Chart_Friend.friends_sent);
@@ -98,6 +108,16 @@ var Chart_Friend = (function () {
 		$('#friend_guage_confirmed_number').text(Chart_Friend.friends_confirmed)
        	Chart_Friend.charts[0].draw(Chart_Friend.chart_data[0], Chart_Friend.options[0]);
        	Chart_Friend.charts[1].draw(Chart_Friend.chart_data[1], Chart_Friend.options[1]);
+		/* Adjust the text */
+		if($('#big_chart_slider_box').is(':visible')) {
+			$('#friend_guage_sent').css('left', '5em');
+			$('#friend_legend_left').css('left', '5.5em');
+			$('#friend_legend_right').css('left', '5.5em');
+		} else {
+			$('#friend_guage_sent').css('left', '0');
+			$('#friend_legend_left').css('left', '1.5em');
+			$('#friend_legend_right').css('left', '1.0em');
+		}
 	};
 
     return {
@@ -108,6 +128,7 @@ var Chart_Friend = (function () {
 		reveal_charts: reveal_charts,
 		draw_charts: draw_charts,
 		redraw_charts: redraw_charts,
+		delete_chart_data: delete_chart_data,
 		// Globals
 		ready: ready,
 		charts: charts,

@@ -94,6 +94,25 @@ var Api = (function () {
 			});
 	},
 
+	refetch_friends = function() {
+		console.log('API -- refetching user details -- friends');
+		state = 'fetch_user_details';
+		submit_request( Api.api_read_server + '/api/user_details.json',
+			'GET',
+      		{},
+			function(d) { 
+				if(d) {
+					Chart_Friend.friends_sent = d.user.friends_sent;
+					Chart_Friend.friends_confirmed = d.user.friends_confirmed;
+					console.log('Friend Chart Data is Ready SENT '+ Chart_Friend.friends_sent+' CONFIRMED '+Chart_Friend.friends_confirmed);
+					Chart_Friend.delete_chart_data();
+					Chart_Friend.redraw_charts();
+
+					//console.log('API:: fetch_user_details return '+d);
+				}
+			});
+	},
+
 	set_party = function(party) {
 		console.log('API -- setting user party');
 		state = 'set_party';
@@ -393,6 +412,7 @@ var Api = (function () {
 		auth_token: auth_token,
 		form_auth_token: form_auth_token,
 		fetch_user_details: fetch_user_details,
+		refetch_friends: refetch_friends,
 		set_party: set_party,
 		set_zipcode: set_zipcode,
 		reset_zipcode: reset_zipcode,
