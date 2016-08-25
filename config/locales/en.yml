@@ -72,14 +72,18 @@ en:
   English: "English"
   Spanish: "Spanish"
 
-  InviteFriends: "Invite Friends"
-  AddModifyFriends: "Add or Modify Friends"
+  ExplainRecommenders: You can ask friends to confirm that you do what you pledge to do. By recommending you, they are saying you are a person who keeps their word. Just enter their email, and we will send them a simple link to recommend you. We only send one email per request. We don't spam or sell or otherwise nag your friends or their emails.
+  InviteFriends: "Request Recommendation"
+  AddModifyFriends: "Add or Modify Recommenders"
 
   Email: Email
   Invited: When
   NoRecommenders: No Recommenders (Yet)
+  Recommenders: Recommenders
+  Invites: Unconfirmed
+  Confirmed: Confirmed
 
-  AddUsers: Invite Friends
+  AddUsers: Request Email
   Search: Search
 
   Send: Send

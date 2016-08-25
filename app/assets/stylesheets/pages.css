@@ -143,3 +143,8 @@
 .recommenderBox {
 	text-align: center;
 }
+
+#recommendersSpinner {
+	position: relative;
+	top: -250px;
+}

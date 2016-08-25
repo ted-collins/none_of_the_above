@@ -156,12 +156,12 @@ var Api = (function () {
 			'page': page
 		};
 
-		$('#recommendersSpinner').show();
+		$('#recommendersSpinner').css('display', 'inline-block');
 		submit_request( Api.api_write_server + '/api/recommenders_list.json',
 			'GET',
       		params,
 			function(d) { 
-				$('#recommendersSpinner').hide();
+				$('#recommendersSpinner').css('display', 'none');
 				var lst = d.list;
 				var pg = d.page;
 				if(typeof lst === "undefined" || lst == null || lst.length == 0) {
@@ -207,6 +207,7 @@ var Api = (function () {
 			'email': email,
 		};
 
+		$('#recommendersSpinner').css('display', 'inline-block');
 		submit_request( Api.api_write_server + '/api/user_add_email.json',
 			'POST',
       		params,
@@ -221,6 +222,7 @@ var Api = (function () {
 			$('#no_recommenders_yet').remove();
 
 			  console.log('API:: ADD Email return '+d.status);
+			  $('#recommendersSpinner').css('display', 'none');
 			});
 	},
 
@@ -232,11 +234,13 @@ var Api = (function () {
 			'id': email_record_id,
 		};
 
+		$('#recommendersSpinner').css('display', 'inline-block');
 		submit_request( Api.api_write_server + '/api/user_del_email.json',
 			'POST',
       		params,
 			function(d) { 
 			  console.log('API:: DEL Email return '+d.status);
+			  $('#recommendersSpinner').css('display', 'none');
 			});
 	},
 
@@ -362,6 +366,8 @@ var Api = (function () {
 	report_error = function(msg) {
 		$('#api_alert_box_content').html(msg);
 		$('#api_alert_box').show();
+		// Note-- do not use show/hide here. needs inline-block to animate
+		$('#recommendersSpinner').css('display', 'none');
 	},
 
 	html_for_response = function(response) {

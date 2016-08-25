@@ -15,9 +15,10 @@ class RecommendersController < ApplicationController
 		logger.debug(" FIND #{rec.inspect}")
 		@user = current_user.email
 		if(rec.nil?)
-			redirect_to root_url
+			redirect_to root_url, :flash => { :error => "Invalid Recommendation Token" }
 		else
 			rec.response = :approved
+			rec.responded_at = DateTime.now
 			@status = rec.save
     		respond_to do |format|
 	      		if(@status)
