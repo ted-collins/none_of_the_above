@@ -96,11 +96,11 @@ en:
   CannotRecommendSelf: Cannot email yourself
 
   SignupsOverTime: NOT voting Clinton or Trump
-  TotalSignups: Pledge Today!
-  BalanceOfPledges: Pledges are balanced!
-  NeedMoreDs: Need More Democrats to Pledge!
-  NeedMoreRs: Need More Republicans to Pledge!
-  MoreRThanDPledged: More Rs than Ds Pledged
-  MoreDThanRPledged: More Ds than Rs Pledged
+  TotalSignups: Sign Up Today!
+  BalanceOfPledges: Rs and Ds are balanced!
+  NeedMoreDs: Need More Democrats!
+  NeedMoreRs: Need More Republicans!
+  MoreRThanDPledged: More Rs than Ds
+  MoreDThanRPledged: More Ds than Rs
   EqualRandDPledged: Equal Number Rs and Ds!
-  TheStates: Pledged By State
+  TheStates: Signups By State
