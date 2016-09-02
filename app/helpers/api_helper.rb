@@ -57,7 +57,7 @@ protected
 			arr_value_oth[i] = User.where("created_at <= '#{qu_start}' AND party_affiliation != 'democrat' AND party_affiliation != 'republican'").count
 			arr_date[i] = (DateTime.now - (19 - i).days).strftime("%b %d")
 			if( Rails.env.production?)
-				arr_value_goal[i] = 250000
+				arr_value_goal[i] = 300000
 			else
 				arr_value_goal[i] = 3000
 			end
