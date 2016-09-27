@@ -1,0 +1,1784 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>None Of The Above</title>
+
+	<script src="https://www.google.com/jsapi"></script>
+    <link rel="stylesheet" media="screen" href="/assets/application-ecc25a9758f12774b4f5284a8e503707ec9bb43c3b81d1e9b3ba1285dac9fc16.css" />
+    <script src="/assets/application-bd1187c7324a5759c11bd440ed4c31a97111001b28200910a9cdc9a55de85ddb.js"></script>
+    <script src="/assets/vendor/modernizr-a65875881c5f7e2177db0531a1658d03dd68feebf626709d2d5b593cb07bc649.js"></script>
+
+	<link rel="stylesheet" media="screen" href="/shared/foundation-5.5.1/css/foundation.min.css" />
+	<script src="/shared/foundation-5.5.1/js/foundation.min.js"></script>
+	<script src="https://use.fontawesome.com/8e8d894760.js"></script>
+
+    <meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="HYgcuvutC/tTMj4bq2Zk9PUAdhrLfVTIfyBpZQpoJQGDW6PVQh58iYlgQhO4aRvZ7Cd0S4Zpz7cO7waUCc1XMg==" />
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.1/html5shiv.js" type="text/javascript"></script>
+    <![endif]-->
+
+    <!-- For third-generation iPad with high-resolution Retina display: -->
+    <!-- Size should be 144 x 144 pixels -->
+    <link rel="apple-touch-icon-precomposed" type="image/png" href="/images/apple-touch-icon-144x144-precomposed.png" sizes="144x144" />
+
+    <!-- For iPhone with high-resolution Retina display: -->
+    <!-- Size should be 114 x 114 pixels -->    <link rel="apple-touch-icon-precomposed" type="image/png" href="/images/apple-touch-icon-114x114-precomposed.png" sizes="114x114" />
+
+    <!-- For first- and second-generation iPad: -->
+    <!-- Size should be 72 x 72 pixels -->
+    <link rel="apple-touch-icon-precomposed" type="image/png" href="/images/apple-touch-icon-72x72-precomposed.png" sizes="72x72" />
+
+    <!-- For non-Retina iPhone, iPod Touch, and Android 2.1+ devices: -->
+    <!-- Size should be 57 x 57 pixels -->
+    <link rel="apple-touch-icon-precomposed" type="image/png" href="/images/apple-touch-icon-precomposed.png" />
+
+    <!-- For all other devices -->
+    <!-- Size should be 32 x 32 pixels -->
+    <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon-88f91ebcfc847ecbba77d5fc5c40d334e100fa5d3ffa490bc9c500ba46910870.ico" />
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0"/>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  </head>
+
+  <body>
+
+    <!-- Small Navigation -->
+    <div class="contain-to-grid sticky">
+	<nav id="sm_top_nav" class="top-bar show-for-small-only" data-topbar role="navigation">
+  		<ul class="left">
+    		<li id="app_title" class="name small-name" onclick="return( window.location.href='https://none.oftheabove.com/'); ">
+				None Of The Above
+			</li>
+  		</ul>
+    	<ul class="right">
+			<li>
+			  	<a href="/users/sign_in">
+					<i class="fa fa-sign-in fa-2x icon-sm" aria-hidden="true"></i>
+</a>			  	<a href="/users/sign_up">
+					<i class="fa fa-user-plus fa-2x icon-sm" aria-hidden="true"></i>
+</a>			</li>
+		</ul>
+	</nav>
+   	<div id="additionalModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <div class="additional-box">
+  <div class="row">
+  <div class="small-12 columns">
+  <ul class="side-nav">
+	<li>
+	<a class="button small round" rel="nofollow" data-method="delete" href="/users/sign_out">
+		<h2 class="fa fa-sign-out fa-2x" aria-hidden="true"><span class="font-correction">&nbsp;Sign Out</span></h2>
+		</a>
+</a>	</li>
+	<li>
+	<a class="button small round" href="/users/edit">
+		<h2 class="fa fa-pencil-square-o fa-2x" aria-hidden="true"><span class="font-correction">&nbsp;Edit Profile</h2>
+</a>	</li>
+	<li>
+		    <ul class="button-group round toggle" data-toggle="buttons-radio">
+      <li>
+		  <a class="button small round" type="radio" id="r1" name="r-group" data-toggle="button" rel="nofollow" data-method="post" href="/users/set_locale?locale=en">
+			<h2>
+			<img class="language-icon" src="/assets/english_icon-324bc0b27715da85ed2ef42df2d5389945cc8c40722bed9f624ad91aeaf6d80e.png" alt="English icon 324bc0b27715da85ed2ef42df2d5389945cc8c40722bed9f624ad91aeaf6d80e" />
+			English</h2>
+</a>      </li>
+      <li>
+		  <a class="button small round" type="radio" id="r2" name="r-group" data-toggle="button" rel="nofollow" data-method="post" href="/users/set_locale?locale=es">
+			<h2>
+			<img class="language-icon" src="/assets/spanish_icon-a04df94aa7c7efb28896f29fb6564dbd8fe462b763e10903da371cac54d94d3f.png" alt="Spanish icon a04df94aa7c7efb28896f29fb6564dbd8fe462b763e10903da371cac54d94d3f" />
+			Spanish</h2>
+</a>      </li>
+    </ul>
+
+	</li>
+	<li>
+		<a href="#" class="button small round close_reveal_modal">
+			<h2 class="fa fa-times fa-2x" aria-hidden="true"><span class="font-correction">&nbsp;Dismiss</span></h2>
+		</a>
+	</li>
+  </ul>
+
+
+  </div>
+  </div>
+  </div>
+  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>
+
+</div>
+
+    <!-- End Small Navigation -->
+
+    <!-- Large Navigation -->
+    <nav id="lg_top_nav" class="top-bar show-for-medium-up" data-topbar>
+
+	<ul class="title-area">
+    	<li id="app_title" class="name large-name" onclick="return( window.location.href='https://none.oftheabove.com/');">
+			<h1><a href="#">None Of The Above</a></h1>
+    	</li>
+	</ul>
+
+	<section class="top-bar-section">
+		<ul class="left">
+		</ul>
+	</section>
+
+	<section class="top-bar-section">
+	<ul class="right">
+      		<li class="has-dropdown">
+				<a href="#" data-reveal-id="loginModal">Sign In</a>
+    		</li>
+      		<li class="has-dropdown">
+				<a href="#" data-reveal-id="registerModal">Register</a>
+			</li>
+   			<div id="registerModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <div class="register-box">
+  <div class="row">
+  <div class="large-12 columns">
+
+<form class="new_user" id="new_user" action="/users" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="O+dn8xSt5WJYYy5u9wp0cj+KsAUyJ4mu7+RdyYZeLCmlNNicrR6SEIIxUmbkBQtfJq2yVH8zEtGeKzI4hfteGg==" />
+
+  <div class="field">
+    <input autofocus="autofocus" placeholder="Username or Email" type="email" value="" name="user[email]" id="user_email" />
+  </div>
+
+  <div class="field">
+    <input autocomplete="off" placeholder="Password" type="password" name="user[password]" id="user_password" />
+  </div>
+
+  <div class="field">
+    <input autocomplete="off" placeholder="Confirm Password" type="password" name="user[password_confirmation]" id="user_password_confirmation" />
+  </div>
+
+  <div class="actions">
+    <input type="submit" name="commit" value="Sign Me Up!" class="button expand" />
+  </div>
+
+</form>
+  </div>
+  </div>
+  </div>
+  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>
+
+   			<div id="loginModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+  <div class="login-box">
+  <div class="row">
+  <div class="large-12 columns">
+  <form class="new_user" id="new_user" action="/users/sign_in" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="PgGAcsUDhafyGjC1rDvTtUjmHnjWcwoCcENmjB8aeXWg0j8dfLDy1ShITL2/NKyYUcEcKZtnkX0BjAl9HL8LRg==" />
+    <div class="field">
+      <input autofocus="autofocus" placeholder="Username or Email" type="email" value="" name="user[email]" id="user_email" />
+    </div>
+
+    <div class="field">
+      <input autocomplete="off" placeholder="Password" type="password" name="user[password]" id="user_password" />
+    </div>
+
+      <div class="field">
+        <input name="user[remember_me]" type="hidden" value="0" /><input type="checkbox" value="1" name="user[remember_me]" id="user_remember_me" />
+        <label for="user_remember_me">Remember me</label>
+      </div>
+
+    <div class="large-12 large-centered columns">
+      <input type="submit" class="button expand" value="Sign In"/>
+    </div>
+
+</form>
+  </div>
+  </div>
+  </div>
+  <a class="close-reveal-modal" aria-label="Close">&#215;</a>
+</div>
+
+		<li>
+		  <a rel="nofollow" data-method="post" href="/users/set_locale?locale=es">
+			<img class="language-icon" src="/assets/spanish_icon_lg-f807370f97bc70394e6a00d5c44911fd0c36a206ba034a867d88073931d055ac.png" alt="Spanish icon lg f807370f97bc70394e6a00d5c44911fd0c36a206ba034a867d88073931d055ac" />
+</a>		</li>
+	</ul>
+	</section>
+
+</nav>
+
+    <!-- End Large Navigation -->
+
+	<!-- Flash Message Panel -->
+	
+<!-- Flash panel for api to use -->
+<div id="api_alert_box" data-alert class="alert-box warning round" style="display:none;">
+	<div id="api_alert_box_content">
+	</div>
+<a href="#" class="close">&times;</a>
+</div>
+
+	<!-- End Flash Message Panel -->
+
+  <div id="content" class="content">
+	<!-- API Javascript -->
+<script type="text/javascript">
+
+/*jslint browser: true */
+/*global G_vmlCanvasManager, $ */
+
+var Api = (function () {
+
+    "use strict";
+
+	var api_read_server = 'https://none.oftheabove.com',
+		api_write_server = 'https://none.oftheabove.com',
+		error_msg = null,
+		active = false,
+		timer = null,
+		state = null,
+		auth_token = null,
+		form_auth_token = null,
+
+		// jQuery on an empty object, we are going to use this as our queue
+		ajaxQueue = new Queue(),
+
+		initialized = false,
+
+		init = function() {
+			//console.log('API Initialized');
+			if(!Api.initialized) {
+				Api.reset_queue_timer();
+				Api.initialized = true;
+				if($('#userIsLoggedInSM').is(':visible') ||
+					$('#userIsLoggedInLG').is(':visible')) {
+					console.info('********** Fetching User Details *******');
+					Api.fetch_user_details();
+				}
+			}
+		},
+ 
+		reset_queue_timer = function() {
+			if(timer != undefined && timer != null) {
+				// console.log('Clearing Timer [['+timer+']]');
+				clearInterval(timer);
+			}
+			Api.scan_queue();
+			timer = setInterval(function() { Api.scan_queue(); }, 5000);
+		},
+
+		scan_queue = function() {
+			// console.info('Scanning ajax queue');
+			if(!Api.active) {
+				// console.info('   Check for work');
+				if( Api.ajaxQueue.peek() != undefined ) {
+					//console.info('   Work to do');
+					Api.active = true;
+       				var r = Api.ajaxQueue.dequeue();
+					Api.exec_request(r.uri, r.call_type, r.params, r.success_cb);
+				} else {
+					// console.log('API::No work to do');
+				}
+			}
+		},
+
+
+	fetch_user_details = function() {
+		console.log('API -- fetching user details');
+		state = 'fetch_user_details';
+		submit_request( Api.api_read_server + '/api/user_details.json',
+			'GET',
+      		{},
+			function(d) { 
+				if(d && d.user && d.user.party_affiliation) {
+					if(d.user.party_affiliation.localeCompare('neither') == 0) {
+						$('#partyNeither').prop('checked', true);
+						//console.log('API:: NEITHER');
+					} else
+					if(d.user.party_affiliation.localeCompare('democrat') == 0) {
+						$('#partyDemocrat').prop('checked', true);
+						//console.log('API:: DEMOCRAT ' + d.user.party_affiliation);
+					} else
+					if(d.user.party_affiliation.localeCompare('republican') == 0) {
+						$('#partyRepublican').prop('checked', true);
+						//console.log('API:: REPUBLICAN');
+					}
+					if(d.user.party_affiliation.localeCompare('no_vote') == 0) {
+						$('#partyNoVote').prop('checked', true);
+						//console.log('API:: NoVote');
+					}
+				}
+
+				Chart_Friend.friends_sent = d.user.friends_sent;
+				Chart_Friend.friends_confirmed = d.user.friends_confirmed;
+				console.log('Friend Chart Data is Ready SENT '+ Chart_Friend.friends_sent+' CONFIRMED '+Chart_Friend.friends_confirmed);
+				Chart_Friend.redraw_charts();
+
+				//console.log('API:: fetch_user_details return '+d);
+			});
+	},
+
+	refetch_friends = function() {
+		console.log('API -- refetching user details -- friends');
+		state = 'fetch_user_details';
+		submit_request( Api.api_read_server + '/api/user_details.json',
+			'GET',
+      		{},
+			function(d) { 
+				if(d) {
+					Chart_Friend.friends_sent = d.user.friends_sent;
+					Chart_Friend.friends_confirmed = d.user.friends_confirmed;
+					console.log('Friend Chart Data is Ready SENT '+ Chart_Friend.friends_sent+' CONFIRMED '+Chart_Friend.friends_confirmed);
+					Chart_Friend.delete_chart_data();
+					Chart_Friend.redraw_charts();
+
+					//console.log('API:: fetch_user_details return '+d);
+				}
+			});
+	},
+
+	set_party = function(party) {
+		console.log('API -- setting user party');
+		state = 'set_party';
+
+		var params = {
+			'party': party
+		};
+
+		submit_request( Api.api_write_server + '/api/user_party.json',
+			'POST',
+      		params,
+			function(d) { 
+				console.log('API:: SET PARTY return ');
+			});
+	},
+
+	reset_zipcode = function() {
+		console.log('API -- setting user zipcode');
+		state = 'reset_zipcode';
+
+		var params = {
+		};
+
+		submit_request( Api.api_write_server + '/api/user_zipcode_reset.json',
+			'POST',
+      		params,
+			function(d) { 
+				console.log('API:: RESET ZIPCODE return ');
+				$('#zipcode_field').prop('placeholder', 'Enter Zipcode');
+				$('#zipcode_field').val('');
+				$('#zipcode_place_content').text('');
+				$('#zipcode_field_button').text('Add My Zipcode');
+				$('#zipcode_place').hide();
+			});
+	},
+
+	set_zipcode = function(zip, place_name, state_abbreviation) {
+		console.log('API -- setting user zipcode');
+		state = 'set_zipcode';
+
+		var params = {
+			'zipcode': zip,
+			'place_name': place_name,
+			'state_abbreviation': state_abbreviation
+		};
+
+		submit_request( Api.api_write_server + '/api/user_zipcode.json',
+			'POST',
+      		params,
+			function(d) { 
+				console.log('API:: SET ZIPCODE return ');
+			});
+	},
+
+	get_recommenders = function(page) {
+		console.log('API -- getting recommenders page '+page);
+		state = 'get_recommenders';
+
+		var params = {
+			'page': page
+		};
+
+		$('#recommendersSpinner').css('display', 'inline-block');
+		submit_request( Api.api_write_server + '/api/recommenders_list.json',
+			'GET',
+      		params,
+			function(d) { 
+				$('#recommendersSpinner').css('display', 'none');
+				var lst = d.list;
+				var pg = d.page;
+				if(typeof lst === "undefined" || lst == null || lst.length == 0) {
+					// Set up the list
+					if(page == 1) {
+						$('#recommendersContent').html('<div id="no_recommenders_yet">No Recommenders (Yet)</div>');
+						$('#recommendersButton').text('Request Recommendation');
+					}
+					moreRecommenders = false; // Flag no more recommenders
+				} else {
+					console.log('API:: GET RECOMMENDERS return ' + lst[0].email);
+
+					$('#recommendersButton').text('Add or Modify Recommenders');
+					for(i=0;i<lst.length;i++) {
+	
+						var response_html = html_for_response(lst[i].response);
+
+						if(i == 0 && (typeof pg === "undefined" || pg == null || pg == 1)) {
+							// Re-write the first list entry
+							$('#recommendersContent tr td.rec_response').html(response_html);
+							$('#recommendersContent tr td.rec_email').text(lst[i].email);
+							$('#recommendersContent tr td.rec_invited_date').text(lst[i].originally_sent_in_words);
+							$('#recommendersContent tr td.rec_buttons').html('<button class="tiny radius" onclick="Api.del_email('+lst[i].id+');$(this).parent().parent().remove();return(false);">Delete</button>');
+						} else {
+							var temp = {
+								rec_response: response_html,
+								rec_email: lst[i].email,
+								rec_invited_date: lst[i].originally_sent_in_words,
+								rec_buttons: '<button class="tiny radius" onclick="Api.del_email('+lst[i].id+');$(this).parent().parent().remove();return(false);">Delete</button>'
+							};
+							recommendersList.add(temp);
+						}
+					}
+				}
+			});
+	},
+
+	add_email = function(email) {
+		console.log('API -- adding email');
+		state = 'add_email';
+
+		var params = {
+			'email': email,
+		};
+
+		$('#recommendersSpinner').css('display', 'inline-block');
+		submit_request( Api.api_write_server + '/api/user_add_email.json',
+			'POST',
+      		params,
+			function(d) { 
+			  $('#recommendersContent').prepend('<tr id="newuser'+d.id+'"></tr>');
+			  var str = '<td>'+Api.html_for_response(d.response)+'</td>' +
+						'<td>'+d.email+'</td>' + 
+						'<td>'+d.originally_sent_in_words+'</td>' +
+						'<td><button class="tiny radius" onclick="Api.del_email('+d.id+');$(this).parent().parent().remove();return(false);">Delete</button></td>';
+			  $('#newuser'+d.id).html(str);
+			console.log("Removing div");
+			$('#no_recommenders_yet').remove();
+
+			  console.log('API:: ADD Email return '+d.status);
+			  $('#recommendersSpinner').css('display', 'none');
+			});
+	},
+
+	del_email = function(email_record_id) {
+		console.log('API -- deleting email');
+		state = 'del_email';
+
+		var params = {
+			'id': email_record_id,
+		};
+
+		$('#recommendersSpinner').css('display', 'inline-block');
+		submit_request( Api.api_write_server + '/api/user_del_email.json',
+			'POST',
+      		params,
+			function(d) { 
+			  console.log('API:: DEL Email return '+d.status);
+			  $('#recommendersSpinner').css('display', 'none');
+			});
+	},
+
+	fetch_chart = function(chart_type, cb_func) {
+		console.log('API -- Fetching chart info');
+		state = 'fetch_chart';
+
+		var params = {
+			chart_type: chart_type
+		};
+
+		submit_request( Api.api_write_server + '/api/chart.json',
+			'GET',
+      		params,
+			function(d) { 
+			  console.log('API:: Fetch Chart Email returned '+d);
+			  cb_func.call(this, d);
+			});
+	},
+
+	upload_chart = function(chart_type, name, uri) {
+		console.log('API -- Uploading chart info');
+		state = 'upload_chart';
+
+		var params = {
+			chart_type: chart_type,
+			name: name,
+			uri: uri
+		};
+
+		submit_request( Api.api_write_server + '/api/chart.json',
+			'POST',
+      		params,
+			function(d) { 
+			  console.log('API:: Upload Chart returned '+d);
+			});
+	},
+
+	submit_request = function( uri, call_type, params, success_cb ) {
+		Api.ajaxQueue.enqueue( {
+			uri: uri,
+			call_type: call_type,
+			params: params,
+			success_cb: success_cb
+		});
+		Api.scan_queue();
+	},
+
+	exec_request = function( uri, call_type, params, success_cb ) {
+		if(!Api.active) {
+			console.log('API Inactive due to error');
+			return;
+		}
+		$.ajax({
+	    	data: params,
+	    	timeout: 15000,
+	    	dataType: 'json',
+			cache: false,
+			type: call_type,
+			url: uri,
+	    	statusCode: {
+    			401: function() { Api.error_msg = 'Comm: Not Authorized'; Api.active = false; console.error(Api.error_msg); Api.report_error(Api.error_msg); },
+    			402: function() { Api.error_msg = 'Comm: Not Authorized'; Api.active = false; console.error(Api.error_msg); Api.report_error(Api.error_msg); },
+    			403: function() { Api.error_msg = 'Comm: Forbidden'; Api.active = false; console.error(Api.error_msg); Api.report_error(Api.error_msg); },
+    			404: function() { Api.error_msg = 'Comm: Page Not Found'; Api.active = false; console.error(Api.error_msg); Api.report_error(Api.error_msg); },
+    			500: function() { Api.error_msg = 'Comm: Internal Server Error'; Api.active = false; console.error(Api.error_msg); Api.report_error(Api.error_msg); }
+	    	}
+        }).success(function(data) {
+			if( data.status != true ) {
+				Api.error_msg = data.flash;
+				console.error(Api.error_msg + ' STATE '+state);
+				switch(state) {
+				case 'add_email':
+					// Show an alert
+					$('#modal_alert_box_content').html(Api.error_msg);
+					$('#modal_alert_box').show();
+					console.log('Showing alert');
+					setTimeout(function(){ $('#modal_alert_box').hide(1000); }, 5000);
+					break;
+				default:
+					break;
+				}
+				Api.active = false;
+			} else {
+				success_cb.call(this, data.data);
+				Api.active = false;
+				if(state == 'set_party') {
+					Api.fetch_user_details();
+				} 
+			}
+        }).error(function(xhr,status,err) {
+	        Api.error_msg = 'Comm Error: '+status +'::'+err;
+			console.error(Api.error_msg);
+			Api.active = false;
+			if(state == 'set_zipcode') {
+				$('#zipcode_field').prop('placeholder', 'Could Not Store Zipcode');
+				$('#zipcode_field').val('');
+				$('#zipcode_place_content').text('');
+				$('#zipcode_place').hide();
+				$('#zipcode_field_button').text('Add My Zipcode');
+			} 
+			if(state == 'reset_zipcode') {
+				$('#zipcode_field').prop('placeholder', 'Could Not Delete Zipcode');
+				$('#zipcode_field').val('');
+				$('#zipcode_place').show();
+				$('#zipcode_field_button').text('Add My Zipcode');
+			} 
+	  });
+	},
+
+	errMsg = function() {
+		return(Api.error_msg);
+	},
+
+	isError = function() {
+		return(((Api.error_msg == null) ? false : true));
+	},
+
+	isActive = function() {
+		return(Api.active);
+	},
+
+	report_error = function(msg) {
+		$('#api_alert_box_content').html(msg);
+		$('#api_alert_box').show();
+		// Note-- do not use show/hide here. needs inline-block to animate
+		$('#recommendersSpinner').css('display', 'none');
+	},
+
+	html_for_response = function(response) {
+		console.info('Response '+response);
+		var response_html = '<i class="fa fa-circle fa-2x"></i>';
+		if(response === "undefined" || response == null || response == 'pending') {
+			response_html = '<i class="fa fa-envelope fa-2x"></i>';
+		} else {
+			if(response == 'accepted' || response == 'approved') {
+				response_html = '<i class="fa fa-check fa-2x"></i>';
+			} else {
+				if(response == 'rejected') {
+					response_html = '<i class="fa fa-times fa-2x"></i>';
+				}
+			}
+		}
+		return(response_html);
+	};
+
+    return {
+		init: init,
+		initialized: initialized,
+		auth_token: auth_token,
+		form_auth_token: form_auth_token,
+		fetch_user_details: fetch_user_details,
+		refetch_friends: refetch_friends,
+		set_party: set_party,
+		set_zipcode: set_zipcode,
+		reset_zipcode: reset_zipcode,
+		get_recommenders: get_recommenders,
+		add_email: add_email,
+		del_email: del_email,
+		fetch_chart: fetch_chart,
+		upload_chart: upload_chart,
+		isError: isError,
+		isActive: isActive,
+		active: active,
+		errMsg: errMsg,
+		ajaxQueue: ajaxQueue,
+		scan_queue: scan_queue,
+		reset_queue_timer: reset_queue_timer,
+		submit_request: submit_request,
+		exec_request: exec_request,
+		api_read_server: api_read_server,
+		api_write_server: api_write_server,
+		error_msg: error_msg,
+		report_error: report_error,
+		// Utility Functions
+		html_for_response: html_for_response
+    };
+
+}());
+
+$(document).ready(function() {
+	console.log("API::::: READY :::::: Initialized "+Api.initialized);
+	Api.init();
+	console.log("API::::: READY :::::: Initialized "+Api.initialized);
+	Api.auth_token = $('meta[name=csrf-token]').attr('content');
+	console.log("API::::: READY :::::: AUTH "+Api.auth_token);
+	Api.form_auth_token = $('input[name="authenticity_token"]').attr('value');
+	console.log("API::::: READY :::::: FORM AUTH "+Api.form_auth_token);
+	
+});
+</script>
+
+<!-- End API Javascript -->
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<script type="text/javascript">
+	$(document).ready( function() {
+		Chart_00.init();
+		console.log("Chart_00 ready");
+	});
+
+var Chart_00 = (function () {
+
+    "use strict";
+
+	var error_msg = null,
+		initialized = false,
+		big_chart = null,
+		small_chart = null,
+		is_visible = [ false, false ],
+		chart_data = null,
+		fetch_active = false,
+		num_charts = [ 4, 4 ],
+		sm_min_width = 300,
+		sm_max_width = 400,
+		lg_min_width = 800,
+		lg_max_width = 1800,
+		sm_chart_width = $(window).width(),
+		lg_chart_width = $(window).width(),
+						 
+        // Set chart options
+        options_small = {title:'NOT voting Clinton or Trump',
+						 titleTextStyle: { color: '#0a0a0a',
+  										fontSize: 20,
+  										bold: true },
+						titlePosition: 'in',
+						colors:['#34AAE0','#FF3333', '#730065', '#FA7B00'],
+						width: sm_chart_width,
+						height:300,
+						legend:{'position': 'in'},
+						chartArea: {left:'8%',top:'4%',width:'87%',height:'88%'}},
+        options_big = {'title':'NOT voting Clinton or Trump',
+						 titleTextStyle: { color: '#0a0a0a',
+  										fontSize: 20,
+  										bold: true },
+						'titlePosition': 'in',
+						'colors':['#34AAE0','#FF3333', '#730065', '#FA7B00'],
+						'width': lg_chart_width,
+						hAxis: { 'showTextEvery': 2 },
+						'height':500,
+						legend:{'position': 'in'},
+						'chartArea': {left:'18%',top:'4%',width:'64%',height:'88%'}},
+
+		current_size = 'small',
+
+
+	init = function() {
+		//console.log('API Initialized');
+		if(!Chart_00.initialized) {
+			$('#chartSpinner').show();
+			$('#chartRefreshBox').hide();
+      		// Load the Visualization API and the corechart package.
+      		google.charts.load('current', {'packages':['corechart']});
+      		// Set a callback to run when the Google Visualization API is loaded.
+      		google.charts.setOnLoadCallback(Chart_00.create_charts);
+
+		}
+ 		sm_chart_width = sm_chart_width > sm_max_width ? sm_max_width : sm_chart_width;
+ 		sm_chart_width = sm_chart_width < sm_min_width ? sm_min_width : sm_chart_width;
+ 		lg_chart_width = lg_chart_width > lg_max_width ? lg_max_width : lg_chart_width;
+ 		lg_chart_width = lg_chart_width < lg_min_width ? lg_min_width : lg_chart_width;
+        options_small.width = sm_chart_width;
+        options_big.width = lg_chart_width;
+		//console.log('SM Width is '+sm_min_width+' < '+sm_chart_width+' < '+sm_max_width);
+		//console.log('LG Width is '+lg_min_width+' < '+lg_chart_width+' < '+lg_max_width);
+	},
+
+    create_charts = function() {
+
+        Chart_00.big_chart = new google.visualization.ColumnChart(document.getElementById('chart_div_big_00'));
+        Chart_00.small_chart = new google.visualization.ColumnChart(document.getElementById('chart_div_small_00'));
+		Chart_00.initialized = true;
+
+		Chart_00.reveal_chart();
+	
+	},
+
+	reveal_chart = function() {
+		if($('#big_chart_slider_box').is(':visible')) {
+			if(!is_visible[0]) {
+				Chart_00.draw_chart('big');
+				console.log("Showing MEDIUM UP");
+				is_visible[0] = true;
+			}
+		} else {
+			is_visible[0] = false;
+		}
+		if($('#small_chart_slider_box').is(':visible')) {
+			if(!is_visible[1]) {
+				Chart_00.draw_chart('small');
+				is_visible[1] = true;
+			}
+		} else {
+			is_visible[1] = false;
+		}
+	},
+
+	draw_chart = function(size) {
+
+		if(!Chart_00.initialized) return;
+		console.log('Drawing Chart 00');
+		if(Chart_00.fetch_active) return;
+		Chart_00.fetch_active = true;
+
+        Chart_00.chart_data = new google.visualization.DataTable();
+        Chart_00.chart_data.addColumn('string', 'Date');
+        Chart_00.chart_data.addColumn('number', 'Dem');
+        Chart_00.chart_data.addColumn('number', 'Rep');
+        Chart_00.chart_data.addColumn('number', 'Und');
+        Chart_00.chart_data.addColumn('number', 'Clumping');
+
+		Chart_00.current_size = size;
+        // Create the data table.
+		$('#chartSpinner').show();
+		Api.fetch_chart(0, function(d) {
+			console.log('Got chart info back '+d);
+			if(Chart_00.current_size == 'small') {
+				for(var i = 10; i < d.dates.length; i++) {
+        			Chart_00.chart_data.addRow( [d.dates[i], d.values_dem[i], d.values_rep[i], d.values_und[i], d.values_not[i]] );
+        		}
+			} else {
+				for(var i = 0; i < d.dates.length; i++) {
+        			Chart_00.chart_data.addRow( [d.dates[i], d.values_dem[i], d.values_rep[i], d.values_und[i], d.values_not[i]] );
+        		}
+			}
+
+			switch(Chart_00.current_size) {
+			case 'big':
+        		Chart_00.big_chart.draw(Chart_00.chart_data, options_big);
+				Chart_00.start_slider('big');
+				break;
+			case 'small':
+				var ticks = [ d.dates[10], d.dates[13], d.dates[15], d.dates[17], d.dates[19] ];
+				options_small['hAxis'] = { 'showTextEvery': 3 };
+        		Chart_00.small_chart.draw(Chart_00.chart_data, options_small);
+				Chart_00.start_slider('small');
+				break;
+			default:
+				console.error("unknown chart size "+size);
+				break;
+			}
+			$('#chartSpinner').hide();
+			Chart_00.fetch_active = false;
+		});
+	},
+
+	start_slider = function(size) {
+		// Are all the charts down?
+		if(size == 'small') {
+			Chart_00.num_charts[0]--;
+			if(Chart_00.num_charts[0] == 0) {
+				$('#chart_div_small_01').show();
+				$('#chart_div_small_02').show();
+				$('#chart_div_small_03').show();
+				$('#chart_div_small_03_but').show();
+				$('#chartRefreshBox').show();
+				$('#chart_div_small_00').css('background','none');
+				$('#chart_div_small_03_but').css('left', ($(window).width() * .80)+'px');
+				$('#small_chart_slider_box').slick({
+					arrows: false,
+  					dots: true,
+  					slidesToShow: 1,
+  					slidesToScroll: 1,
+  					autoplay: true,
+  					autoplaySpeed: 4000,
+  					variableWidth: true,
+  					centerMode: true
+  				});
+			}
+		} else {
+			if(size == 'big') {
+				Chart_00.num_charts[1]--;
+				if(Chart_00.num_charts[1] == 0) {
+					$('#chart_div_big_01').show();
+					$('#chart_div_big_02').show();
+					$('#chart_div_big_03').show();
+					$('#chart_div_big_03_but').show();
+					$('#chart_div_big_00').css('background','none');
+					$('#chart_div_big_03_but').css('left', ($(window).width() * .80)+'px');
+					$('#big_chart_slider_box').slick({
+						arrows: false,
+  						dots: true,
+  						slidesToShow: 1,
+  						slidesToScroll: 1,
+  						autoplay: true,
+  						autoplaySpeed: 4000,
+  						variableWidth: true,
+  						centerMode: true
+  					});
+				}
+			}
+		}
+	};
+
+    return {
+		init: init,
+		initialized: initialized,
+		error_msg: error_msg,
+		big_chart: big_chart,
+		small_chart: small_chart,
+		create_charts: create_charts,
+		reveal_chart: reveal_chart,
+		draw_chart: draw_chart,
+		// Globals
+		chart_data: chart_data,
+		options_small: options_small,
+		options_big: options_big,
+		current_size: current_size,
+		fetch_active: fetch_active,
+		num_charts: num_charts,
+		start_slider: start_slider,
+		sm_chart_width: sm_chart_width,
+		lg_chart_width: lg_chart_width
+    };
+
+}());
+
+// Watch for changes in the size
+setInterval(function () {
+	Chart_00.reveal_chart();
+	Chart_01.reveal_chart();
+	Chart_02.reveal_chart();
+	Chart_03.reveal_chart();
+}, 2000);
+
+</script>
+
+<script type="text/javascript">
+	$(document).ready( function() {
+		Chart_01.init();
+		console.log("Chart_01 ready");
+	});
+
+var Chart_01 = (function () {
+
+    "use strict";
+
+	var error_msg = null,
+		initialized = false,
+		big_chart = null,
+		small_chart = null,
+		is_visible = [ false, false ],
+		chart_data = null,
+		fetch_active = false,
+        // Set chart options
+        //'Date');
+        //'Other');
+        //'Dem');
+        //'Rep');
+        //'annotation'} );
+        //'Goal');
+        //'annotation'} );
+        //'Goal Pad');
+        options_small = {title:'Sign Up Today!',
+						 titleTextStyle: { color: '#0a0a0a',
+  										fontSize: 20,
+  										bold: true },
+						titlePosition: 'in',
+						colors:['#007700', '#2790D1', '#D40E1F', '683E7D', '#FFFFFF'],
+						width: Chart_00.sm_chart_width,
+						height:300,
+						legend:'none',
+						seriesType: 'bars',
+						isStacked: true,
+						lineWidth: 8,
+						vAxis: {'format': 'short'},
+      					series: {0: {type: 'bar'}, 1: {type: 'bar'}, 2: {type: 'bar'}, 3: {type: 'line'}, 4: {type: 'line'}},
+						annotations: {
+								alwaysOutside: true,
+								textStyle: {
+									color: '#0c0c0c',
+      								fontSize: 18,
+      								bold: true
+    							}},
+						chartArea: {left:'8%',top:'4%',width:'87%',height:'88%'}},
+        options_big = {'title':'Sign Up Today!',
+						 titleTextStyle: { color: '#0a0a0a',
+  										fontSize: 20,
+  										bold: true },
+						titlePosition: 'in',
+						colors:['#007700', '#2790D1', '#D40E1F', '683E7D', '#FFFFFF'],
+						width: Chart_00.lg_chart_width,
+						height:500,
+						legend:'none',
+						seriesType: 'bars',
+						isStacked: true,
+						lineWidth: 8,
+						vAxis: {'format': 'short'},
+						hAxis: { 'showTextEvery': 3 },
+      					series: {0: {type: 'bar'}, 1: {type: 'bar'}, 2: {type: 'bar'}, 3: {type: 'line'}, 4: {type: 'line'}},
+						annotations: {
+								alwaysOutside: true,
+								textStyle: {
+									color: '#0c0c0c',
+      								fontSize: 18,
+      								bold: true
+    							}},
+						'chartArea': {left:'20%',top:'4%',width:'60%',height:'88%'}},
+
+		current_size = 'small',
+
+
+	init = function() {
+		//console.log('API Initialized');
+		if(!Chart_01.initialized) {
+			$('#chartSpinner').show();
+      		// Load the Visualization API and the corechart package.
+      		// google.charts.load('current', {'packages':['corechart']});
+      		// Set a callback to run when the Google Visualization API is loaded.
+      		google.charts.setOnLoadCallback(Chart_01.create_charts);
+		}
+	},
+
+    create_charts = function() {
+
+        Chart_01.big_chart = new google.visualization.ComboChart(document.getElementById('chart_div_big_01'));
+        Chart_01.small_chart = new google.visualization.ComboChart(document.getElementById('chart_div_small_01'));
+		Chart_01.initialized = true;
+
+		Chart_01.reveal_chart();
+	},
+
+	reveal_chart = function() {
+		if($('#big_chart_slider_box').is(':visible')) {
+			if(!is_visible[0]) {
+				Chart_01.draw_chart('big');
+				console.log("Showing MEDIUM UP width: "+Chart_00.lg_chart_width);
+				is_visible[0] = true;
+				width: Chart_00.lg_chart_width;
+			}
+		} else {
+			is_visible[0] = false;
+		}
+		if($('#small_chart_slider_box').is(':visible')) {
+			if(!is_visible[1]) {
+				Chart_01.draw_chart('small');
+				console.log("Showing SMALL");
+				is_visible[1] = true;
+			}
+		} else {
+			is_visible[1] = false;
+		}
+	},
+
+	draw_chart = function(size) {
+
+		if(!Chart_01.initialized) return;
+		console.info("*** Drawing Total Users ***");
+		if(Chart_01.fetch_active) return;
+		Chart_01.fetch_active = true;
+
+        Chart_01.chart_data = new google.visualization.DataTable();
+        Chart_01.chart_data.addColumn('string', 'Date');
+        Chart_01.chart_data.addColumn('number', 'Other');
+        Chart_01.chart_data.addColumn('number', 'Dem');
+        Chart_01.chart_data.addColumn('number', 'Rep');
+        Chart_01.chart_data.addColumn({type: 'string', role: 'annotation'} );
+        Chart_01.chart_data.addColumn('number', 'Goal');
+        Chart_01.chart_data.addColumn({type: 'string', role: 'annotation'} );
+        Chart_01.chart_data.addColumn('number', 'Goal Pad');
+
+		Chart_01.current_size = size;
+        // Create the data table.
+		$('#chartSpinner').show();
+		Api.fetch_chart(1, function(d) {
+			console.log('Got chart 01 info back '+d);
+			var ann_0 = null;
+			var ann_1 = null;
+			if(Chart_01.current_size == 'small') {
+				for(var i = 10; i < d.dates.length; i++) {
+					if(i == d.dates.length - 2) {
+						ann_0 = d.values_goal[d.values_goal.length-1]+' ';
+					} else {
+						ann_0 = null;
+					}
+					if(i == (d.dates.length - 1)) {
+						ann_1 = (d.values_oth[i] + d.values_dem[i] + d.values_rep[i])+' ';
+					} else {
+						ann_1 = null;
+					}
+        			Chart_01.chart_data.addRow( [d.dates[i], d.values_oth[i], d.values_dem[i], d.values_rep[i], ann_1, d.values_goal[i], ann_0, d.values_goal[i] * 1.2 ] );
+        		}
+			} else {
+				for(var i = 0; i < d.dates.length; i++) {
+					if(i == d.dates.length - 2) {
+						ann_0 = d.values_goal[d.values_goal.length-1]+' ';
+					} else {
+						ann_0 = null;
+					}
+					if(i == (d.dates.length - 1)) {
+						ann_1 = (d.values_oth[i] + d.values_dem[i] + d.values_rep[i])+' ';
+					} else {
+						ann_1 = null;
+					}
+        			Chart_01.chart_data.addRow( [d.dates[i], d.values_oth[i], d.values_dem[i], d.values_rep[i], ann_1, d.values_goal[i], ann_0, d.values_goal[i] * 1.2 ] );
+        		}
+			}
+
+			switch(Chart_01.current_size) {
+			case 'big':
+        		Chart_01.big_chart.draw(Chart_01.chart_data, options_big);
+				Chart_00.start_slider('big');
+				break;
+			case 'small':
+				var ticks = [ d.dates[10], d.dates[13], d.dates[15], d.dates[17], d.dates[19] ];
+				options_small['hAxis'] = { 'showTextEvery': 3 };
+        		Chart_01.small_chart.draw(Chart_01.chart_data, options_small);
+				Chart_00.start_slider('small');
+				break;
+			default:
+				console.error("unknown chart size "+size);
+				break;
+			}
+			$('#chartSpinner').hide();
+			Chart_01.fetch_active = false;
+		});
+	};
+
+    return {
+		init: init,
+		initialized: initialized,
+		error_msg: error_msg,
+		big_chart: big_chart,
+		small_chart: small_chart,
+		create_charts: create_charts,
+		reveal_chart: reveal_chart,
+		draw_chart: draw_chart,
+		// Globals
+		chart_data: chart_data,
+		options_small: options_small,
+		options_big: options_big,
+		current_size: current_size,
+		fetch_active: fetch_active
+    };
+
+}());
+
+</script>
+
+<script type="text/javascript">
+	$(document).ready( function() {
+		Chart_02.init();
+		console.log("Chart_02 ready");
+	});
+
+var Chart_02 = (function () {
+
+    "use strict";
+
+	var error_msg = null,
+		initialized = false,
+		big_chart = null,
+		small_chart = null,
+		is_visible = [ false, false ],
+		chart_data = null,
+		fetch_active = false,
+        // Set chart options
+        options_small = {title:'Rs and Ds are balanced!',
+						 titleTextStyle: { color: '#0a0a0a',
+  										fontSize: 20,
+  										bold: true },
+						titlePosition: 'in',
+						colors:['#FA7B00','#34AAE0','#FF3333', '#730065', '#FA7B00'],
+						width: Chart_00.lg_chart_width,
+						height:300,
+						legend:'none',
+						lineWidth: 8,
+						annotations: {
+								textStyle: {
+      								fontSize: 18,
+      								bold: true
+    							},
+								stem: 15 },
+						chartArea: {left:'8%',top:'4%',width:'87%',height:'88%'}},
+        options_big = {'title':'Rs and Ds are balanced!',
+						 titleTextStyle: { color: '#0a0a0a',
+  										fontSize: 20,
+  										bold: true },
+						titlePosition: 'in',
+						colors:['#FA7B00','#34AAE0','#FF3333', '#730065', '#FA7B00'],
+						width: Chart_00.lg_chart_width,
+						height:500,
+						legend:'none',
+						lineWidth: 8,
+						hAxis: { 'showTextEvery': 3 },
+						annotations: {
+								textStyle: {
+      								fontSize: 18,
+      								bold: true
+    							},
+								stem: 15 },
+						'chartArea': {left:'18%',top:'4%',width:'64%',height:'88%'}},
+
+		current_size = 'small',
+
+
+	init = function() {
+		//console.log('API Initialized');
+		if(!Chart_02.initialized) {
+			$('#chartSpinner').show();
+      		// Load the Visualization API and the corechart package.
+      		// google.charts.load('current', {'packages':['corechart']});
+      		// Set a callback to run when the Google Visualization API is loaded.
+      		google.charts.setOnLoadCallback(Chart_02.create_charts);
+		}
+	},
+
+    create_charts = function() {
+
+        Chart_02.big_chart = new google.visualization.LineChart(document.getElementById('chart_div_big_02'));
+        Chart_02.small_chart = new google.visualization.LineChart(document.getElementById('chart_div_small_02'));
+		Chart_02.initialized = true;
+
+		Chart_02.reveal_chart();
+	},
+
+	reveal_chart = function() {
+		if($('#big_chart_slider_box').is(':visible')) {
+			if(!is_visible[0]) {
+				Chart_02.draw_chart('big');
+				console.log("Showing MEDIUM UP");
+				is_visible[0] = true;
+			}
+		} else {
+			is_visible[0] = false;
+		}
+		if($('#small_chart_slider_box').is(':visible')) {
+			if(!is_visible[1]) {
+				Chart_02.draw_chart('small');
+				console.log("Showing SMALL");
+				is_visible[1] = true;
+			}
+		} else {
+			is_visible[1] = false;
+		}
+	},
+
+	draw_chart = function(size) {
+
+		if(!Chart_02.initialized) return;
+		console.info("*** Drawing BalanceOfPledges Users ***");
+		if(Chart_02.fetch_active) return;
+		Chart_02.fetch_active = true;
+
+        Chart_02.chart_data = new google.visualization.DataTable();
+        Chart_02.chart_data.addColumn('string', 'Date');
+        Chart_02.chart_data.addColumn('number', 'Total');
+        Chart_02.chart_data.addColumn({type: 'string', role: 'annotation'} );
+
+		Chart_02.current_size = size;
+        // Create the data table.
+		$('#chartSpinner').show();
+		Api.fetch_chart(2, function(d) {
+			console.log('Got chart 02 info back '+d);
+			var ann_0 = null;
+			Chart_02.options_small.colors = ['#FA7B00'];
+			Chart_02.options_big.colors = ['#FA7B00'];
+			if(d.values_bal[d.values_bal.length-1] > 0) {
+				ann_0 = 'More Ds than Rs';
+				Chart_02.options_small.colors = ['#2790D1'];
+				Chart_02.options_big.colors = ['#2790D1'];
+				Chart_02.options_small.title = 'Need More Republicans!';
+				Chart_02.options_big.title = 'Need More Republicans!';
+				Chart_02.options_small.annotations = {
+				textStyle: {
+					color: '#2790D1',
+      				fontSize: 18,
+      				bold: true
+    			}};
+				Chart_02.options_big.annotations = Chart_02.options_small.annotations;
+			} else {
+				if(d.values_bal[d.values_bal.length-1] < 0) {
+					ann_0 = 'More Rs than Ds';
+					Chart_02.options_small.colors = ['#D40E1F'];
+					Chart_02.options_big.colors = ['#D40E1F'];
+					Chart_02.options_small.title = 'Need More Democrats!';
+					Chart_02.options_big.title = 'Need More Democrats!';
+					Chart_02.options_small.annotations = {
+						textStyle: {
+							color: '#0c0c0c',
+      						fontSize: 18,
+      						bold: true
+    					},
+					stem: 15 };
+					Chart_02.options_big.annotations = Chart_02.options_small.annotations;
+				} else {
+					ann_0 = 'Equal Number Rs and Ds!';
+					Chart_02.options_small.title = null;
+					Chart_02.options_big.title = null;
+					Chart_02.options_small.annotations = null;
+					Chart_02.options_big.annotations = Chart_02.options_small.annotations;
+				}
+			}
+			if(Chart_02.current_size == 'small') {
+				for(var i = 10; i < d.dates.length; i++) {
+					if(i == (d.values_bal.length - 4)) {
+        				Chart_02.chart_data.addRow( [d.dates[i], d.values_bal[i], ann_0] );
+					} else {
+        				Chart_02.chart_data.addRow( [d.dates[i], d.values_bal[i], null] );
+					}
+        		}
+			} else {
+				for(var i = 0; i < d.dates.length; i++) {
+					if(i == (d.values_bal.length -2)) {
+        				Chart_02.chart_data.addRow( [d.dates[i], d.values_bal[i], ann_0 ]);
+					} else {
+        				Chart_02.chart_data.addRow( [d.dates[i], d.values_bal[i], null] );
+					}
+        		}
+			}
+
+			switch(Chart_02.current_size) {
+			case 'big':
+        		Chart_02.big_chart.draw(Chart_02.chart_data, options_big);
+				Chart_00.start_slider('big');
+				break;
+			case 'small':
+				var ticks = [ d.dates[10], d.dates[13], d.dates[15], d.dates[17], d.dates[19] ];
+				options_small['hAxis'] = { 'showTextEvery': 3 };
+        		Chart_02.small_chart.draw(Chart_02.chart_data, options_small);
+				Chart_00.start_slider('small');
+				break;
+			default:
+				console.error("unknown chart size "+size);
+				break;
+			}
+			$('#chartSpinner').hide();
+			Chart_02.fetch_active = false;
+		});
+	};
+
+    return {
+		init: init,
+		initialized: initialized,
+		error_msg: error_msg,
+		big_chart: big_chart,
+		small_chart: small_chart,
+		create_charts: create_charts,
+		reveal_chart: reveal_chart,
+		draw_chart: draw_chart,
+		// Globals
+		chart_data: chart_data,
+		options_small: options_small,
+		options_big: options_big,
+		current_size: current_size,
+		fetch_active: fetch_active
+    };
+
+}());
+
+</script>
+
+<script type="text/javascript">
+	$(document).ready( function() {
+		Chart_03.init();
+		console.log("Chart_03 ready");
+	});
+
+var Chart_03 = (function () {
+
+    "use strict";
+
+	var error_msg = null,
+		initialized = false,
+		big_chart = null,
+		small_chart = null,
+		is_visible = [ false, false ],
+		chart_data = null,
+		fetch_active = false,
+		states = [],	
+		values_tot = [],	
+		values_dem = [],	
+		values_rep = [],	
+		values_und = [],	
+        options_small = {title:'Signups By State',
+						 titleTextStyle: { color: '#0a0a0a',
+  										fontSize: 20,
+  										bold: true },
+						titlePosition: 'in',
+						region: 'US',
+						resolution: 'provinces',
+						//sizeAxis: { minValue: 0, maxValue: 100 },
+						colorAxis: {colors: ['#ffffff', '#007700']},
+						width: Chart_00.lg_chart_width,
+						height:300,
+						legend:'none',
+						chartArea: {left:'12%',top:'4%',width:'84%',height:'88%'}},
+        options_big = {'title':'Signups By State',
+						 titleTextStyle: { color: '#0a0a0a',
+  										fontSize: 20,
+  										bold: true },
+						titlePosition: 'in',
+						region: 'US',
+						resolution: 'provinces',
+						//sizeAxis: { minValue: 0, maxValue: 100 },
+						colorAxis: {colors: ['#ffffff', '#007700']},
+						width: Chart_00.lg_chart_width,
+						height:500,
+						legend:'none',
+						chartArea: {left:'18%',top:'4%',width:'64%',height:'88%'}},
+
+		current_size = 'small',
+
+
+	init = function() {
+		//console.log('API Initialized');
+		if(!Chart_03.initialized) {
+			$('#chartSpinner').show();
+      		// Load the Visualization API and the corechart package.
+      		// google.charts.load('current', {'packages':['corechart']});
+      		// Set a callback to run when the Google Visualization API is loaded.
+      		google.charts.setOnLoadCallback(Chart_03.create_charts);
+		}
+	},
+
+    create_charts = function() {
+
+        Chart_03.big_chart = new google.visualization.GeoChart(document.getElementById('chart_div_big_03'));
+        Chart_03.small_chart = new google.visualization.GeoChart(document.getElementById('chart_div_small_03'));
+		Chart_03.initialized = true;
+
+		Chart_03.reveal_chart();
+	},
+
+	reveal_chart = function() {
+		if($('#big_chart_slider_box').is(':visible')) {
+			if(!is_visible[0]) {
+				Chart_03.draw_chart('big');
+				console.log("Showing MEDIUM UP");
+				is_visible[0] = true;
+			}
+		} else {
+			is_visible[0] = false;
+		}
+		if($('#small_chart_slider_box').is(':visible')) {
+			if(!is_visible[1]) {
+				Chart_03.draw_chart('small');
+				console.log("Showing SMALL");
+				is_visible[1] = true;
+			}
+		} else {
+			is_visible[1] = false;
+		}
+	},
+
+	draw_chart = function(size) {
+
+		if(!Chart_03.initialized) return;
+		if(Chart_03.fetch_active) return;
+		Chart_03.fetch_active = true;
+
+        Chart_03.chart_data = new google.visualization.DataTable();
+        Chart_03.chart_data.addColumn('string', 'State');
+        Chart_03.chart_data.addColumn('number', 'Total');
+
+		Chart_03.current_size = size;
+        // Create the data table.
+		$('#chartSpinner').show();
+		Api.fetch_chart(3, function(d) {
+			console.log('Got chart 03 info back '+d);
+			Chart_03.states = d.states.slice();
+			Chart_03.values_tot = d.values_tot.slice();
+			Chart_03.values_dem = d.values_dem.slice();
+			Chart_03.values_rep = d.values_rep.slice();
+			Chart_03.values_und = d.values_und.slice();
+
+			Chart_03.redraw_chart(0);
+
+			if(Chart_03.current_size == 'small') {
+				Chart_00.start_slider('small');
+			} else
+			if(Chart_03.current_size == 'big') {
+				Chart_00.start_slider('big');
+			}
+
+			$('#chartSpinner').hide();
+			Chart_03.fetch_active = false;
+		});
+	},
+
+	redraw_chart = function(set) {
+       	Chart_03.chart_data.removeRows( 0, Chart_03.chart_data.getNumberOfRows());
+		for(var i = 0; i < Chart_03.states.length; i++) {
+			switch(set) {
+			case 0:
+       			Chart_03.chart_data.addRow( [Chart_03.states[i], (Chart_03.values_tot[i]) ] );
+				Chart_03.options_small.colorAxis.colors = ['#ffffff', '#007700'];
+				Chart_03.options_big.colorAxis.colors = ['#ffffff', '#007700'];
+				break;
+			case 1:
+       			Chart_03.chart_data.addRow( [Chart_03.states[i], (Chart_03.values_dem[i]) ] );
+				Chart_03.options_small.colorAxis.colors = ['#ffffff', '#34AAE0'];
+				Chart_03.options_big.colorAxis.colors = ['#ffffff', '#34AAE0'];
+				break;
+			case 2:
+       			Chart_03.chart_data.addRow( [Chart_03.states[i], (Chart_03.values_rep[i]) ] );
+				Chart_03.options_small.colorAxis.colors = ['#ffffff', '#FF3333'];
+				Chart_03.options_big.colorAxis.colors = ['#ffffff', '#FF3333'];
+				break;
+			case 3:
+       			Chart_03.chart_data.addRow( [Chart_03.states[i], (Chart_03.values_und[i]) ] );
+				Chart_03.options_small.colorAxis.colors = ['#ffffff', '#730065'];
+				Chart_03.options_big.colorAxis.colors = ['#ffffff', '#730065'];
+				break;
+			default:
+				break;
+			}
+       	}
+		switch(Chart_03.current_size) {
+		case 'big':
+       		Chart_03.big_chart.draw(Chart_03.chart_data, Chart_03.options_big);
+			break;
+		case 'small':
+       		Chart_03.small_chart.draw(Chart_03.chart_data, Chart_03.options_small);
+			break;
+		default:
+			console.error("unknown chart size "+size);
+			break;
+		}
+	};
+
+    return {
+		init: init,
+		initialized: initialized,
+		error_msg: error_msg,
+		big_chart: big_chart,
+		small_chart: small_chart,
+		create_charts: create_charts,
+		reveal_chart: reveal_chart,
+		draw_chart: draw_chart,
+		// Globals
+		chart_data: chart_data,
+		options_small: options_small,
+		options_big: options_big,
+		current_size: current_size,
+		fetch_active: fetch_active,
+		redraw_chart: redraw_chart,
+		states: states,
+		values_tot: values_tot,
+		values_dem: values_dem,
+		values_rep: values_rep,
+		values_und: values_und
+    };
+
+}());
+
+</script>
+
+<!-- Start Total Users Chart Div -->
+<div>
+	<!-- Start Chart Div SMALL -->
+	<div class="show-for-small-only">
+		<div class="row">
+			<div id="small_chart_slider_box">
+	<div>
+	<div id="chart_div_small_00" style="background-image: url('/images/small_graph_placeholder.png'); background-size: 100% 100%; width: 100%; height: 300px;">
+	</div>
+	</div>
+
+	<div>
+	<div id="chart_div_small_01" style="display: none;">
+	</div>
+	</div>
+
+	<div>
+	<div id="chart_div_small_02" style="display: none;">
+	</div>
+	</div>
+
+	<div>
+	<div id="chart_div_small_03" style="display: none;">
+	</div>
+	<div style="position: relative; height: 0; width: 0;">
+		<div id="chart_div_small_03_but" style="position: absolute;top: -120px;left: 300px;display: none;">
+			<ul class="stack button-group">
+				<li class="button tiny round totalColor geoButtonSm" onclick="Chart_03.redraw_chart(0);return(false);">Total</li>
+				<li class="button tiny round democratColor geoButtonSm" onclick="Chart_03.redraw_chart(1);return(false);">Dems</li>
+				<li class="button tiny round republicanColor geoButtonSm" onclick="Chart_03.redraw_chart(2);return(false);">Reps</li>
+				<li class="button tiny round neitherColor geoButtonSm" onclick="Chart_03.redraw_chart(3);return(false);">Other</li>
+			</ul>
+		</div>
+	</div>
+	</div>
+</div>
+
+		</div>
+	</div>
+	<!-- End Chart Div SMALL -->
+	<!-- Start Chart Div MEDIUM -->
+	<div class="show-for-medium-up">
+		<div id="big_slider_row" class="row">
+			<div id="big_chart_slider_box">
+
+	<div>
+	<div id="chart_div_big_00" class="bigSliderElement" style="background-image: url('/images/big_graph_placeholder.png'); background-size: 100% 100%; width: 100%; height: 500px;">
+	</div>
+	</div>
+
+	<div>
+	<div id="chart_div_big_01" class="bigSliderElement" style="display: none;">
+	</div>
+	</div>
+
+	<div>
+	<div id="chart_div_big_02" class="bigSliderElement" style="display: none;">
+	</div>
+	</div>
+
+	<div>
+	<div id="chart_div_big_03" class="bigSliderElement" style="display: none;">
+	</div>
+
+	<div id="geo_buttons" style="position: relative; height: 0; width: 0;">
+		<div id="chart_div_big_03_but" style="position: absolute;top: -220px;left: 620px;display: none;">
+			<ul class="stack button-group">
+				<li class="button tiny round totalColor geoButtonSm" onclick="Chart_03.redraw_chart(0);return(false);">Total</li>
+				<li class="button tiny round democratColor geoButtonSm" onclick="Chart_03.redraw_chart(1);return(false);">Dems</li>
+				<li class="button tiny round republicanColor geoButtonSm" onclick="Chart_03.redraw_chart(2);return(false);">Reps</li>
+				<li class="button tiny round neitherColor geoButtonSm" onclick="Chart_03.redraw_chart(3);return(false);">Other</li>
+			</ul>
+		</div>
+	</div>
+
+	</div>
+
+</div>
+
+		</div>
+	</div
+	<!-- End Chart Div MEDIUM -->
+
+<!--
+	<div id="chartRefreshBox" style="text-align: center;">
+		<button id="chartRefresh" class="button round tiny info" onclick="Chart_00.draw_chart(Chart_00.current_size);return false;">Refresh</i>
+	</div>
+-->
+
+	<div style="text-align: center;position: relative; top: -250px">
+		<i id="chartSpinner" class="fa fa-spinner fa-2x fa-spin" style="display:none"></i>
+	</div>
+</div>
+<!-- End Chart Div -->
+
+
+<div>
+    <div id="ad_container" class="row">
+ <!-- Begin BidVertiser code -->
+<SCRIPT SRC="http://bdv.bidvertiser.com/BidVertiser.dbm?pid=738655&bid=1825947" TYPE="text/javascript"></SCRIPT>
+<!-- End BidVertiser code -->
+    </div>
+</div>
+
+    <!-- NOT LOGGED IN -->
+    <div>
+
+	<a href="/users/sign_in">Log In/Register Now!</a>
+
+	<!-- ReadMore Button Panel JS -->
+	<div class="panel">
+	<div id="read_more_panel" class="row">
+		<div id="read_more_button_box" class="small-12 medium-12 large-12 centered columns">
+			<a href="https://blog.oftheabove.com" id="read_moreButton" class="button round">Learn More</a>
+		</div>
+	</div>
+</div>
+
+	<!-- END ReadMore Button Panel JS -->
+</div>
+
+    <!-- END NOT LOGGED IN -->
+
+	<!-- API Extenal Javascript -->
+	<script type="text/javascript">
+
+/*jslint browser: true */
+/*global G_vmlCanvasManager, $ */
+
+var ApiExternal = (function () {
+
+    "use strict";
+
+	var zipcode_read_server = 'https://api.zippopotam.us/us/',
+		state = null,
+		initialized = false,
+
+	init = function() {
+		//console.log('API Initialized');
+		if(!ApiExternal.initialized) {
+			ApiExternal.initialized = true;
+		}
+	},
+
+	check_zipcode = function(zip) {
+		console.log('API -- checking zipcode');
+		if(zip == null || zip.length < 5) {
+			$('#zipcode_field').prop('placeholder', 'No Zipcode Stored');
+			$('#zipcode_place_content').text('');
+			$('#zipcode_field_button').text('Add My Zipcode');
+		}
+		state = 'check_zipcode';
+		var client = new XMLHttpRequest();
+		client.open("GET", ApiExternal.zipcode_read_server + zip, true);
+		client.onreadystatechange = function() {
+			if(client.readyState == 4) {
+				if(client.responseText == null || client.responseText == '{}') {
+					$('#zipcode_field').prop('placeholder', 'Invalid Zipcode');
+					$('#zipcode_field').val('');
+					$('#zipcode_place_content').text('');
+					$('#zipcode_place').hide();
+					$('#zipcode_field_button').text('Add My Zipcode');
+				} else {
+					console.log('API Extern :::: Response '+client.responseText);
+					var j = JSON.parse(client.responseText);
+					var post_code = j['post code'];
+					var place_name = j['places'][0]['place name'];
+					var state_abbreviation = j['places'][0]['state abbreviation'];
+					console.log('API Extern :::: Response '+ post_code + ' -- ' + place_name + ' -- ' + state_abbreviation);
+					// Update the panel
+					$('#zipcode_field').val(post_code);
+					$('#zipcode_place_content').text(place_name + ', ' + state_abbreviation);
+					$('#zipcode_field_button').text('Update My Zipcode');
+					$('#zipcode_place').show();
+					place_name = place_name == null ? '?' : place_name;
+					state_abbreviation = state_abbreviation == null ? '?' : state_abbreviation;
+					// Send to our server
+					Api.set_zipcode(post_code, place_name, state_abbreviation);
+				}
+			};
+		};
+
+		client.send();
+
+	};
+
+    return {
+		init: init,
+		initialized: initialized,
+		check_zipcode: check_zipcode,
+		zipcode_read_server: zipcode_read_server,
+    };
+
+}());
+
+$(document).ready(function() {
+	console.log("API EXTERN::::: READY :::::: Initialized "+ApiExternal.initialized);
+	ApiExternal.init();
+	console.log("API EXTERN::::: READY :::::: Initialized "+ApiExternal.initialized);
+});
+</script>
+
+	<!-- End API Extenal Javascript -->
+
+  </div> <!-- End Content -->
+
+	<!-- Timer to hide alert boxes -->
+	<script type="text/javascript">
+	$(document).ready(function() {
+		setTimeout(function() {
+			$('.alert-box.info').hide(1000);
+		}, 5000);
+	});
+</script>
+
+	<!-- End Timer to hide alert boxes -->
+
+  <div id="footer">
+	<div class="row footer">
+		Copyright (c) 2016 HappyTrout
+	</div>
+	<div class="row footer">
+		<div class="small-3 small-offset-2 medium-3 medium-offset-2 large-3 large-offset-2 columns">
+			<div class="footerLink">
+				<a href="http://blog.oftheabove.com/index.php/privacy-policy/">Privacy Policy</a>
+			</div>
+		</div>
+		<div class="small-2 medium-2 large-2 columns">&nbsp;</div>
+		<div class="small-3 medium-3 large-3 columns">
+			<div class="footerLink">
+				<a href="http://blog.oftheabove.com/index.php/terms-of-use/">Terms of Use</a>
+			</div>
+		</div>
+		<div class="small-2 medium-2 large-2 columns">&nbsp;</div>
+	</div>
+  </div>
+  </body>
+  <script type="text/javascript">
+	  $(document).ready(function() {
+		// console.log('Foundation starting');
+		$(document).foundation();
+		// Fix for small screens
+		if($(window).width() < 400) {
+			$('#app_title').hide();
+		}
+	  });
+  </script>
+</html>

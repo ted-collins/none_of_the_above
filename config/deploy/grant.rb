@@ -4,9 +4,9 @@
 # is considered to be the first unless any hosts have the primary
 # property set.  Don't declare `role :all`, it's a meta role.
 
-role :app, %w{ted@grant}
-role :web, %w{ted@grant}
-role :db,  %w{ted@grant}
+role :app, %w{ted@grant-ext}
+role :web, %w{ted@grant-ext}
+role :db,  %w{ted@grant-ext}
 
 
 # Extended Server Syntax
@@ -19,7 +19,7 @@ role :db,  %w{ted@grant}
 set :stage, :production
 set :branch, ENV["REVISION"] || ENV["BRANCH_NAME"] || "master"
 set :rails_env, "production"
-set :main_server, "grant"
+set :main_server, "grant-ext"
 set :enable_ssl, false
 set :application_directory, "/var/www/none_of_the_above"
 
